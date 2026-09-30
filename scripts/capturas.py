@@ -1,5 +1,5 @@
 """Capturas de verificación con Playwright: un PNG por folio, tamaño y navegador.
-Uso: python scripts/capturas.py <html> <carpeta_salida> [--sizes 1440x900,390x844] [--browsers chromium,webkit]
+Uso: python scripts/capturas.py <html> <carpeta_salida> [--sizes 1440x900,390x844] [--browsers chromium,webkit] [--trans 0.3,0.6]
      [--mouse 0.3,-0.2] [--query snap] [--folios 0-11]
 Escribe también consola.txt con los errores de consola y de página.
 """
@@ -14,6 +14,7 @@ ap.add_argument('--mouse', default='0.3,-0.2', help='posición del cursor en [-1
 ap.add_argument('--query', default='snap')
 ap.add_argument('--folios', default='0-11')
 ap.add_argument('--wait', type=int, default=1800)
+ap.add_argument('--trans', default='', help='capturar transiciones congeladas en estos avances, p. ej. 0.3,0.6')
 a = ap.parse_args()
 
 url = pathlib.Path(a.html).resolve().as_uri() + ('?' + a.query if a.query else '')
@@ -34,7 +35,14 @@ with sync_playwright() as p:
             pg.on('pageerror', lambda e, t=f'{bname} {size}': log.append(f'[{t}] pageerror: {e}'))
             pg.goto(url, wait_until='load'); pg.wait_for_timeout(2500)
             for i in range(f0, f1 + 1):
-                pg.evaluate(f'scrollTo(0,({i}+.42)*1.3*innerHeight)')
+                if a.trans:
+                    if i == 0: continue
+                    for pv in a.trans.split(','):
+                        pg.evaluate(f'window.__freeze=null; __go({i-1},true)'); pg.wait_for_timeout(400)
+                        pg.evaluate(f'window.__freeze={pv}; __go({i})'); pg.wait_for_timeout(a.wait)
+                        pg.screenshot(path=str(out / f'{bname}_{w}x{h}_t{i+1:02d}_{pv}.png'))
+                    pg.evaluate('window.__freeze=null'); continue
+                pg.evaluate(f'window.__go ? __go({i},true) : scrollTo(0,({i}+.42)*1.3*innerHeight)')
                 for j, (mx, my) in enumerate(mice):
                     pg.mouse.move((mx + 1) / 2 * w, (my + 1) / 2 * h)
                     pg.wait_for_timeout(a.wait)
