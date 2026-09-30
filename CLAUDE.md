@@ -64,15 +64,16 @@ La v3 «retro moderna» se rechazó por parecer videojuego: cinta de noticias, c
 - `referencia/estilo/`: hojas de contacto y videos de las referencias (TikToks de sitios 3D cinematográficos). Extraer fotogramas con ffmpeg si hace falta.
 - `docs/`: historial de decisiones.
 
-## Técnica actual (v6)
+## Técnica actual (v7)
 
-- Scroll: cada folio mide 1,3 pantallas; `sf = scrollY/(1.3*innerHeight)`; transición en el último 30 %. Lerp 0,07.
-- Navegación: ← → ↑ ↓ espacio, Enter, RePág/AvPág, Inicio/Fin; índice lateral clicable.
-- Shader: desplazamiento por profundidad (atenuado en bordes con `uEdge`), luz puntual desde el cursor con normales del mapa de profundidad, lámpara gaussiana (`uSpot` 0,6 y `uSpotAmt` 0,42 en escenas oscuras; 0,18 en papel), gelatina de plata, grano, paspartú, fundido desde negro (`uFade`), parpadeo (`uFlicker`), hoja quemada (chamuscado, carbón y brasa en el borde del fbm).
-- Cámara: órbita ±0,19 rad con el cursor; fondo con paralaje propio.
-- Sin cursor durante 4 s: la lámpara recorre la foto sola. iOS: botón «Activar movimiento» para el giroscopio.
-- Modo seguro: si WebGL falla o se pierde el contexto, se muestran textos y fotos estáticos (`?nogl` para probarlo).
-- `?snap` desactiva el suavizado para capturas automáticas.
+- Navegación por folios (no por scroll): cada folio se queda quieto hasta que se avanza con → ↓ espacio Enter AvPág, clic, rueda, deslizar el dedo, tocar la mitad derecha (izquierda: volver) o un mando (A/RB avanzar, B/LB volver). Inicio/Fin, 1–9, índice lateral. F pantalla completa, S sonido. `#n` en la URL abre el folio n.
+- Portada de acceso «Abrir el expediente»: el clic pone la pantalla completa (en iPhone no existe; se indica «Añadir a pantalla de inicio», con manifest e icono).
+- Transición de llegada distinta en cada folio (`TR` en la plantilla): II inmersión en la foto del escritorio, III y IX la hoja que se quema (con curvatura del papel, pavesas y humo), IV tinta que se corre, V diafragma de cámara que se cierra sobre el rostro, VI papel que se retira de la mesa, VII rollo de película, VIII corte a negro y luz que parpadea (magnicidio), X persianas de noticiero, XI desenfoque, XII regreso al escritorio. Al retroceder o saltar: fundido a negro.
+- Escritorio 3D (I y XII): `scripts/escritorio.py` lo modela en Blender por código y exporta `assets/escritorio.glb` (~400 KB, sin Draco). En la web: luz de foco real desde la lámpara de latón que apunta a donde está el cursor, sombras, entorno tenue, polvo en el haz. Las copias fotográficas son planos con textura de lienzo.
+- Profundidad: `scripts/capas.py` (Depth Anything V2 base, dos escalas) genera `_depth.png` (R profundidad, G máscara del sujeto) y `_bg.jpg` (fondo con el hueco rellenado por difusión). Retratos con `layers:true`: placa de fondo detrás (z = -0,07·alto) y sujeto delante con su máscara. El jeep no usa capas (el grupo no se separa bien).
+- Sonido sintetizado con WebAudio (papel, máquina, sello, crepitar, proyector), apagado por defecto.
+- Calidad automática: si el promedio pasa de 26 ms por fotograma baja la resolución, el polvo y las sombras.
+- Modo seguro sin WebGL (`?nogl`), `?snap` para capturas; `window.__go(i,true)` salta a un folio y `window.__freeze=p` congela una transición (lo usa `scripts/capturas.py --trans`).
 
 ## Verificación antes de dar algo por terminado
 
