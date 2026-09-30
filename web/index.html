@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guatemala después de Árbenz (1954–1959)</title>
+<meta name="description" content="Guatemala después de Árbenz, 1954–1959. Historia, 4.º Bachillerato, ZETH Centro Educativo. Víctor Robles y Guillermo Cifuentes.">
+<meta name="theme-color" content="#0b0b0a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Árbenz 1954">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icono.png">
+<link rel="icon" href="icono.png">
+<link rel="preload" as="image" href="img/desfile_bg.webp">
+<link rel="preload" as="image" href="img/desfile_fg.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0a;--fg:#efe9df;--dim:rgba(239,233,223,.66);--faint:rgba(239,233,223,.38);--line:rgba(239,233,223,.2);--red:#a3362a;
+  --serif:"Instrument Serif","Times New Roman",serif;--sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --pad:clamp(20px,5vw,80px);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+img{display:block;-webkit-user-drag:none;user-select:none}
+button{all:unset;cursor:pointer}
+
+/* escenario: cada escena es un contexto 3D a pantalla completa */
+.sc{position:fixed;inset:0;overflow:hidden;visibility:hidden;perspective:1000px;contain:strict;pointer-events:none}
+.cam{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.L{position:absolute;left:50%;top:50%;backface-visibility:hidden;will-change:transform}
+.L img{width:100%;height:100%;object-fit:cover}
+.L.blur img{filter:none}
+.paper{box-shadow:0 40px 80px -20px rgba(0,0,0,.75),0 10px 24px rgba(0,0,0,.4)}
+.paper img{object-fit:contain;background:#e9e1d1}
+.shade{position:absolute;inset:0;pointer-events:none}
+.wide .shade.left{background:linear-gradient(90deg,rgba(11,11,10,.92) 0%,rgba(11,11,10,.78) 30%,rgba(11,11,10,.0) 62%)}
+.shade.bottom,.narrow .shade.left{background:linear-gradient(0deg,rgba(11,11,10,.95) 0%,rgba(11,11,10,.7) 38%,rgba(11,11,10,0) 68%)}
+.wide .shade.bottom{background:linear-gradient(0deg,rgba(11,11,10,.85) 0%,rgba(11,11,10,0) 45%)}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 55% 45%,transparent 50%,rgba(0,0,0,.55))}
+
+/* sello */
+.stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-12deg);opacity:0;color:#a3231c;
+  font-family:var(--sans);font-weight:500;letter-spacing:.14em;text-align:center;border:.12em solid currentColor;padding:.18em .5em .22em;line-height:1;white-space:nowrap;
+  background:rgba(233,225,209,.35);
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 -.25'/></filter><rect width='100%' height='100%' filter='url(%23r)'/></svg>");
+  mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 -.25'/></filter><rect width='100%' height='100%' filter='url(%23r)'/></svg>")}
+.stamp small{display:block;font-size:.26em;letter-spacing:.34em;margin-top:.5em;padding-top:.45em;border-top:.08em solid currentColor}
+.paper.hit{animation:jolt .45s cubic-bezier(.3,.7,.3,1)}
+.paper.hit .stamp{animation:slam .5s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes slam{0%{opacity:0;transform:translate(-50%,-50%) rotate(-12deg) scale(2.2)}55%{opacity:1;transform:translate(-50%,-50%) rotate(-12deg) scale(.95)}100%{opacity:.92;transform:translate(-50%,-50%) rotate(-12deg) scale(1)}}
+@keyframes jolt{0%,100%{translate:0 0}25%{translate:3px 5px}50%{translate:-2px -2px}75%{translate:1px 1px}}
+
+/* fichas de personajes */
+.card{background:#e9e1d1;padding:4% 4% 0;box-shadow:0 40px 70px -24px rgba(0,0,0,.8)}
+.L.card img{width:100%!important;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%}
+.card figcaption{color:#191816;padding:.9em .2em 1em;text-align:left}
+.card b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1rem,1.7vw,1.6rem);line-height:1.05}
+.card i{display:block;font-style:normal;font-size:clamp(.62rem,.8vw,.74rem);letter-spacing:.12em;text-transform:uppercase;color:#7a2a20;margin-top:.45em}
+.card span{display:block;font-size:clamp(.66rem,.85vw,.84rem);line-height:1.5;margin-top:.55em;color:#3b3833}
+.narrow .card span{display:none}.narrow .card b{font-size:.78rem}.narrow .card i{font-size:.5rem;letter-spacing:.06em}
+
+/* textos */
+.tx{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;padding:calc(90px + var(--safe-t)) var(--pad) calc(96px + var(--safe-b));visibility:hidden;pointer-events:none;z-index:50}
+.narrow .tx{justify-content:flex-end;padding-bottom:calc(78px + var(--safe-b))}
+.tx .in{max-width:min(40rem,44vw);will-change:transform,opacity}
+.narrow .tx .in{max-width:100%}
+.tx.center{align-items:center;text-align:center;justify-content:flex-start}
+.tx.center .in{max-width:60rem}
+.k{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:14px;margin-bottom:1.4rem}
+.k::before{content:"";width:28px;height:1px;background:var(--dim)}
+.center .k{justify-content:center}.center .k::after{content:"";width:28px;height:1px;background:var(--dim)}
+h1,h2{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:.92}
+h1{font-size:clamp(3.4rem,10.5vw,10.5rem)}
+h2{font-size:clamp(2.9rem,7.4vw,7.6rem)}
+.narrow h1{font-size:clamp(3.2rem,15vw,6rem)}.narrow h2{font-size:clamp(2.6rem,12.5vw,4.6rem)}
+h1 em,h2 em{font-style:italic;color:var(--dim)}
+.ln{display:block;overflow:hidden;padding:.42em 0 .1em;margin:-.42em 0 -.1em}
+.ln>span{display:inline-block;will-change:transform}
+.p{font-size:clamp(.98rem,1.15vw,1.12rem);line-height:1.65;color:var(--dim);max-width:34rem;margin-top:1.6rem}
+.p strong{color:var(--fg);font-weight:500}
+.narrow .p{font-size:.95rem;line-height:1.55;margin-top:1.1rem}
+.meta{margin-top:2.2rem;font-size:.8rem;letter-spacing:.06em;color:var(--dim);line-height:1.8}
+.meta b{font-weight:500;color:var(--fg)}
+.years{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,2.6vw,2.6rem);color:var(--dim);margin-top:1rem}
+.list{margin-top:1.8rem;display:grid;gap:.9rem;max-width:34rem}
+.list div{display:grid;grid-template-columns:8.5rem 1fr;gap:1rem;align-items:baseline;border-top:1px solid var(--line);padding-top:.9rem}
+.list b{font-family:var(--serif);font-weight:400;font-style:italic;font-size:1.5rem;color:var(--fg)}
+.list span{font-size:.95rem;color:var(--dim);line-height:1.5}
+.narrow .list{gap:.6rem;margin-top:1.1rem}.narrow .list div{grid-template-columns:6.6rem 1fr;padding-top:.6rem}.narrow .list b{font-size:1.2rem}.narrow .list span{font-size:.85rem}
+.cap{position:fixed;left:var(--pad);bottom:calc(26px + var(--safe-b));font-size:.68rem;letter-spacing:.08em;color:var(--faint);max-width:40ch}
+.narrow .cap{bottom:calc(20px + var(--safe-b));font-size:.62rem}
+.date{font-family:var(--serif);font-size:clamp(3.4rem,9vw,9.4rem);line-height:.9;letter-spacing:-.02em}
+
+/* interfaz mínima */
+.top{position:fixed;left:0;right:0;top:0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:calc(22px + var(--safe-t)) var(--pad) 0;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);pointer-events:none}
+.top .r{display:flex;align-items:center;gap:22px;pointer-events:auto}
+#count{font-variant-numeric:tabular-nums}
+#count b{color:var(--fg);font-weight:500}
+#fs{display:flex;align-items:center;gap:8px;color:var(--dim);transition:color .3s}
+#fs:hover,#fs:focus-visible{color:var(--fg)}
+#fs svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.4}
+.narrow #fs span{display:none}.narrow .top>span{display:none}.narrow .top{justify-content:flex-end}
+.bar{position:fixed;left:0;right:0;bottom:0;height:2px;z-index:60;background:rgba(239,233,223,.08)}
+.bar i{display:block;height:100%;width:100%;background:var(--fg);transform-origin:left;transform:scaleX(0)}
+.hint{position:fixed;right:var(--pad);bottom:calc(24px + var(--safe-b));z-index:60;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:12px;transition:opacity .8s}
+.hint i{width:1px;height:34px;background:linear-gradient(var(--fg),transparent);animation:drip 2.2s cubic-bezier(.6,0,.3,1) infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.grain{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:.08;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;transition:opacity 1s ease,visibility 1s}
+.loader.done{opacity:0;visibility:hidden}
+.loader div{text-align:center;font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--dim)}
+.loader b{display:block;font-family:var(--serif);font-weight:400;font-size:3rem;letter-spacing:0;color:var(--fg);margin-top:.6rem;font-variant-numeric:tabular-nums;text-transform:none}
+#spacer{width:1px}
+@media (prefers-reduced-motion:reduce){.hint i{animation:none}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div>Guatemala · 1954–1959<b id="pct">0</b></div></div>
+
+<header class="top"><span>Guatemala después de Árbenz</span><div class="r"><span id="count"><b>01</b> / 12</span><button id="fs" aria-label="Pantalla completa"><svg viewBox="0 0 16 16"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg><span>Pantalla completa</span></button></div></header>
+<div class="hint" id="hint"><i></i>Desliza</div>
+<div class="bar"><i id="bar"></i></div>
+<div class="grain"></div>
+
+<main id="stage"></main>
+
+<!-- textos de cada escena (el orden coincide con SCENES en el script) -->
+<div id="texts">
+<section class="tx"><div class="in">
+  <p class="k">ZETH Centro Educativo · Historia, 4.º Bachillerato</p>
+  <h1><span class="ln"><span>Guatemala</span></span><span class="ln"><span>después</span></span><span class="ln"><span><em>de</em> Árbenz</span></span></h1>
+  <p class="years">1954 — 1959</p>
+  <p class="meta">Integrantes<br><b>Víctor Robles · Guillermo Cifuentes</b></p>
+</div></section>
+
+<section class="tx"><div class="in">
+  <p class="k">01 · Junio de 1954</p>
+  <h2><span class="ln"><span>La «Liberación»</span></span></h2>
+  <p class="p">El derrocamiento de Jacobo Árbenz formó parte de la <strong>Operación PBSUCCESS</strong>, organizada por la CIA en plena Guerra Fría entre Estados Unidos y la Unión Soviética.</p>
+  <p class="p">Se acusó a su gobierno de inclinarse hacia el comunismo por sus políticas nacionalistas.</p>
+</div><p class="cap">Oficiales del Ejército, década de 1950.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">02 · 1954</p>
+  <h2><span class="ln"><span>El exilio</span></span></h2>
+  <p class="p">Tras refugiarse en la embajada de México, Árbenz y otros dirigentes del gobierno revolucionario salen del país.</p>
+</div><p class="cap">Portada de Prensa Libre, 1954.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">03 · Ruptura institucional</p>
+  <h2><span class="ln"><span>Fin de la</span></span><span class="ln"><span><em>primavera</em></span></span></h2>
+  <div class="list">
+    <div><b>Anulada</b><span>la Constitución de 1945</span></div>
+    <div><b>Disuelto</b><span>el Congreso</span></div>
+    <div><b>Prohibidas</b><span>las organizaciones populares</span></div>
+  </div>
+  <p class="p">Terminan los diez años de primavera democrática, 1944–1954.</p>
+</div><p class="cap">Jacobo Árbenz Guzmán.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">04 · 1954–1957</p>
+  <h2><span class="ln"><span>Carlos</span></span><span class="ln"><span>Castillo Armas</span></span></h2>
+  <p class="p">Militar al frente del Ejército de Liberación Nacional. Gobernó primero de facto y después como presidente constitucional, con un objetivo: <strong>desmantelar el legado revolucionario</strong>.</p>
+</div></section>
+
+<section class="tx"><div class="in">
+  <p class="k">05 · Contrarreforma agraria</p>
+  <h2><span class="ln"><span>El Estatuto</span></span><span class="ln"><span><em>Agrario</em></span></span></h2>
+  <p class="p">Suspendió el <strong>Decreto 900</strong>. Las tierras que ya se habían repartido a los campesinos fueron devueltas a sus antiguos dueños y a la United Fruit Company.</p>
+</div><p class="cap">Grabado de Ismael Aroche sobre la Ley de Reforma Agraria.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">06 · Control político</p>
+  <h2><span class="ln"><span>Un Estado</span></span><span class="ln"><span><em>anticomunista</em></span></span></h2>
+  <div class="list">
+    <div><b>1956</b><span>La nueva Constitución otorga facultades extraordinarias al presidente ante amenazas políticas y dificulta la sindicalización en el campo y la ciudad.</span></div>
+    <div><b>Comité</b><span>El Comité de Defensa Nacional contra el Comunismo recibe poderes policiales y judiciales para detener, interrogar y desterrar a opositores sin debido proceso.</span></div>
+  </div>
+</div><p class="cap">Constitución de la República de Guatemala, 1956.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">07 · Magnicidio</p>
+  <p class="date"><span class="ln"><span>26 de julio</span></span><span class="ln"><span><em>de 1957</em></span></span></p>
+  <p class="p">Castillo Armas muere baleado en un corredor de la Casa Presidencial. La versión oficial culpó al soldado Romeo Vásquez Sánchez, hallado muerto poco después. Su muerte desató teorías de conspiración y una <strong>disputa inmediata por el poder</strong> entre las facciones militares.</p>
+</div></section>
+
+<section class="tx"><div class="in">
+  <p class="k">08 · 1957–1958</p>
+  <h2><span class="ln"><span>Transición e</span></span><span class="ln"><span><em>inestabilidad</em></span></span></h2>
+  <div class="list">
+    <div><b>1957</b><span>Gobierno provisional</span></div>
+    <div><b>1957</b><span>Comicios anulados por denuncias de fraude</span></div>
+    <div><b>Nuevas elecciones</b><span>Triunfa el general Miguel Ydígoras Fuentes</span></div>
+    <div><b>Marzo, 1958</b><span>Ydígoras asume la presidencia</span></div>
+  </div>
+</div><p class="cap">Miguel Ydígoras Fuentes.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">09 · Gobierno de Ydígoras</p>
+  <h2><span class="ln"><span>Clima</span></span><span class="ln"><span><em>de crisis</em></span></span></h2>
+  <p class="p">Protestas estudiantiles y obreras, y una profunda división dentro del Ejército.</p>
+  <div class="list"><div><b>13·XI·1960</b><span>La sublevación militar: germen del enfrentamiento armado posterior.</span></div></div>
+</div><p class="cap">Protesta contra Ydígoras, años sesenta.</p></section>
+
+<section class="tx center"><div class="in">
+  <p class="k">10 · Personajes indispensables</p>
+</div></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Conclusión</p>
+  <h2><span class="ln"><span>De la primavera</span></span><span class="ln"><span><em>al conflicto</em></span></span></h2>
+  <p class="p">En seis años se desmontó una década de reformas. La sublevación de 1960 fue el germen del enfrentamiento armado que vendría después.</p>
+  <p class="meta">Gracias por su atención<br><b>Víctor Robles · Guillermo Cifuentes</b><br>ZETH Centro Educativo · Historia, 4.º Bachillerato</p>
+</div><p class="cap">Comunidad campesina durante el conflicto armado, décadas después.</p></section>
+</div>
+
+<div id="spacer"></div>
+
+<script>
+(function(){
+/* ---------- escenas ----------
+  kind 'photo': capas bg (fondo rellenado) + fg (sujeto recortado) si layers; si no, la foto entera.
+  tall: foto vertical; en pantallas anchas va a la derecha y el texto a la izquierda.
+  pos: encuadre (object-position). o: punto hacia el que vuela la cámara (fracción del cuadro, 0..1).
+  kind 'doc': papel físico sobre el fondo desenfocado de otra foto. kind 'cards': fichas de personajes. */
+const SCENES=[
+  {kind:'photo', img:'desfile',  layers:1, tall:1, ar:625/777,  pos:'50% 30%', o:[.62,.32]},
+  {kind:'photo', img:'jeep',     layers:1,         ar:820/490,  pos:'60% 40%', o:[.55,.35]},
+  {kind:'doc',   img:'periodico', back:'palacio2', ar:638/439},
+  {kind:'photo', img:'uniforme', layers:1, tall:1, ar:1106/1400, pos:'50% 22%', o:[.5,.28]},
+  {kind:'photo', img:'castillo', layers:1, tall:1, ar:730/973,  pos:'50% 25%', o:[.5,.3]},
+  {kind:'doc',   img:'poster', back:'poster', ar:683/1024, stamp:1},
+  {kind:'doc',   img:'constitucion', back:'palacio', ar:348/574},
+  {kind:'photo', img:'casapres', layers:1, tall:1, ar:899/1400, pos:'50% 40%', o:[.5,.35], dark:1},
+  {kind:'photo', img:'ydigoras', layers:1, tall:1, ar:637/850,  pos:'50% 25%', o:[.5,.3]},
+  {kind:'photo', img:'protesta', layers:1,         ar:951/664,  pos:'50% 45%', o:[.45,.4]},
+  {kind:'cards', back:'palacio2', cards:[
+    ['retrato','Jacobo Árbenz Guzmán','Presidente, 1951–1954','Presidente constitucional cuyo proyecto de soberanía económica y reforma agraria chocó contra los intereses de monopolios extranjeros y la geopolítica estadounidense.'],
+    ['castillo','Carlos Castillo Armas','Presidente, 1954–1957','Militar al frente del Ejército de Liberación Nacional; gobernó de facto y constitucionalmente para desmantelar el legado revolucionario.'],
+    ['ydigoras','Miguel Ydígoras Fuentes','Presidente, 1958–1963','Político y militar, opositor tradicional; asumió la presidencia en un ambiente de alta polarización social y económica.']]},
+  {kind:'photo', img:'multitud', layers:1,         ar:1200/804, pos:'50% 50%', o:[.5,.45], last:1}
+];
+const N=SCENES.length, P=1000;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const touch=matchMedia('(pointer:coarse)').matches;
+const clamp=(v,a,b)=>v<a?a:v>b?b:v, sm=(a,b,x)=>{x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x)};
+const eOut=x=>1-Math.pow(1-clamp(x,0,1),3), eIn=x=>Math.pow(clamp(x,0,1),2.2), eIO=x=>{x=clamp(x,0,1);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const $=s=>document.querySelector(s);
+const stage=$('#stage'), texts=[...document.querySelectorAll('.tx')];
+
+/* ---------- construcción del DOM de cada escena ---------- */
+const el=(tag,cls,parent)=>{const e=document.createElement(tag); if(cls) e.className=cls; parent&&parent.appendChild(e); return e;};
+const imgEl=(src,parent,alt)=>{const i=el('img','',parent); i.alt=alt||''; i.decoding='async'; i.dataset.src=src; return i;};
+const S=SCENES.map((s,i)=>{
+  const sc=el('section','sc',stage); sc.style.zIndex=N-i;
+  const cam=el('div','cam',sc); const L={};
+  const back=s.kind==='photo'?s.img:s.back;
+  L.blur=el('div','L blur',cam); imgEl(`img/${back}_blur.webp`,L.blur);
+  if(s.kind==='photo'){
+    if(s.layers){ L.bg=el('div','L',cam); imgEl(`img/${s.img}_bg.webp`,L.bg); L.fg=el('div','L',cam); imgEl(`img/${s.img}_fg.webp`,L.fg); }
+    else { L.fg=el('div','L',cam); imgEl(`img/${s.img}.webp`,L.fg); }
+    [L.bg,L.fg].forEach(d=>d&&(d.firstChild.style.objectPosition=s.pos));
+  } else if(s.kind==='doc'){
+    L.paper=el('div','L paper',cam); imgEl(`img/${s.img}.webp`,L.paper);
+    if(s.stamp){ const st=el('div','stamp',L.paper); st.innerHTML='SUSPENDIDO<small>Decreto 900 · 1954</small>'; L.stamp=st; }
+  } else if(s.kind==='cards'){
+    L.cards=s.cards.map(c=>{ const f=el('figure','L card',cam); imgEl(`img/${c[0]}_card.webp`,f,c[1]); const cap=el('figcaption','',f); cap.innerHTML=`<b>${c[1]}</b><i>${c[2]}</i><span>${c[3]}</span>`; return f; });
+  }
+  el('div','vig',sc); if(s.kind!=='cards') el('div','shade left',sc);
+  const lines=[...texts[i].querySelectorAll('.ln>span')], blocks=[...texts[i].querySelectorAll('.in>:not(h1):not(h2):not(.date)')];
+  return {s,sc,cam,L,tx:texts[i],inner:texts[i].querySelector('.in'),cap:texts[i].querySelector('.cap'),lines,blocks,imgs:[...sc.querySelectorAll('img')],loaded:false,hit:false,vis:false};
+});
+
+/* ---------- carga progresiva ---------- */
+function load(i){ const o=S[i]; if(!o||o.loaded) return Promise.resolve(); o.loaded=true;
+  return Promise.all(o.imgs.map(im=>new Promise(r=>{ im.onload=im.onerror=()=>r(); im.src=im.dataset.src; }).then(()=>im.decode&&im.decode().catch(()=>{})))); }
+
+/* ---------- maquetación ---------- */
+let W=innerWidth,H=innerHeight,wide=true,SH=1;
+function place(d,w,h,cx,cy,z,ox,oy,extra){ /* coloca una capa a z y la compensa para que, en reposo, se vea en (cx,cy) con tamaño w×h */
+  const k=(P-z)/P, px=ox+(cx-ox)*k, py=oy+(cy-oy)*k;
+  d.style.width=w+'px'; d.style.height=h+'px'; d.style.marginLeft=(-w/2)+'px'; d.style.marginTop=(-h/2)+'px';
+  d._base=`translate3d(${px.toFixed(1)}px,${py.toFixed(1)}px,${z}px) scale(${(k*(extra||1)).toFixed(4)})`;
+  d.style.transform=d._base; }
+function layout(){
+  W=innerWidth; H=innerHeight; wide=W/H>1.05;
+  document.documentElement.classList.toggle('wide',wide); document.documentElement.classList.toggle('narrow',!wide);
+  SH=H*(touch?1.25:1.5);
+  $('#spacer').style.height=(SH*(N-1+.55)+H)+'px';
+  S.forEach(o=>{
+    const s=o.s, L=o.L;
+    let bw=W,bh=H,cx=0,cy=0;
+    if(s.kind==='photo'&&s.tall&&wide){ bw=Math.min(W*.62,H*1.25); bh=H; cx=W/2-bw/2; }
+    const ox=s.o?(cx-bw/2+s.o[0]*bw):0, oy=s.o?(cy-bh/2+s.o[1]*bh):0;
+    o.ox=ox; o.oy=oy; o.sc.style.perspectiveOrigin=`${(W/2+ox).toFixed(0)}px ${(H/2+oy).toFixed(0)}px`;
+    place(L.blur,W,H,0,0,-900,ox,oy,1.25);
+    if(L.bg) place(L.bg,bw,bh,cx,cy,-420,ox,oy,1.06);
+    if(L.fg) place(L.fg,bw,bh,cx,cy,0,ox,oy,1.06);
+    if(L.paper){ let pw,ph; if(wide){ ph=H*.74; pw=ph*s.ar; if(pw>W*.4){pw=W*.4; ph=pw/s.ar;} place(L.paper,pw,ph,W*.2,H*.01,0,0,0); }
+      else { pw=W*.78; ph=pw/s.ar; if(ph>H*.42){ph=H*.42; pw=ph*s.ar;} place(L.paper,pw,ph,0,-H*.2,0,0,0); }
+      if(L.stamp) L.stamp.style.fontSize=(pw*.12)+'px'; }
+    if(L.cards){ const cw=wide?Math.min(W*.2,H*.34):W*.29, gap=wide?cw*1.18:cw*1.08;
+      L.cards.forEach((c,k)=>{ place(c,cw,cw*(wide?1.62:1.62),(k-1)*gap,wide?H*.06:-H*.04,0,0,0); c._x=(k-1); c.style.height='auto'; c.style.marginTop=(-c.offsetHeight/2)+'px'; }); }
+  });
+  readScroll(); cur=target;
+}
+
+/* ---------- scroll suave (y teclas de presentación) ---------- */
+let target=0, cur=0, tween=null;
+const readScroll=()=>{ target=scrollY/SH; };
+addEventListener('scroll',()=>{ if(!tween) readScroll(); },{passive:true});
+const stopAt=i=>clamp(i,0,N-1)+(i>=N-1?.3:.34);
+function goTo(i){ i=clamp(i,0,N-1); const to=stopAt(i); tween={from:cur,to,t0:performance.now(),d:reduce?1:Math.min(2.2,1.1+Math.abs(to-cur)*.35)*1000}; scrollTo(0,to*SH); }
+const nowIdx=()=>clamp(Math.round(cur-.34),0,N-1);
+addEventListener('keydown',e=>{
+  const k=e.key;
+  if(['ArrowDown','ArrowRight','PageDown',' ','Enter'].includes(k)){ e.preventDefault(); goTo(nowIdx()+1); }
+  else if(['ArrowUp','ArrowLeft','PageUp'].includes(k)){ e.preventDefault(); goTo(nowIdx()-1); }
+  else if(k==='Home'){ e.preventDefault(); goTo(0); } else if(k==='End'){ e.preventDefault(); goTo(N-1); }
+  else if(k==='f'||k==='F') toggleFS();
+});
+addEventListener('wheel',()=>{ tween=null; },{passive:true});
+addEventListener('touchstart',()=>{ tween=null; },{passive:true});
+
+/* ---------- pantalla completa ---------- */
+const de=document.documentElement, canFS=!!(de.requestFullscreen||de.webkitRequestFullscreen);
+function toggleFS(){ if(!canFS) return; if(document.fullscreenElement||document.webkitFullscreenElement) (document.exitFullscreen||document.webkitExitFullscreen).call(document);
+  else { const p=(de.requestFullscreen||de.webkitRequestFullscreen).call(de); p&&p.catch&&p.catch(()=>{}); } }
+if(!canFS) $('#fs').style.display='none';
+$('#fs').onclick=toggleFS;
+
+/* ---------- cursor / inclinación ---------- */
+const m={x:0,y:0,tx:0,ty:0};
+addEventListener('pointermove',e=>{ if(e.pointerType==='mouse'){ m.tx=(e.clientX/W-.5)*2; m.ty=(e.clientY/H-.5)*2; } },{passive:true});
+
+/* ---------- bucle ---------- */
+const counter=$('#count'), bar=$('#bar'), hint=$('#hint');
+let t0=performance.now(), lastIdx=-1;
+function frame(now){
+  if(tween){ const p=clamp((now-tween.t0)/tween.d,0,1); cur=tween.from+(tween.to-tween.from)*eIO(p); if(p>=1){ tween=null; readScroll(); } }
+  else cur+=(target-cur)*(reduce?1:touch?.2:.085);
+  if(Math.abs(target-cur)<1e-4) cur=target;
+  m.x+=(m.tx-m.x)*.06; m.y+=(m.ty-m.y)*.06;
+  const intro=reduce?1:eOut((now-t0-200)/2200);   /* entrada de la portada al cargar */
+  const g=cur;
+  S.forEach((o,i)=>{
+    const q=g-i, s=o.s;
+    /* coreografía: la cámara entra en la foto, cruza un instante de penumbra y la siguiente escena llega desde el fondo */
+    const inF=i===0?intro:sm(-.34,0,q), outF=s.last?0:sm(.8,.9,q), inO=i===0?intro:sm(-.1,0,q);
+    const vis=inO>0.001&&outF<.999;
+    if(vis!==o.vis){ o.vis=vis; o.sc.style.visibility=o.tx.style.visibility=vis?'visible':'hidden'; if(vis) load(i); }
+    if(!vis) return;
+    /* cámara: llega desde el fondo, avanza despacio mientras se lee y atraviesa la foto al salir */
+    let z;
+    if(q<0||i===0&&intro<1) z=-900*(1-eOut(inF))+(q>0?Math.min(q,.66)/.66*260:0);
+    else if(q<.66||s.last) z=Math.min(q,.66)/.66*260;
+    else z=260+700*eIn((q-.66)/.34);
+    if(reduce) z=0;
+    const ry=m.x*(touch?0:4.5), rx=-m.y*(touch?0:3);
+    o.cam.style.transform=`translateZ(${z.toFixed(1)}px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    o.sc.style.opacity=(Math.min(inO,1-outF)).toFixed(3);
+    /* papel que cae y se asienta; fichas que se abren en abanico */
+    const L=o.L, a=i===0?intro:eOut(sm(-.22,.14,q));
+    if(L.paper){ const f=1-a; L.paper.style.transform=L.paper._base+` translate3d(0,${(f*-H*.25).toFixed(1)}px,${(f*380).toFixed(1)}px) rotateX(${(f*62+(q-.3)*6).toFixed(2)}deg) rotateZ(${(f*-9+ (q-.3)*2).toFixed(2)}deg)`;
+      if(L.stamp&&!o.hit&&q>.16){ o.hit=true; L.paper.classList.add('hit'); } if(L.stamp&&o.hit&&q<.05){ o.hit=false; L.paper.classList.remove('hit'); } }
+    if(L.cards) L.cards.forEach((c,k)=>{ const b=eOut(sm(-.2+k*.06,.16+k*.06,q)), f=1-b;
+      c.style.transform=c._base+` translate3d(0,${(f*H*.3).toFixed(1)}px,${(f*-300+c._x*-40*(1-b)).toFixed(1)}px) rotateY(${(c._x*(-14)*b+f*c._x*40 + m.x*6).toFixed(2)}deg) rotateX(${(f*25-m.y*4).toFixed(2)}deg)`; });
+    /* texto: líneas que suben tras máscara, bloques que aparecen; se van antes de que la cámara atraviese */
+    const tq=i===0?(intro*.4+Math.max(0,q)):q;
+    const tin=i===0?1:sm(-.04,.14,q), tout=s.last?1:1-sm(.52,.66,q);
+    o.inner.style.opacity=Math.min(tin,tout).toFixed(3);
+    o.inner.style.transform=`translate3d(0,${((1-tout)*-40+(1-tin)*30).toFixed(1)}px,0)`;
+    o.lines.forEach((l,k)=>{ const p=eOut(((i===0?intro*.55:tq)-(i===0?.0:-.1)-k*.035)/(i===0?.35:.2)); l.style.transform=`translate3d(0,${((1-p)*110).toFixed(1)}%,0)`; });
+    o.blocks.forEach((b,k)=>{ const p=eOut(((i===0?intro*.55:tq)-(i===0?.18:.02)-k*.03)/(i===0?.3:.18)); b.style.opacity=p.toFixed(3); b.style.transform=`translate3d(0,${((1-p)*18).toFixed(1)}px,0)`; });
+    if(o.cap) o.cap.style.opacity=(Math.min(tin,tout)*.9).toFixed(3);
+  });
+  const idx=clamp(Math.round(g-.2),0,N-1);
+  if(idx!==lastIdx){ lastIdx=idx; counter.innerHTML=`<b>${String(idx+1).padStart(2,'0')}</b> / ${N}`; load(idx+1); load(idx+2); }
+  bar.style.transform=`scaleX(${clamp(g/(N-1+.3),0,1).toFixed(4)})`;
+  hint.style.opacity=g>.15?0:1;
+  requestAnimationFrame(frame);
+}
+
+/* ---------- arranque ---------- */
+addEventListener('resize',layout);
+layout();
+const pct=$('#pct');
+let shown=0; const first=[load(0),load(1),load(2)];
+first.forEach(p=>p.then(()=>{ shown++; pct.textContent=Math.round(shown/3*100); }));
+const fonts=document.fonts?document.fonts.ready:Promise.resolve();
+Promise.all([...first,fonts]).then(()=>{ t0=performance.now(); $('#loader').classList.add('done'); requestAnimationFrame(frame); for(let i=3;i<N;i++) setTimeout(()=>load(i),600+i*250); });
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+scrollTo(0,0);
+window.__go=(i)=>{ const to=Number.isInteger(i)?stopAt(i):i+.34; scrollTo(0,to*SH); target=cur=to; tween=null; };
+})();
+</script>
+</body>
+</html>

@@ -64,16 +64,17 @@ La v3 «retro moderna» se rechazó por parecer videojuego: cinta de noticias, c
 - `referencia/estilo/`: hojas de contacto y videos de las referencias (TikToks de sitios 3D cinematográficos). Extraer fotogramas con ffmpeg si hace falta.
 - `docs/`: historial de decisiones.
 
-## Técnica actual (v7)
+## Técnica actual (v8, rehecha desde cero)
 
-- Navegación por folios (no por scroll): cada folio se queda quieto hasta que se avanza con → ↓ espacio Enter AvPág, clic, rueda, deslizar el dedo, tocar la mitad derecha (izquierda: volver) o un mando (A/RB avanzar, B/LB volver). Inicio/Fin, 1–9, índice lateral. F pantalla completa, S sonido. `#n` en la URL abre el folio n.
-- Portada de acceso «Abrir el expediente»: el clic pone la pantalla completa (en iPhone no existe; se indica «Añadir a pantalla de inicio», con manifest e icono).
-- Transición de llegada distinta en cada folio (`TR` en la plantilla): II inmersión en la foto del escritorio, III y IX la hoja que se quema (con curvatura del papel, pavesas y humo), IV tinta que se corre, V diafragma de cámara que se cierra sobre el rostro, VI papel que se retira de la mesa, VII rollo de película, VIII corte a negro y luz que parpadea (magnicidio), X persianas de noticiero, XI desenfoque, XII regreso al escritorio. Al retroceder o saltar: fundido a negro.
-- Escritorio 3D (I y XII): `scripts/escritorio.py` lo modela en Blender por código y exporta `assets/escritorio.glb` (~400 KB, sin Draco). En la web: luz de foco real desde la lámpara de latón que apunta a donde está el cursor, sombras, entorno tenue, polvo en el haz. Las copias fotográficas son planos con textura de lienzo.
-- Profundidad: `scripts/capas.py` (Depth Anything V2 base, dos escalas) genera `_depth.png` (R profundidad, G máscara del sujeto) y `_bg.jpg` (fondo con el hueco rellenado por difusión). Retratos con `layers:true`: placa de fondo detrás (z = -0,07·alto) y sujeto delante con su máscara. El jeep no usa capas (el grupo no se separa bien).
-- Sonido sintetizado con WebAudio (papel, máquina, sello, crepitar, proyector), apagado por defecto.
-- Calidad automática: si el promedio pasa de 26 ms por fotograma baja la resolución, el polvo y las sombras.
-- Modo seguro sin WebGL (`?nogl`), `?snap` para capturas; `window.__go(i,true)` salta a un folio y `window.__freeze=p` congela una transición (lo usa `scripts/capturas.py --trans`).
+El cliente rechazó la v7 («parece juego de Poki», transiciones feas, va trabada) y pidió una web como las de sus videos de referencia (sitios 3D de scroll cinematográfico tipo Vela Armon): simple, seria, fluida.
+
+- Sin WebGL. Cada escena es un contexto 3D de CSS (`perspective:1000px`) con capas de imagen a distinta z: fondo lejano desenfocado (`_blur`, z=-900), fondo de la foto con el hueco rellenado (`_bg`, z=-420) y sujeto recortado (`_fg`, z=0). `place()` compensa escala y posición para que en reposo encajen; la cámara es `translateZ` del contenedor más una inclinación con el cursor.
+- Scroll suave (lerp) que mueve la cámara: la escena llega desde el fondo, avanza despacio mientras se lee y la cámara la atraviesa hacia su punto focal (`o`); cruce breve a oscuras y llega la siguiente. Flechas/espacio/AvPág saltan de escena con una interpolación de 1,1–2,2 s. F pantalla completa.
+- Documentos (periódico, grabado, Constitución) son papeles que caen y se asientan en 3D; el sello SUSPENDIDO golpea el grabado. Personajes: tres fichas en abanico.
+- Imágenes: `scripts/web_assets.py` amplía x4 con Real-ESRGAN (`scripts/esrgan.onnx`, caché en `assets/hd/`, ambos fuera del repo), aplica virado de plata cálido, refina la máscara del sujeto con filtro guiado y exporta WebP a `web/img/`. Las máscaras y profundidades salen de `scripts/capas.py`.
+- `web/index.html` es la página (sin plantilla). `scripts/build.py` copia `web/` a `dist/` y añade manifest e icono. Unos 2,6 MB en total, carga progresiva.
+- Medido: 60 FPS con GPU (1440×900, 2560×1440, iPad 2x) y 60 FPS sin GPU en tamaño móvil.
+- Tipografía: Instrument Serif (titulares) e Inter (textos). Esto sustituye a la dirección de arte anterior (Bodoni, membrete, hoja quemada) por decisión del cliente.
 
 ## Verificación antes de dar algo por terminado
 

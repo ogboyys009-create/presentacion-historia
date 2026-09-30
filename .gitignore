@@ -3,3 +3,4 @@ scripts/da.onnx
 __pycache__/
 .DS_Store
 scripts/*.onnx
+assets/hd/
