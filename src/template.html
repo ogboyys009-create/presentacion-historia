@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guatemala después de Árbenz (1954–1959)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#ECE6D8; --navy:#10151C; --oxblood:#6B1E1E; --brass:#A58B57; --stone:#8A8577;
+  --fg:var(--ivory); --fade:rgba(16,21,28,.88); --px:0; --py:0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+body{background:var(--navy);color:var(--fg);font-family:"Libre Caslon Text",Georgia,serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-feature-settings:"onum" 1}
+body.light{--fg:#1B1F26;--fade:rgba(236,230,216,.94)}
+#stage{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
+.nogl #stage,.nogl .scrim,.nogl #scroll,.nogl .rail{display:none}
+.nogl .scene{padding-top:90px;gap:4vw}
+.nogl .scene.fb{flex-wrap:wrap}
+.fb-img{display:block;max-height:78vh;max-width:min(40vw,520px);order:2;filter:grayscale(1) sepia(.12);border:12px solid #E7E0CF;outline:1px solid var(--brass);outline-offset:-5px;box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.narrow .fb-img{max-width:100%;max-height:50vh;order:0;margin-bottom:20px}
+.nogl body.light,.nogl body{background:var(--navy)}
+.scrim{position:fixed;inset:auto 0 0 0;height:66%;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--fade) 22%,transparent)}
+.wide .scrim{inset:0 auto 0 0;width:56%;height:100%;background:linear-gradient(to right,var(--fade) 48%,transparent)}
+.bars::before,.bars::after{content:"";position:fixed;left:0;right:0;height:5.2vh;background:#000;z-index:5;pointer-events:none}
+.bars::before{top:0}.bars::after{bottom:0}
+.narrow .bars{display:none}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:7;opacity:.1;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}33%{transform:translate(-2%,2%)}66%{transform:translate(2%,-1%)}}
+
+/* ---------- membrete ---------- */
+.letterhead{position:fixed;left:0;right:0;top:0;z-index:6;display:flex;justify-content:space-between;align-items:center;
+  padding:calc(18px + env(safe-area-inset-top,0px)) clamp(20px,5vw,72px) 0;color:var(--fg);pointer-events:none}
+.letterhead .org{font-family:"Libre Caslon Text";font-size:.8rem;letter-spacing:.14em;font-variant-caps:all-small-caps;font-size:.95rem;opacity:.85}
+.letterhead span{white-space:nowrap}
+.narrow .letterhead .org{font-size:.78rem;letter-spacing:.08em}
+.letterhead .folio{font-family:"Bodoni Moda";font-style:italic;font-size:.95rem;opacity:.85}
+.letterhead::after{content:"";position:absolute;left:clamp(20px,5vw,72px);right:clamp(20px,5vw,72px);top:calc(48px + env(safe-area-inset-top,0px));height:1px;background:var(--brass);opacity:.55}
+.keys{position:fixed;left:clamp(20px,5vw,72px);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;font-size:.78rem;font-style:italic;color:var(--fg);opacity:.5}
+.touch .keys{display:none}
+
+/* ---------- escenas ---------- */
+.scene{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:0;display:flex;align-items:flex-end;
+  padding:0 clamp(22px,6vw,96px) calc(clamp(56px,9vh,104px) + env(safe-area-inset-bottom,0px))}
+.wide .scene{align-items:center;padding-top:60px}
+.scene .col{max-width:560px;width:100%;transform:translate(calc(var(--px)*-5px),calc(var(--py)*-3px))}
+.wide .scene .col{max-width:min(42vw,580px)}
+.scene.center{justify-content:center;text-align:center}
+.scene.center .col{max-width:1040px!important}
+.chapter{font-family:"Bodoni Moda";font-style:italic;font-size:1.05rem;color:var(--brass);margin-bottom:1rem;display:flex;align-items:center;gap:14px}
+.chapter::after{content:"";height:1px;width:56px;background:var(--brass);opacity:.8}
+.center .chapter{justify-content:center}
+.center .chapter::before{content:"";height:1px;width:56px;background:var(--brass);opacity:.8}
+h1,h2{font-family:"Bodoni Moda",serif;font-weight:500;line-height:.98;letter-spacing:-.01em;font-optical-sizing:auto}
+h1{font-size:clamp(3.1rem,11.5vw,7.6rem)}
+h2{font-size:clamp(2.5rem,9vw,5.4rem)}
+.wide h1{font-size:clamp(3.4rem,6.6vw,7.6rem)}.wide h2{font-size:clamp(2.7rem,5vw,5.4rem)}
+.lede{font-size:clamp(1.02rem,2.5vw,1.18rem);line-height:1.7;margin-top:1.3rem;max-width:40ch;opacity:.92}
+.source{font-size:.78rem;font-style:italic;opacity:.62;margin-top:1.1rem;padding-top:.7rem;border-top:1px solid rgba(165,139,87,.55);max-width:46ch}
+.dates{font-family:"Bodoni Moda";font-size:clamp(1.3rem,4vw,1.9rem);margin-top:1rem;color:var(--brass);letter-spacing:.02em}
+.byline{margin-top:1.6rem;font-size:1rem;line-height:1.6;opacity:.9}
+.byline small{display:block;font-size:.8rem;font-style:italic;opacity:.7;margin-bottom:.2rem}
+.rule2{height:4px;border-top:1px solid var(--brass);border-bottom:1px solid var(--brass);width:120px;margin:1.4rem 0 0;opacity:.8}
+.mask{display:block;overflow:hidden;padding-bottom:.1em}
+.mask>span{display:inline-block;will-change:transform}
+
+/* expediente */
+.dossier{font-family:"Special Elite",monospace;background:#E7E0CF;color:#1B1F26;padding:20px 20px 16px;margin-top:1.4rem;
+  box-shadow:0 24px 50px rgba(0,0,0,.45);max-width:460px;font-size:.9rem;line-height:1.6;position:relative;border-top:3px solid var(--oxblood)}
+.dossier .head{display:flex;justify-content:space-between;border-bottom:1px solid rgba(27,31,38,.35);padding-bottom:6px;margin-bottom:10px;font-size:.76rem;letter-spacing:.04em}
+.dossier .row{display:grid;grid-template-columns:7.5em 1fr;gap:6px}
+.redact{position:relative}
+.redact::after{content:"";position:absolute;inset:0 -3px;background:#1B1F26;transform-origin:right;transform:scaleX(var(--k,1))}
+.dossier .note{font-size:.7rem;opacity:.6;margin-top:10px}
+
+/* sellos de goma */
+.stamps{display:grid;gap:12px;margin-top:1.4rem}
+.stamp{display:flex;align-items:center;gap:16px}
+.stamp b{font-family:"Libre Caslon Text";font-weight:700;letter-spacing:.12em;font-size:.95rem;color:#B8514A;border:1.5px solid #B8514A;outline:1.5px solid #B8514A;outline-offset:2px;padding:3px 12px;min-width:9.5em;text-align:center;display:inline-block;will-change:transform,opacity}
+.stamp span{font-size:1.08rem}
+.bigstamp{position:fixed;left:0;top:0;z-index:4;pointer-events:none;opacity:0;text-align:center;color:#B3191B;background:rgba(236,230,216,.82);box-shadow:0 0 0 1px rgba(179,25,27,.2);
+  font-family:"Libre Caslon Text",serif;font-weight:700;border:6px solid #B3191B;outline:2px solid #B3191B;outline-offset:6px;padding:.12em .45em .16em;white-space:nowrap;
+  -webkit-mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 -0.35'/></filter><rect width='100%' height='100%' filter='url(%23r)'/></svg>");
+  mask-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='r'><feTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 -0.35'/></filter><rect width='100%' height='100%' filter='url(%23r)'/></svg>")}
+.bigstamp b{display:block;font-size:1em;letter-spacing:.08em;line-height:1}
+.bigstamp small{display:block;font-size:.19em;letter-spacing:.3em;margin-top:.35em;border-top:2px solid #B3191B;padding-top:.3em}
+.spring{margin-top:1.3rem;font-family:"Bodoni Moda";font-size:1.25rem;display:flex;align-items:center;gap:12px;color:var(--brass)}
+.spring i{flex:1;height:1px;background:currentColor;position:relative;max-width:240px}
+.spring i::after{content:"";position:absolute;left:50%;top:-8px;width:1px;height:17px;background:var(--ivory);transform:rotate(30deg);opacity:var(--crack,0)}
+
+.clip{position:fixed;z-index:4;pointer-events:none;background:#E7E0CF;padding:7px 7px 9px;box-shadow:0 14px 30px rgba(0,0,0,.35);width:min(14vw,200px);opacity:0;left:49%;top:70%}
+.clip img{display:block;width:100%;filter:grayscale(1)}
+.clip p{font-size:.68rem;font-style:italic;color:#1B1F26;margin-top:6px;line-height:1.35}
+
+.acts{margin-top:1.4rem;display:grid;gap:18px}
+.act{border-left:1px solid var(--brass);padding-left:16px}
+.act h3{font-family:"Bodoni Moda";font-weight:600;font-size:1.4rem;line-height:1.1}
+.act p{font-size:1rem;line-height:1.6;margin-top:4px;opacity:.9}
+
+.date{font-family:"Bodoni Moda";font-weight:400;font-size:clamp(3rem,11vw,6.6rem);line-height:1;letter-spacing:-.01em}
+.date{color:#E8DFCB}
+.date em{display:block;font-style:italic;font-size:.38em;color:var(--brass);margin-top:.35em;letter-spacing:.02em}
+
+.timeline{margin-top:1.4rem;position:relative;padding-left:26px;display:grid;gap:15px}
+.timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--stone);opacity:.5}
+.timeline .fill{position:absolute;left:5px;top:8px;width:1px;background:var(--brass);height:calc((100% - 16px) * var(--f,0))}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:-25px;top:7px;width:9px;height:9px;border-radius:50%;border:1px solid var(--brass);background:var(--navy)}
+.light .step::before{background:var(--ivory)}
+.step.on::before{background:var(--brass)}
+.step time{font-family:"Bodoni Moda";font-style:italic;font-size:1.1rem;color:var(--brass);display:block}
+.step p{font-size:1rem;line-height:1.45}
+
+/* galería */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,3vw,48px);margin-top:1.6rem;perspective:1400px}
+.card{text-align:center;will-change:transform}
+.card .ph{aspect-ratio:3/4;background:#2a2f38 center/cover no-repeat;filter:grayscale(1) contrast(1.05) brightness(.95);
+  border:clamp(6px,1vw,12px) solid #E7E0CF;outline:1px solid var(--brass);outline-offset:-4px;box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.card h3{font-family:"Bodoni Moda";font-weight:500;font-size:clamp(.95rem,2.6vw,1.5rem);line-height:1.1;margin-top:16px}
+.card time{display:block;font-style:italic;color:var(--brass);font-size:clamp(.8rem,2vw,1rem);margin-top:4px}
+.card p{font-size:clamp(.75rem,1.9vw,.95rem);line-height:1.45;margin-top:6px;opacity:.85}
+.wide .cards{max-width:1000px;margin-inline:auto}
+.narrow .card p{display:none}
+
+/* índice */
+.rail{position:fixed;right:clamp(12px,2.2vw,32px);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.rail button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;font-family:"Bodoni Moda";font-size:.82rem;color:var(--fg);pointer-events:auto;opacity:.45;transition:opacity .4s}
+.rail button i{display:block;width:10px;height:1px;background:currentColor;transition:width .4s,background .4s}
+.rail button.on{opacity:1}
+.rail button.on i{width:28px;background:var(--brass)}
+.rail button span{min-width:1.8em;text-align:right}
+.narrow .rail button span{display:none}
+.rail button:focus-visible{outline:1px solid var(--brass);outline-offset:4px}
+.tilt{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:9;display:none;
+  font-family:"Libre Caslon Text";font-style:italic;font-size:.9rem;background:rgba(18,24,33,.85);color:var(--ivory);border:1px solid var(--brass);padding:8px 16px}
+.loading{position:fixed;inset:0;z-index:40;background:var(--navy);display:grid;place-items:center;font-family:"Bodoni Moda";font-style:italic;color:var(--ivory);transition:opacity 1s}
+.loading.gone{opacity:0;pointer-events:none}
+#scroll{position:relative;z-index:-1}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}}
+</style>
+</head>
+<body>
+<div class="loading" id="loading">Archivo, 1954–1959</div>
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="scrim"></div>
+<div class="bars" aria-hidden="true"></div>
+<div class="grain"></div>
+<header class="letterhead" aria-hidden="true"><span class="org">Informe de Historia · Guatemala</span><span class="folio" id="folio">Folio I de XII</span></header>
+<div class="keys">Avance con ← → o la barra espaciadora</div>
+<div class="bigstamp" id="bigstamp"><b>SUSPENDIDO</b><small>DECRETO 900 · 1954</small></div>
+<div class="clip" id="clipG"><img alt="" id="clipGImg"><p>Anuncio de la Guyamel Fruit Co., bananera que la United Fruit absorbió en 1929.</p></div>
+<button class="tilt" id="tilt">Activar movimiento</button>
+
+<!-- I · Portada -->
+<section class="scene" data-theme="dark" data-label="I">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">ZETH Centro Educativo</div>
+    <h1><span class="mask"><span data-a="line" data-d=".06">Guatemala</span></span><span class="mask"><span data-a="line" data-d=".11">después</span></span><span class="mask"><span data-a="line" data-d=".16">de Árbenz</span></span></h1>
+    <div class="dates" data-a="rise" data-d=".24">1954–1959</div>
+    <div class="rule2" data-a="rise" data-d=".27"></div>
+    <div class="byline" data-a="rise" data-d=".3"><small>Historia, 4.º Bachillerato</small>Víctor Robles<br>Guillermo Cifuentes</div>
+  </div>
+</section>
+
+<!-- II · PBSUCCESS -->
+<section class="scene" data-theme="dark" data-label="II">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo I, junio de 1954</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">La «Liberación»</span></span></h2>
+    <div class="dossier" data-a="rise" data-d=".13">
+      <div class="head"><span>EXPEDIENTE</span><span>OPERACIÓN PBSUCCESS</span></div>
+      <div class="row"><span>Organiza:</span><span><span class="redact" data-a="redact" data-d=".2">la CIA</span></span></div>
+      <div class="row"><span>Contexto:</span><span><span class="redact" data-a="redact" data-d=".26">Guerra Fría, EE. UU. contra la URSS</span></span></div>
+      <div class="row"><span>Objetivo:</span><span><span class="redact" data-a="redact" data-d=".32">derrocar a Jacobo Árbenz</span></span></div>
+      <div class="row"><span>Acusación:</span><span><span class="redact" data-a="redact" data-d=".38">inclinarse al comunismo por sus políticas nacionalistas</span></span></div>
+      <div class="note">Recreación visual. No es un documento original.</div>
+    </div>
+    <p class="source" data-a="rise" data-d=".42">Fotografía: oficiales del Ejército, década de 1950.</p>
+  </div>
+</section>
+
+<!-- III · Exilio -->
+<section class="scene" data-theme="light" data-label="III">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo II, 1954</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">El exilio</span></span></h2>
+    <p class="lede" data-a="rise" data-d=".14">Tras refugiarse en la embajada de México, Árbenz y otros dirigentes del gobierno revolucionario salen del país.</p>
+    <p class="source" data-a="rise" data-d=".2">Fuente: portada de Prensa Libre, 1954.</p>
+  </div>
+</section>
+
+<!-- IV · Ruptura -->
+<section class="scene" data-theme="dark" data-label="IV">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo III, ruptura institucional</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Fin de la</span></span><span class="mask"><span data-a="line" data-d=".1">primavera</span></span></h2>
+    <div class="spring" data-a="crack" data-d=".16">1944<i></i>1954</div>
+    <div class="stamps">
+      <div class="stamp"><b data-a="stamp" data-d=".22">ANULADA</b><span data-a="rise" data-d=".24">Constitución de 1945</span></div>
+      <div class="stamp"><b data-a="stamp" data-d=".29">DISUELTO</b><span data-a="rise" data-d=".31">Congreso de la República</span></div>
+      <div class="stamp"><b data-a="stamp" data-d=".36">PROHIBIDAS</b><span data-a="rise" data-d=".38">Organizaciones populares</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- V · Contrarreforma -->
+<section class="scene" data-theme="light" data-label="V">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo IV, Estatuto Agrario</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Contrarreforma</span></span><span class="mask"><span data-a="line" data-d=".1">agraria</span></span></h2>
+    <p class="lede" data-a="rise" data-d=".16">Se suspende el Decreto 900. Las tierras repartidas a los campesinos vuelven a sus antiguos dueños y a la United Fruit Company.</p>
+    <p class="source" data-a="rise" data-d=".22">Grabado de Ismael Aroche sobre la Ley de Reforma Agraria.</p>
+  </div>
+</section>
+
+<!-- VI · Castillo Armas -->
+<section class="scene" data-theme="dark" data-label="VI">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo V, 1954–1957</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Carlos</span></span><span class="mask"><span data-a="line" data-d=".1">Castillo Armas</span></span></h2>
+    <p class="lede" data-a="rise" data-d=".17">Al frente del Ejército de Liberación Nacional, gobierna primero de facto y después como presidente constitucional. Su propósito: desmantelar el legado revolucionario.</p>
+  </div>
+</section>
+
+<!-- VII · Constitución -->
+<section class="scene" data-theme="light" data-label="VII">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo VI, control político</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Un Estado</span></span><span class="mask"><span data-a="line" data-d=".1">anticomunista</span></span></h2>
+    <div class="acts">
+      <div class="act" data-a="rise" data-d=".17"><h3>Constitución de 1956</h3><p>Otorga facultades extraordinarias al presidente ante amenazas políticas y dificulta la sindicalización en el campo y la ciudad.</p></div>
+      <div class="act" data-a="rise" data-d=".24"><h3>Comité de Defensa Nacional contra el Comunismo</h3><p>Con poderes policiales y judiciales para detener, interrogar y desterrar a opositores sin debido proceso.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIII · Magnicidio -->
+<section class="scene" data-theme="dark" data-label="VIII">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo VII, magnicidio</div>
+    <div class="date"><span class="mask"><span data-a="line" data-d=".07">26 de julio</span></span><span class="mask"><span data-a="line" data-d=".12">de 1957</span></span></div>
+    <p class="lede" data-a="rise" data-d=".2">Castillo Armas muere baleado en un corredor de la Casa Presidencial. Se señaló al soldado Romeo Vásquez Sánchez, hallado muerto poco después. Su muerte abre una disputa por el poder entre las facciones del Ejército.</p>
+  </div>
+</section>
+
+<!-- IX · Inestabilidad -->
+<section class="scene" data-theme="dark" data-label="IX">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo VIII, 1957–1960</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Transición</span></span><span class="mask"><span data-a="line" data-d=".1">e inestabilidad</span></span></h2>
+    <div class="timeline" data-a="fill">
+      <div class="fill"></div>
+      <div class="step" data-a="step" data-d=".16"><time>1957</time><p>Gobierno provisional</p></div>
+      <div class="step" data-a="step" data-d=".22"><time>1957</time><p>Elecciones anuladas por denuncias de fraude</p></div>
+      <div class="step" data-a="step" data-d=".28"><time>Marzo de 1958</time><p>Miguel Ydígoras Fuentes asume la presidencia</p></div>
+      <div class="step" data-a="step" data-d=".34"><time>13 de noviembre de 1960</time><p>Sublevación militar en un Ejército dividido</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- X · Crisis -->
+<section class="scene" data-theme="dark" data-label="X">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Capítulo IX, gobierno de Ydígoras</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">Clima</span></span><span class="mask"><span data-a="line" data-d=".1">de crisis</span></span></h2>
+    <p class="lede" data-a="rise" data-d=".17">Protestas estudiantiles y obreras, polarización social y económica, y un Ejército partido en facciones.</p>
+    <p class="source" data-a="rise" data-d=".23">Fotografía: protesta contra Ydígoras, años sesenta.</p>
+  </div>
+</section>
+
+<!-- XI · Personajes -->
+<section class="scene center" data-theme="dark" data-label="XI">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Personajes indispensables</div>
+    <div class="cards">
+      <div class="card" data-a="card" data-d=".08"><div class="ph" data-img="retrato"></div><h3>Jacobo Árbenz Guzmán</h3><time>Presidente, 1951–1954</time><p>Su proyecto de soberanía económica y reforma agraria chocó con los monopolios extranjeros y con Washington.</p></div>
+      <div class="card" data-a="card" data-d=".14"><div class="ph" data-img="castillo"></div><h3>Carlos Castillo Armas</h3><time>Presidente, 1954–1957</time><p>Encabezó la «Liberación» y dedicó su mandato a desmantelar el legado revolucionario.</p></div>
+      <div class="card" data-a="card" data-d=".2"><div class="ph" data-img="ydigoras"></div><h3>Miguel Ydígoras Fuentes</h3><time>Presidente, 1958–1963</time><p>Opositor tradicional que gobernó en plena polarización social y económica.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- XII · Cierre -->
+<section class="scene" data-theme="dark" data-label="XII">
+  <div class="col">
+    <div class="chapter" data-a="rise" data-d=".02">Conclusión</div>
+    <h2><span class="mask"><span data-a="line" data-d=".06">De la primavera</span></span><span class="mask"><span data-a="line" data-d=".1">al conflicto</span></span></h2>
+    <p class="lede" data-a="rise" data-d=".17">En seis años se desmontó una década de reformas. La sublevación de 1960 fue el germen del enfrentamiento armado que vendría después.</p>
+    <div class="rule2" data-a="rise" data-d=".22"></div>
+    <div class="byline" data-a="rise" data-d=".25"><small>Gracias por su atención</small>Víctor Robles<br>Guillermo Cifuentes</div>
+    <p class="source" data-a="rise" data-d=".28">Fotografía: comunidad campesina durante el conflicto armado, décadas después.</p>
+  </div>
+</section>
+
+<nav class="rail" id="rail" aria-label="Capítulos"></nav>
+<div id="scroll"></div>
+
+<script>__ASSETS__</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SNAP=location.search.includes('snap');
+const coarse=matchMedia('(pointer:coarse)').matches;
+const sm=(a,b,x)=>{x=Math.min(1,Math.max(0,(x-a)/(b-a)));return x*x*(3-2*x)};
+const ease=x=>1-Math.pow(1-Math.min(1,Math.max(0,x)),3);
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+if(coarse) document.documentElement.classList.add('touch');
+function fallback(){
+  document.documentElement.classList.add('nogl');
+  document.getElementById('loading').classList.add('gone');
+  document.querySelectorAll('.scene').forEach(s=>{s.style.position='relative';s.style.opacity=1;s.style.visibility='visible';s.style.minHeight='100vh';});
+  document.querySelectorAll('[data-a]').forEach(el=>{el.style.opacity=1;el.style.transform='none';el.style.setProperty('--k',0);});
+  document.querySelectorAll('.ph[data-img]').forEach(p=>p.style.backgroundImage=`url(${ASSETS[p.dataset.img].img})`);
+  const wideNow=innerWidth/innerHeight>1.05; document.documentElement.classList.add(wideNow?'wide':'narrow');
+  const IM=['desfile','jeep','periodico','uniforme','poster','castillo','constitucion','casapres','ydigoras','protesta',null,'multitud'];
+  document.querySelectorAll('.scene').forEach((s,i)=>{ if(!IM[i]) return; const im=document.createElement('img'); im.src=ASSETS[IM[i]].img; im.alt='';
+    im.className='fb-img'; s.classList.add('fb'); s.prepend(im); });
+}
+const ROMAN=['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+
+/*
+  kind: 'person' retrato vertical: en pantallas anchas entero con paspartú a la derecha; en vertical a sangre
+        'wide'   foto horizontal a sangre
+        'doc'    papel contenido
+  El fondo de cada escena es una versión desenfocada y oscurecida (profundidad de campo).
+*/
+const SCENES=[
+  {img:'desfile',      kind:'person', disp:.3,  tone:1,   back:'desfile',  light:false, fx:.04, fxN:.2},
+  {img:'jeep',         kind:'wide',   disp:.24, tone:.9,  back:null,       light:false, fx:.12, fy:1},
+  {img:'periodico',    kind:'doc',    disp:0,   tone:1,   back:'palacio2', light:true, half:.18, fall:true},
+  {img:'uniforme',     kind:'person', disp:.3,  tone:1,   back:'uniforme', light:false},
+  {img:'poster',       kind:'doc',    disp:.1,  tone:1,   back:'poster',   light:true, stamp:true},
+  {img:'castillo',     kind:'person', disp:.3,  tone:1,   back:'jeep',     light:false},
+  {img:'constitucion', kind:'doc',    disp:.05, tone:1,   back:'palacio',  light:true},
+  {img:'casapres',     kind:'person', disp:.26, tone:.9,  back:'palacio',  light:false, flicker:true},
+  {img:'ydigoras',     kind:'person', disp:.3,  tone:1,   back:'protesta', light:false},
+  {img:'protesta',     kind:'wide',   disp:.24, tone:.92, back:null,       light:false, fx:-.05},
+  {img:null,           back:'palacio2', light:false},
+  {img:'multitud',     kind:'wide',   disp:.24, tone:.8,  back:null,       light:false, fx:.1}
+];
+const N=SCENES.length, SH=1.3;
+
+/* ---------- Three.js ---------- */
+const canvas=document.getElementById('stage');
+if(location.search.includes('nogl')){ fallback(); return; }
+let renderer;
+try{ renderer=new THREE.WebGLRenderer({canvas,antialias:!coarse,powerPreference:'high-performance'}); }
+catch(err){ fallback(); return; }
+renderer.setPixelRatio(Math.min(devicePixelRatio,coarse?1.5:2));
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault(); fallback();});
+renderer.autoClear=false;
+const gl2=renderer.capabilities.isWebGL2&&!coarse;
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,1,.1,100);
+const D=10, BACKZ=-7;
+
+const VERT=`
+uniform sampler2D dmap; uniform float uDisp,uCurl,uEdge;
+varying vec2 vUv;
+void main(){
+  vUv=uv; vec3 p=position;
+  float m0=min(min(uv.x,1.-uv.x),min(uv.y,1.-uv.y));
+  float edge=smoothstep(uEdge*.45,uEdge,m0);
+  p.z+=(texture2D(dmap,uv).r-.5)*uDisp*edge;
+  p.z+=uCurl*(sin(uv.x*3.14159)*.6+sin(uv.y*6.283)*.12);
+  gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.);
+}`;
+const FRAG=`
+uniform sampler2D map,dmap;
+uniform float uReveal,uTone,uTime,uAspect,uRelief,uBorder,uBlur,uHalf,uDot,uVig,uLift;
+uniform vec2 uLight,uMouse;
+uniform float uSpot,uSpotAmt,uFade,uFlicker,uResY;
+uniform vec3 uInk,uPaper,uBrass;
+varying vec2 vUv;
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+  return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n2(p);p*=2.03;a*=.5;}return v;}
+void main(){
+  vec2 uv=vUv;
+  float l=dot(texture2D(map,uv,uBlur).rgb,vec3(.299,.587,.114));
+  l=smoothstep(.02,.98,l);
+  l=mix(l,l*l*(3.-2.*l),.35);            /* curva de copia en gelatina de plata */
+  /* modelado suave: la luz sigue al cursor */
+  float e=1./300.;
+  float dx=texture2D(dmap,uv+vec2(e,0.)).r-texture2D(dmap,uv-vec2(e,0.)).r;
+  float dy=texture2D(dmap,uv+vec2(0.,e)).r-texture2D(dmap,uv-vec2(0.,e)).r;
+  vec3 nrm=normalize(vec3(-dx*13.,-dy*13.,1.));
+  vec2 toL=(uMouse-gl_FragCoord.xy)/uResY;
+  float lam=dot(nrm,normalize(vec3(toL*2.2,.55)));
+  l=clamp(l*(1.+uRelief*(lam-.7)*1.6),0.,1.);
+  if(uHalf>0.){ vec2 g=mat2(.7071,-.7071,.7071,.7071)*gl_FragCoord.xy/uDot; float r=length(fract(g)-.5);
+    float dotInk=1.-smoothstep(sqrt(1.-l)*.62-.08,sqrt(1.-l)*.62+.08,r); l=mix(l,1.-dotInk,uHalf); }
+  vec3 col=mix(uInk,uPaper,l*uTone+uLift);
+  float v=smoothstep(.95,.3,length((uv-.5)*vec2(1.,1.08)));
+  col=mix(uInk,col,mix(1.,v,uVig));
+  col+=(h(uv*vec2(913.,721.)+fract(uTime*.7))-.5)*.045;   /* grano fino */
+
+  if(uBorder>0.){
+    vec2 b=vec2(uBorder/uAspect,uBorder), b2=b*.42, b3=b*.47;
+    float inside=step(b.x,uv.x)*step(uv.x,1.-b.x)*step(b.y,uv.y)*step(uv.y,1.-b.y);
+    float line=(1.-step(b3.x,uv.x)*step(uv.x,1.-b3.x)*step(b3.y,uv.y)*step(uv.y,1.-b3.y))
+               *step(b2.x,uv.x)*step(uv.x,1.-b2.x)*step(b2.y,uv.y)*step(uv.y,1.-b2.y);
+    vec3 mat=mix(vec3(.905,.878,.812),uBrass,line*.9);
+    col=mix(mat,col,inside);
+  }
+
+  /* lámpara: solo se ve bien lo que ilumina el cursor */
+  float dm=length(uMouse-gl_FragCoord.xy)/uResY;
+  float spot=exp(-dm*dm/(uSpot*uSpot))*uFlicker;
+  col=mix(uInk,col,mix(1.-uSpotAmt,1.,spot));
+  col+=spot*uSpotAmt*.06*vec3(1.,.93,.8);
+  col=mix(uInk,col,uFade);
+  /* la hoja se quema: chamuscado, carbón y brasa en el borde */
+  float n=fbm(uv*vec2(uAspect,1.)*3.1+vec2(0.,uTime*.012));
+  float t=uReveal*1.3-.15;
+  if(n>t) discard;
+  float burning=step(.001,1.-uReveal);
+  float d=t-n;
+  col=mix(col,col*vec3(.66,.5,.34),(1.-smoothstep(0.,.13,d))*.85*burning);
+  col=mix(col,vec3(.05,.035,.028),(1.-smoothstep(0.,.04,d))*burning);
+  col+=vec3(1.,.45,.14)*(1.-smoothstep(0.,.013,d))*1.4*burning;
+  gl_FragColor=vec4(col,1.);
+}`;
+const loader=new THREE.TextureLoader(), cache={};
+const tex=(k,w)=>{const id=k+w; if(!cache[id]){const t=loader.load(ASSETS[k][w]);
+  if(gl2&&w==='img'){t.generateMipmaps=true;t.minFilter=THREE.LinearMipmapLinearFilter;} else {t.generateMipmaps=false;t.minFilter=THREE.LinearFilter;}
+  cache[id]=t;} return cache[id];};
+const NAVY=new THREE.Color('#10151C'), IVORY=new THREE.Color('#ECE6D8'), BRASS=new THREE.Color('#A58B57');
+const geoHi=new THREE.PlaneGeometry(1,1,240,240), geoLo=new THREE.PlaneGeometry(1,1,40,40);
+function makeMesh(key,o){
+  const a=ASSETS[key];
+  const mat=new THREE.ShaderMaterial({vertexShader:VERT,fragmentShader:FRAG,transparent:true,depthWrite:true,uniforms:{
+    map:{value:tex(key,'img')}, dmap:{value:tex(key,'depth')}, uDisp:{value:0}, uCurl:{value:0}, uEdge:{value:.001}, uReveal:{value:1},
+    uTone:{value:o.tone}, uTime:{value:0}, uAspect:{value:a.w/a.h}, uRelief:{value:o.relief||0}, uBorder:{value:0},
+    uBlur:{value:o.blur||0}, uHalf:{value:o.half||0}, uDot:{value:4}, uVig:{value:o.vig||0}, uLift:{value:o.lift||0},
+    uLight:{value:new THREE.Vector2()}, uMouse:{value:new THREE.Vector2()}, uSpot:{value:o.spot||.6}, uSpotAmt:{value:o.spotAmt!=null?o.spotAmt:.42}, uFade:{value:1}, uFlicker:{value:1}, uResY:{value:1}, uInk:{value:o.ink||NAVY}, uPaper:{value:o.paper||IVORY}, uBrass:{value:BRASS}}});
+  const m=new THREE.Mesh(o.lo?geoLo:geoHi,mat); m.visible=false; scene.add(m);
+  m.userData={aspect:a.w/a.h}; return m;
+}
+const layers=SCENES.map(s=>({
+  main: s.img?makeMesh(s.img,{tone:s.tone,relief:s.kind==='doc'?.45:1.05,half:s.half,vig:s.kind==='doc'?.15:.45,spotAmt:s.light?.18:.42}):null,
+  back: s.back?makeMesh(s.back,s.light
+      ?{tone:.22,lift:.7,blur:gl2?5.5:0,lo:true,vig:.25,spot:.8,spotAmt:.15}
+      :{tone:.4,blur:gl2?5.5:0,lo:true,vig:.7,spot:.8,spotAmt:.35}):null
+}));
+
+
+/* polvo en suspensión entre la cámara y las fotos */
+const DN=coarse?260:520, dpos=new Float32Array(DN*3), dseed=new Float32Array(DN);
+for(let i=0;i<DN;i++){ dpos[i*3]=(Math.random()-.5)*16; dpos[i*3+1]=(Math.random()-.5)*10; dpos[i*3+2]=Math.random()*5.5+.5; dseed[i]=Math.random()*6.28; }
+const dgeo=new THREE.BufferGeometry(); dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
+const dmat=new THREE.PointsMaterial({color:0xE9DEC6,size:.028,transparent:true,opacity:.5,depthTest:false,depthWrite:false,blending:THREE.AdditiveBlending});
+const dust=new THREE.Points(dgeo,dmat); dust.visible=false; scene.add(dust);
+
+let wide=false;
+function layout(){
+  const w=innerWidth,h=innerHeight; renderer.setSize(w,h,false);
+  camera.aspect=w/h; wide=camera.aspect>1.05;
+  document.documentElement.classList.toggle('wide',wide); document.documentElement.classList.toggle('narrow',!wide);
+  camera.fov=wide?30:44; camera.updateProjectionMatrix();
+  const vh=2*D*Math.tan(camera.fov*Math.PI/360), vw=vh*camera.aspect, pr=renderer.getPixelRatio();
+  SCENES.forEach((s,i)=>{
+    const L=layers[i];
+    if(L.main){ const m=L.main, A=m.userData.aspect; let ph,x=0,y=0,border=0,cover=false;
+      if(s.kind==='wide'||(s.kind==='person'&&!wide)){ ph=Math.max(vh,vw/A)*1.1; cover=true; x=-((!wide&&s.fxN!=null)?s.fxN:(s.fx||0))*(ph*A-vw); y=-(s.fy||0)*(ph-vh); }
+      else if(s.kind==='person'){ ph=Math.min(vh*.8,vw*.38/A); x=vw*.215; y=-vh*.015; border=.045; }
+      else { ph=wide?Math.min(vh*.76,vw*.38/A):Math.min(vh*.46,vw*.86/A); x=wide?vw*.225:0; y=wide?-vh*.015:vh*.19; }
+      m.userData.base={w:ph*A,h:ph,x,y}; m.userData.cover=cover;
+      const u=m.material.uniforms; u.uDisp.value=ph*s.disp; u.uBorder.value=border; u.uEdge.value=border?border*3.2:(cover?.002:.08); u.uDot.value=3.2*pr;
+    }
+    if(L.back){ const m=L.back, A=m.userData.aspect, k=(D-BACKZ)/D;
+      const ph=Math.max(vh*k,vw*k/A)*1.15; m.userData.base={w:ph*A,h:ph,x:0,y:0};
+      m.userData.needed=!(L.main&&L.main.userData.cover);
+    }
+  });
+}
+addEventListener('resize',layout); layout();
+
+/* ---------- puntero y giroscopio ---------- */
+const ptr={x:0,y:0,tx:0,ty:0,lx:.25,ly:-.1,last:-99};
+const setPtr=(x,y)=>{ ptr.tx=clamp(x,-1,1); ptr.ty=clamp(y,-1,1); ptr.last=performance.now()/1000; };
+addEventListener('pointermove',e=>setPtr((e.clientX/innerWidth-.5)*2,(e.clientY/innerHeight-.5)*2),{passive:true});
+addEventListener('pointerdown',e=>setPtr((e.clientX/innerWidth-.5)*2,(e.clientY/innerHeight-.5)*2),{passive:true});
+function onTilt(e){ if(e.gamma==null) return; setPtr(e.gamma/25,(e.beta-50)/25); }
+const tiltBtn=document.getElementById('tilt');
+if(coarse&&window.DeviceOrientationEvent){
+  if(typeof DeviceOrientationEvent.requestPermission==='function'){
+    tiltBtn.style.display='block';
+    tiltBtn.onclick=()=>DeviceOrientationEvent.requestPermission().then(r=>{ if(r==='granted') addEventListener('deviceorientation',onTilt); tiltBtn.style.display='none'; }).catch(()=>tiltBtn.style.display='none');
+  } else addEventListener('deviceorientation',onTilt);
+}
+
+/* ---------- DOM ---------- */
+const sections=[...document.querySelectorAll('.scene')];
+const anims=sections.map(sec=>[...sec.querySelectorAll('[data-a]')].map(el=>({el,a:el.dataset.a,d:+el.dataset.d||0})));
+document.querySelectorAll('.ph[data-img]').forEach(p=>p.style.backgroundImage=`url(${ASSETS[p.dataset.img].img})`);
+document.getElementById('clipGImg').src=ASSETS.guyamel.img;
+const rail=document.getElementById('rail');
+sections.forEach((s,i)=>{const b=document.createElement('button'); b.innerHTML=`<span>${ROMAN[i]}</span><i></i>`; b.setAttribute('aria-label','Ir al folio '+ROMAN[i]); b.onclick=()=>go(i); rail.appendChild(b);});
+const railBtns=[...rail.children], folio=document.getElementById('folio'), bigstamp=document.getElementById('bigstamp'), clipG=document.getElementById('clipG');
+const scrollEl=document.getElementById('scroll');
+const sizeScroll=()=>{ scrollEl.style.height=(N*SH*innerHeight+innerHeight*.5)+'px'; };
+sizeScroll(); addEventListener('resize',sizeScroll);
+const sceneTop=i=>(i+.42)*SH*innerHeight;
+function go(i){ i=clamp(i,0,N-1); scrollTo({top:sceneTop(i),behavior:reduce?'auto':'smooth'}); }
+addEventListener('keydown',e=>{
+  const cur=Math.round(sf-.42);
+  if(['ArrowDown','ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();go(cur+1);}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1);}
+  if(e.key==='Home'){e.preventDefault();go(0);} if(e.key==='End'){e.preventDefault();go(N-1);}
+});
+
+let target=0, sf=0; const t0=performance.now();
+const readScroll=()=>{ target=scrollY/(SH*innerHeight); };
+addEventListener('scroll',readScroll,{passive:true}); readScroll();
+const bgA=new THREE.Color(), bgB=new THREE.Color();
+
+function draw(m,base,z,ex){
+  m.scale.set(base.w*ex.k,base.h*ex.k,1);
+  m.position.set(base.x+(ex.dx||0),base.y+(ex.dy||0),z);
+  m.rotation.set(ex.rx||0,0,ex.rz||0);
+  m.visible=true; renderer.render(scene,camera); renderer.clearDepth(); m.visible=false;
+}
+
+function frame(now){
+  const time=(now-t0)/1000;
+  sf+=(target-sf)*((reduce||SNAP)?1:.07);
+  if(time-ptr.last>4){ ptr.tx=.32+Math.sin(time*.27)*.3; ptr.ty=-.15+Math.cos(time*.21)*.25; } /* sin cursor: la lámpara recorre la foto sola */
+  const pl=reduce?.02:.05;
+  ptr.x+=(ptr.tx-ptr.x)*pl; ptr.y+=(ptr.ty-ptr.y)*pl;
+  ptr.lx+=(ptr.tx-ptr.lx)*.14; ptr.ly+=(ptr.ty-ptr.ly)*.14;
+  const pr=renderer.getPixelRatio(), W=innerWidth*pr, H=innerHeight*pr;
+  const mx=(ptr.lx+1)/2*W, my=(1-(ptr.ly+1)/2)*H;
+  document.documentElement.style.setProperty('--px',ptr.x.toFixed(3));
+  document.documentElement.style.setProperty('--py',ptr.y.toFixed(3));
+
+  const cur=Math.min(N-1,Math.floor(sf)), nxt=Math.min(N-1,cur+1), tr=sm(.7,1,sf-cur);
+  bgA.copy(SCENES[cur].light?IVORY:NAVY).lerp(SCENES[nxt].light?IVORY:NAVY,tr);
+  renderer.setClearColor(bgA,1);
+
+  /* cámara: deriva lenta y órbita contenida con el cursor */
+  const ang=Math.sin(sf*1.7)*.04 + ptr.x*.19 + (reduce?0:Math.sin(time*.22)*.008);
+  const el=-ptr.y*.11;
+  const dist=D*(1-.035*(.5+.5*Math.sin(sf*2.2)));
+  camera.position.set(Math.sin(ang)*Math.cos(el)*dist, Math.sin(el)*dist, Math.cos(ang)*Math.cos(el)*dist);
+  camera.lookAt(0,0,0);
+
+  renderer.clear();
+  const vis=[];
+  SCENES.forEach((s,i)=>{ if(sf>i-.32&&sf<i+1) vis.push(i); });
+  vis.sort((a,b)=>b-a);
+  vis.forEach(i=>{
+    const s=SCENES[i], L=layers[i], q=sf-i;
+    const reveal=i===N-1?1:1-sm(.7,1,q);
+    const kb=1+.06*sm(-1,1,q);
+    const fade=i===0?1:sm(-.3,-.02,q);
+    const flick=s.flicker?(.82+.18*Math.sin(time*23.)*Math.sin(time*7.3)+.1*Math.sin(time*2.1)):1;
+    if(L.back&&L.back.userData.needed){ const u=L.back.material.uniforms; u.uReveal.value=reveal; u.uTime.value=time;
+      u.uMouse.value.set(mx,my); u.uResY.value=H; u.uFade.value=fade;
+      draw(L.back,L.back.userData.base,BACKZ,{k:kb,dx:ptr.x*-1.1,dy:ptr.y*.7}); }
+    if(L.main){ const m=L.main,u=m.material.uniforms,b=m.userData.base;
+      u.uReveal.value=reveal; u.uTime.value=time; u.uMouse.value.set(mx,my); u.uResY.value=H; u.uFade.value=fade; u.uFlicker.value=Math.min(1,flick);
+      const ex={k:kb};
+      if(s.stamp){ const im=sm(.11,.13,q)*(1-sm(.13,.2,q)); ex.dx=Math.sin(time*90)*im*.05; ex.dy=Math.cos(time*77)*im*.05; }
+      if(s.fall){ const f=ease((q+.9)/.85); ex.dy=(1-f)*b.h*1.3; ex.rz=(1-f)*-.35+.015; ex.rx=(1-f)*.5; u.uCurl.value=(1-f)*.6+.06; }
+      draw(m,b,0,ex);
+    }
+  });
+
+  if(!reduce){ const a=dgeo.attributes.position.array; for(let i=0;i<DN;i++){ a[i*3]+=Math.sin(time*.2+dseed[i])*.0012; a[i*3+1]+=.0016+Math.cos(time*.3+dseed[i])*.001; if(a[i*3+1]>5) a[i*3+1]=-5; } dgeo.attributes.position.needsUpdate=true; }
+  dust.visible=true; renderer.render(scene,camera); dust.visible=false;
+
+  /* textos */
+  const active=clamp(Math.round(sf-.35),0,N-1);
+  document.body.classList.toggle('light',sections[active].dataset.theme==='light');
+  sections.forEach((sec,i)=>{
+    const q=sf-i;
+    const vin=i===0?1:sm(-.3,-.04,q), vout=i===N-1?1:1-sm(.66,.86,q), v=Math.min(vin,vout);
+    sec.style.opacity=v; sec.style.visibility=v<.01?'hidden':'visible';
+    if(v<.01) return;
+    const qq=i===0?Math.max(q,Math.min(.45,time*.22)):q;
+    anims[i].forEach(({el,a,d})=>{
+      const k=ease((qq-(d-.32))/.24);
+      if(a==='line'){ el.style.transform=`translateY(${(1-k)*105}%)`; }
+      else if(a==='rise'){ el.style.transform=`translateY(${(1-k)*18}px)`; el.style.opacity=k; }
+      else if(a==='redact'){ el.style.setProperty('--k',1-k); }
+      else if(a==='stamp'){ el.style.opacity=k; el.style.transform=`scale(${1+(1-k)*.25}) rotate(${-1.5}deg)`; }
+      else if(a==='crack'){ el.style.opacity=k; el.querySelector('i').style.setProperty('--crack',sm(d,d+.1,qq)); }
+      else if(a==='fill'){ el.style.setProperty('--f',sm(-.08,.34,qq)); }
+      else if(a==='step'){ el.style.opacity=.25+.75*k; el.classList.toggle('on',k>.95); el.style.transform=`translateY(${(1-k)*10}px)`; }
+      else if(a==='card'){ el.style.opacity=k; el.style.transform=`translateY(${(1-k)*40}px) rotateY(${ptr.x*3}deg) rotateX(${ptr.y*-2}deg)`; }
+    });
+  });
+  const q4=sf-4, hit=sm(.06,.13,q4), ks=hit*(1-sm(.66,.8,q4));
+  { const L=layers[4].main, b=L.userData.base; const v=new THREE.Vector3(b.x,b.y,0).project(camera);
+    const px=(v.x+1)/2*innerWidth, py=(1-v.y)/2*innerHeight;
+    const over=1+(1-hit)*1.6, back=1-Math.pow(1-hit,3);
+    const pw=b.w/(2*D*Math.tan(camera.fov*Math.PI/360)*camera.aspect)*innerWidth; bigstamp.style.fontSize=(pw*.15).toFixed(1)+'px';
+    bigstamp.style.opacity=ks.toFixed(3);
+    bigstamp.style.transform=`translate(${px}px,${py}px) translate(-50%,-50%) rotate(-11deg) scale(${(over*(1-back)+back*(1+Math.sin(hit*Math.PI)*.04)).toFixed(3)})`; }
+  clipG.style.opacity=wide?(sm(.12,.26,q4)*(1-sm(.66,.8,q4))).toFixed(3):0;
+  clipG.style.transform=`translate(${ptr.x*-8}px,${ptr.y*-6}px) rotate(3deg)`;
+
+  railBtns.forEach((b,i)=>b.classList.toggle('on',i===active));
+  folio.textContent=`Folio ${ROMAN[active]} de ${ROMAN[N-1]}`;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+const done=()=>document.getElementById('loading').classList.add('gone');
+(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(done,500)); setTimeout(done,3200);
+})();
+</script>
+</body>
+</html>

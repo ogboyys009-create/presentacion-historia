@@ -1,0 +1,7 @@
+CÓMO USAR ESTA CARPETA
+
+1. Descomprime el zip. Queda la carpeta "presentacion-historia".
+2. En desktop, abre Claude Code y elige esta carpeta como proyecto.
+3. Abre PROMPT.md, copia todo el texto y pégalo en el chat de Claude Code.
+4. Claude Code lee CLAUDE.md por su cuenta: ahí está toda la dirección de arte, el contenido y los datos históricos.
+5. Ten Blender abierto con el add-on MCP activo, y GitHub conectado.
