@@ -64,21 +64,21 @@ La v3 «retro moderna» se rechazó por parecer videojuego: cinta de noticias, c
 - `referencia/estilo/`: hojas de contacto y videos de las referencias (TikToks de sitios 3D cinematográficos). Extraer fotogramas con ffmpeg si hace falta.
 - `docs/`: historial de decisiones.
 
-## Técnica actual (v8, rehecha desde cero)
+## Técnica actual (versión definitiva, 21 folios)
 
-El cliente rechazó la v7 («parece juego de Poki», transiciones feas, va trabada) y pidió una web como las de sus videos de referencia (sitios 3D de scroll cinematográfico tipo Vela Armon): simple, seria, fluida.
+Historial corto: la v7 («juego de Poki») y la v8 (IA, bordes blancos) se rechazaron; la v9 se aprobó («ahora sí») y la definitiva parte de ella con estos pedidos del cliente: sin recortes de personas (solo capas en el último folio), sin censuras, bordes limpios, relieve 3D sutil en las fotos, papeles desclasificados que se queman al pasar, transiciones suaves (nada de «golpes»), fuentes de la información (no de imágenes) en créditos de película, FIN solo y centrado, toque en móvil/iPad y aire de **expediente**.
 
-- Sin WebGL. Cada escena es un contexto 3D de CSS (`perspective:1000px`) con capas de imagen a distinta z: fondo lejano desenfocado (`_blur`, z=-900), fondo de la foto con el hueco rellenado (`_bg`, z=-420) y sujeto recortado (`_fg`, z=0). `place()` compensa escala y posición para que en reposo encajen; la cámara es `translateZ` del contenedor más una inclinación con el cursor.
-- Scroll suave (lerp) que mueve la cámara: la escena llega desde el fondo, avanza despacio mientras se lee y la cámara la atraviesa hacia su punto focal (`o`); cruce breve a oscuras y llega la siguiente. Flechas/espacio/AvPág saltan de escena con una interpolación de 1,1–2,2 s. F pantalla completa.
-- Documentos (periódico, grabado, Constitución) son papeles que caen y se asientan en 3D; el sello SUSPENDIDO golpea el grabado. Personajes: tres fichas en abanico.
-- Imágenes: `scripts/web_assets.py` amplía x4 con Real-ESRGAN (`scripts/esrgan.onnx`, caché en `assets/hd/`, ambos fuera del repo), aplica virado de plata cálido, refina la máscara del sujeto con filtro guiado y exporta WebP a `web/img/`. Las máscaras y profundidades salen de `scripts/capas.py`.
-- `web/index.html` es la página (sin plantilla). `scripts/build.py` copia `web/` a `dist/` y añade manifest e icono. Unos 2,6 MB en total, carga progresiva.
-- Medido: 60 FPS con GPU (1440×900, 2560×1440, iPad 2x) y 60 FPS sin GPU en tamaño móvil.
-- Tipografía: Instrument Serif (titulares) e Inter (textos). Esto sustituye a la dirección de arte anterior (Bodoni, membrete, hoja quemada) por decisión del cliente.
+- Página: `web/index.html` (sin plantilla) + `web/img/*.webp` + `web/fonts/*.woff2` (fuentes OFL alojadas en la web: no depende de Google Fonts, que puede fallar en la red del colegio; la carga espera las fuentes como mucho 3 s). `scripts/build.py` copia `web/` a `dist/`, incrusta `__SIZES__` y añade manifest e icono. Unos 4,7 MB.
+- Escenario: cada folio es un contexto 3D de CSS (`perspective:1000px`); `place()` compensa escala y posición de cada capa según su z. Objetos físicos enteros (copias fotográficas, documentos, recortes, sellos) con sombra, inclinación y brillo según el cursor. Maquetación medida en `layout()`: columna de texto y área de imágenes separadas, el texto se reduce (`--z`) si no cabe, pies de foto (máquina de escribir) debajo de las imágenes.
+- Navegación discreta: una diapositiva por gesto (→/espacio/AvPág/Intro, clic, rueda con bloqueo de ráfagas, tocar = avanzar y tercio izquierdo = retroceder, deslizar, mando). Interpolación Hermite de 2,5 s que conserva la velocidad si se encadenan pulsaciones. Transición = fundido cruzado con la cámara acercándose despacio (sin destello).
+- WebGL (opcional, con respaldo en `<img>`): grupo fijo de 4 contextos reutilizables (Safari tarda en liberar contextos; nunca crear uno por imagen). Relieve de fotos: mapa de profundidad (`*_d.webp`, Depth Anything V2 base) y desplazamiento por punto fijo, con cursor, deriva lenta y movimiento de cámara; encuadre `PZ=.955` igual al de la `<img>` escalada. Quemado de los memorandos de la CIA al avanzar desde el folio 5: frente de ruido + distancia, brasa, papel tostado, chispas/ceniza/humo en `#fx`; la siguiente escena se ve por los huecos. El sello DESCLASIFICADO se pinta también dentro de la textura para que arda con el papel.
+- Portada: fotografías de la época que no salen en las diapositivas (`p_*`) flotando hacia el espectador; sello CONFIDENCIAL. Personajes: fichas con clip. Créditos: rodillo por tiempo con las fuentes por tema; → lo adelanta; al terminar, «Fin» solo y centrado con cierre de iris.
+- Imágenes: `scripts/web_assets.py` sin IA ni ampliación: recorta marcos y líneas de escaneo del canto (`trim` + `edges`), B/N con virado cálido, documentos en color de papel, mapas de profundidad en caché (`assets/hd/`, fuera del repo).
+- Medido: 60 FPS con GPU en 1440×900 y en móvil 3x (3 fotogramas >33 ms de ~4100, en reposo); sin GPU, 44 FPS en 1440×900. Sin errores de consola en Chromium y WebKit.
 
 ## Verificación antes de dar algo por terminado
 
-1. Capturas con Playwright en 1440×900, 1180×820 (iPad horizontal), 820×1180 (iPad vertical) y 390×844, con Chromium y con WebKit.
+1. Capturas con Playwright en 1440×900, 1180×820 (iPad horizontal), 820×1180 (iPad vertical) y 390×844, con Chromium y con WebKit, sirviendo `dist/` por HTTP (con `file://` WebGL no puede leer las imágenes). Scripts en la carpeta de trabajo: `cap11.py`, `ctl11.py` (controles), `perf11.py` (fluidez), `depth11.py` (relieve).
 2. Cursor en al menos dos posiciones para confirmar que la lámpara y la profundidad se notan.
 3. Sin errores de consola. Modo seguro funcionando.
 4. Revisar cada captura con ojo de director de arte y corregir antes de enseñar nada al usuario.
