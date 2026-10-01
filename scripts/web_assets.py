@@ -6,7 +6,7 @@ Uso: python scripts/web_assets.py
 - Profundidad (_d): mapa de Depth Anything V2 (scripts/da_base.onnx) suavizado, para el relieve sutil de las fotos.
 - Prensa Libre: recorte de prensa bajo el titular (la marca de agua de la hemeroteca queda fuera).
 - multitud (último folio): capa del sujeto y fondo rellenado para el paralaje, más fondo desenfocado.
-- _p: copias para las fotografías suspendidas de la portada (imágenes que no salen en las diapositivas).
+- p_*: copias para el muro de archivo de la portada (imágenes que no salen en las diapositivas).
 Salida: web/img/*.webp y web/img/medidas.json
 """
 import json, pathlib, hashlib
@@ -88,7 +88,7 @@ def depth_map(rgb, name):
     Image.fromarray((d * 255).astype(np.uint8)).save(out / f'{name}_d.webp', 'WEBP', quality=90, method=6)
 
 sizes = {}
-def photo(name, src, crop=None, q=92, depth=True, blur=0, maxside=None):
+def photo(name, src, crop=None, q=88, depth=True, blur=0, maxside=None):
     im = Image.open(src).convert('RGB')
     if crop: im = im.crop(crop)
     im = edges(trim(im))
@@ -107,8 +107,9 @@ def doc(name, src, crop=None, sat=.55, q=92, clean=True):
 
 # --- fotografías de las diapositivas (con relieve) ---
 photo('jeep', O / 'original_IMG_3326.webp')
-photo('uniforme', O / 'original_uniforme.jpeg')
-photo('castillo', X / 'castillo_oficial.jpg', blur=.6)
+photo('castillo', X / 'castillo_oficial.jpg', blur=.6, maxside=1700)
+photo('posesion', X / 'arbenz_posesion.jpg')        # Arévalo saluda a Árbenz en su toma de posesión, 1951
+photo('discurso', X / 'castillo_discurso.png')      # fotograma de noticiero (Archivos Nacionales de EE. UU.)
 photo('ydigoras', X / 'ydigoras_oficial.png')
 photo('protesta', O / 'original_IMG_3332.png')
 photo('palacio', V2 / '3.jpg')
@@ -125,7 +126,7 @@ doc('memo1', X / 'cia_foia_1.gif', sat=0, clean=False)
 doc('memo5', X / 'cia_foia_5.gif', sat=0, clean=False)
 # «Gloriosa victoria» (Diego Rivera, 1954): reproducción a color, apenas apagada
 gv = edges(trim(Image.open(X / 'gloriosa_victoria.jpg').convert('RGB')), extra=.004)
-sizes['gloriosa'] = save(paper(gv, .78), 'gloriosa', 90)
+ga = paper(gv, .78); sizes['gloriosa'] = save(ga, 'gloriosa', 88); depth_map(ga, 'gloriosa')
 # Prensa Libre: solo el periódico (sin los márgenes blancos) y hasta el titular principal
 pl = Image.open(O / 'original_periodico.jpeg').convert('RGB')
 sizes['prensa'] = save(paper(pl.crop((136, 4, 487, 166)), .6), 'prensa', 93)
@@ -150,17 +151,20 @@ save(np.clip(bg, 0, 255).astype(np.uint8), 'multitud_bg', 85)
 small = cv2.resize(rgb.astype(np.float32), (240, 161), interpolation=cv2.INTER_AREA)
 save(np.clip(cv2.GaussianBlur(small, (0, 0), 5) * .5, 0, 255).astype(np.uint8), 'multitud_blur', 70)
 
-# --- portada: fotografías suspendidas (ninguna se repite en las diapositivas) ---
-PRINTS = [('p_desfile', O / 'original_desfile.jpeg'), ('p_banda', X / 'arbenz_1950.jpg'), ('p_posesion', X / 'arbenz_posesion.jpg'),
-          ('p_ministros', X / 'posesion_ministros.jpg'), ('p_plana', X / 'plana_mayor.jpg'), ('p_reforma', X / 'reforma_1952.jpg'),
-          ('p_estadio', X / 'estadio_revolucion.jpg'), ('p_vapor', X / 'ufco3.jpg'), ('p_1945', X / 'arbenz_1945b.jpg'),
-          ('p_discurso', X / 'castillo_discurso.png'), ('p_cia2', X / 'cia_foia_2.gif'), ('p_cia4', X / 'cia_foia_4.gif')]
-for name, src in PRINTS:
+# --- portada: muro de archivo con fotografías de la época que no salen en las diapositivas ---
+WALL = [('p_junta', X / 'junta_1944.jpg'), ('p_arevalo', X / 'arevalo_pres.jpg'), ('p_arana', X / 'arana.jpg'), ('p_1944', X / 'arbenz_1944.jpg'),
+        ('p_1945', X / 'arbenz_1945b.jpg'), ('p_uniforme', O / 'original_uniforme.jpeg'), ('p_militar', X / 'arbenz_uniforme_militar.jpg'),
+        ('p_retrato', X / 'arbenz_retrato_pres.png'), ('p_portrait', X / 'arbenz_portrait.jpg'), ('p_sonrie', O / 'original_sonrie.jpeg'),
+        ('p_banda', X / 'arbenz_1950.jpg'), ('p_ministros', X / 'posesion_ministros.jpg'), ('p_desfile', O / 'original_desfile.jpeg'),
+        ('p_plana', X / 'plana_mayor.jpg'), ('p_reforma', X / 'reforma_1952.jpg'), ('p_estadio', X / 'estadio_revolucion.jpg'),
+        ('p_vapor', X / 'ufco3.jpg'), ('p_ufco', X / 'ufco1.jpg'), ('p_palacio2', V2 / '10.jpg'), ('p_ydigoras50', X / 'ydigoras_1950.jpg'),
+        ('p_arevalo2', X / 'arevalo_large.jpg'), ('p_cia2', X / 'cia_foia_2.gif'), ('p_cia3', X / 'cia_foia_3.gif'), ('p_cia4', X / 'cia_foia_4.gif')]
+for name, src in WALL:
     im = Image.open(src).convert('RGB'); im = trim(im)
     isdoc = 'cia' in name
     if not isdoc: im = edges(im)
-    im.thumbnail((560, 560), Image.LANCZOS)
-    sizes[name] = save(paper(im, 0) if isdoc else mono(im, .5), name, 84)
+    im.thumbnail((640, 420), Image.LANCZOS)
+    sizes[name] = save(paper(im, 0) if isdoc else mono(im, .5), name, 82)
 
 (out / 'medidas.json').write_text(json.dumps(sizes))
 for k, v in sizes.items(): print(f'{k:12s} {v}')

@@ -56,17 +56,18 @@ button{all:unset;cursor:pointer}
 .narrow .shade{background:linear-gradient(0deg,rgba(10,9,7,.9) 0%,rgba(10,9,7,.6) 38%,rgba(10,9,7,0) 58%)}
 .wide .shade.full{background:linear-gradient(90deg,rgba(10,9,7,.94) 0%,rgba(10,9,7,.78) 30%,rgba(10,9,7,0) 62%)}
 .narrow .shade.full{background:linear-gradient(0deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.82) 46%,rgba(10,9,7,0) 72%)}
-.wide .shade.tl{background:linear-gradient(14deg,rgba(10,9,7,.96) 0%,rgba(10,9,7,.8) 30%,rgba(10,9,7,0) 56%)}
-.narrow .shade.tl{background:linear-gradient(0deg,rgba(10,9,7,.95) 0%,rgba(10,9,7,.7) 40%,rgba(10,9,7,0) 66%)}
+.wide .shade.tl{background:linear-gradient(12deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.86) 30%,rgba(10,9,7,.25) 52%,rgba(10,9,7,0) 66%)}
+.narrow .shade.tl{background:linear-gradient(0deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.82) 38%,rgba(10,9,7,.2) 58%,rgba(10,9,7,0) 70%)}
 
 /* objetos físicos: copias fotográficas, documentos, recortes y sellos, siempre enteros */
 .item{backface-visibility:hidden}
 .item>.ph{position:absolute;inset:0;overflow:hidden}
 .item .ph>img,.item .ph>canvas{position:absolute;left:0;top:0;width:100%;height:100%}
 .item .ph>img{object-fit:fill}
-.item.z3 .ph>img{transform:scale(1.0471)}   /* mismo encuadre que el lienzo con relieve */
+.item.z3 .ph>img{transform:scale(1.0753)}   /* mismo encuadre que el lienzo con relieve */
 .item .ph>canvas{opacity:0}
 .shd{position:absolute;inset:0;pointer-events:none}
+.item.bg .ph::after{content:"";position:absolute;inset:0;background:rgba(9,8,6,var(--dim,.3))}
 .item.photo .shd{box-shadow:0 40px 80px -18px rgba(0,0,0,.9),0 8px 22px rgba(0,0,0,.55)}
 .item.doc .shd,.item.clip .shd{box-shadow:0 46px 90px -20px rgba(0,0,0,.9),0 12px 26px rgba(0,0,0,.5)}
 .item.torn{filter:drop-shadow(0 22px 26px rgba(0,0,0,.65))}
@@ -91,9 +92,13 @@ button{all:unset;cursor:pointer}
 @keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx),var(--dy),0)}}
 
 /* portada: fotografías suspendidas en la oscuridad */
-.print{background:#d6ccb6;box-shadow:0 30px 60px -12px rgba(0,0,0,.85);backface-visibility:hidden}
-.print img{position:absolute;object-fit:cover}
-.print.docp{background:#e9e6df}
+.wall{transform-style:preserve-3d}
+.wt{position:absolute;left:0;top:0;background:#141210;box-shadow:0 14px 30px -6px rgba(0,0,0,.7);will-change:transform;backface-visibility:hidden}
+.wt img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.lite .spot,.lite .beam{display:none}
+.wt::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,248,232,.07);background:linear-gradient(180deg,rgba(255,244,224,.05),rgba(0,0,0,.18))}
+.spot{position:absolute;left:50%;top:50%;width:240vmax;height:240vmax;margin:-120vmax 0 0 -120vmax;pointer-events:none;will-change:transform;
+  background:radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 12vmax,rgba(6,5,4,.55) 34vmax,rgba(6,5,4,.88) 60vmax)}
 
 /* intertítulo de cine mudo */
 .inter{border:2px solid var(--fg);padding:8px;background:rgba(10,9,7,.6);box-shadow:0 0 120px 40px rgba(0,0,0,.6)}
@@ -146,13 +151,9 @@ h1 em,h2 em,.date em{font-style:italic;font-weight:400;color:var(--dim)}
 .narrow .list{font-size:calc(clamp(.86rem,1.9vw,1.05rem)*var(--z));gap:.5em;margin-top:1em}.narrow .list div{grid-template-columns:7.4em 1fr;padding-top:.5em}
 .date{font-family:var(--display);font-weight:900;font-size:calc(clamp(3.2rem,7vw,7.6rem)*var(--z));line-height:.92;letter-spacing:-.025em}
 .narrow .date{font-size:calc(clamp(2.6rem,12vw,4.6rem)*var(--z))}
-.cap{position:absolute;left:0;top:0;font-family:var(--type);font-size:.74rem;line-height:1.55;color:var(--faint);padding-left:12px;border-left:1px solid rgba(184,149,92,.55);will-change:opacity}
+.cap{position:absolute;left:0;top:0;font-family:var(--type);font-size:.74rem;line-height:1.55;color:rgba(236,228,212,.66);text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 12px rgba(0,0,0,.7);padding-left:12px;border-left:1px solid rgba(184,149,92,.55);will-change:opacity}
 .narrow .cap{font-size:clamp(.64rem,1.55vw,.74rem)}
 .touch .mouse{display:none}
-.tstamp{position:absolute;top:0;left:0;width:13.5rem;transform:translate(-50%,-50%) rotate(-9deg);opacity:0}
-.narrow .tstamp{width:8rem}
-.tstamp.hit{animation:slam2 .6s cubic-bezier(.2,.75,.25,1) forwards}
-@keyframes slam2{0%{opacity:0;transform:translate(-50%,-50%) rotate(-9deg) scale(1.75)}60%{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(.97)}100%{opacity:.9;transform:translate(-50%,-50%) rotate(-9deg) scale(1)}}
 
 /* apertura a máquina: el texto ya está colocado, solo se revela (sin saltos) */
 .openx{display:flex;align-items:center;justify-content:center;padding:0 var(--pad)}
@@ -177,7 +178,6 @@ h1 em,h2 em,.date em{font-style:italic;font-weight:400;color:var(--dim)}
 .roll .src{margin:2.1rem 0}
 .roll .src p{margin:.35rem 0}
 .roll .small{font-size:.8rem;color:var(--faint)}
-#iris{position:fixed;inset:0;z-index:57;pointer-events:none;opacity:0;--ir:150vmax;background:radial-gradient(circle at 50% 50%,transparent calc(var(--ir) * .78),rgba(0,0,0,.97) var(--ir))}
 #fin{position:fixed;inset:0;z-index:59;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0}
 #fin span{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(3.4rem,9vw,7rem);line-height:1;color:var(--fg)}
 #fin i{display:block;width:clamp(80px,12vw,160px);height:1px;background:var(--gold);margin:.9rem 0}
@@ -198,7 +198,6 @@ body.examining{cursor:none}
 
 /* ---------- interfaz ---------- */
 .top{position:fixed;left:0;right:0;top:0;z-index:60;display:flex;justify-content:space-between;align-items:center;height:var(--bar);padding:0 var(--pad);font-family:var(--type);font-size:.74rem;letter-spacing:.12em;color:var(--dim);pointer-events:none}
-.top .lab b{color:#c0392b;font-weight:400;letter-spacing:.2em;margin-right:.9em}
 .narrow .top{height:auto;padding-top:calc(16px + var(--st,0px));padding-bottom:22px;background:linear-gradient(rgba(10,9,7,.78),rgba(10,9,7,0))}
 .narrow .top>.lab{display:none}.narrow .top{justify-content:flex-end}
 .top .r{display:flex;align-items:center;gap:24px;pointer-events:auto}
@@ -227,12 +226,11 @@ body.examining{cursor:none}
 <canvas id="fx"></canvas>
 <div class="bars"></div>
 <div id="flick"></div><div id="grain"></div><div class="scr"></div><div class="scr"></div>
-<div id="iris"></div>
 <div id="fin"><i></i><span>Fin</span><i></i></div>
 <div id="lupa"></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#8d8b84"/><stop offset=".45" stop-color="#e9e7df"/><stop offset="1" stop-color="#9a978f"/></linearGradient></defs></svg>
 
-<header class="top"><span class="lab"><b>Expediente</b>Guatemala después de Árbenz · 1954–1959</span><div class="r"><span id="count">Folio <b>01</b> / 21</span><button id="fs" aria-label="Pantalla completa"><svg viewBox="0 0 16 16"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg><span>Pantalla completa</span></button></div></header>
+<header class="top"><span class="lab">Guatemala después de Árbenz · 1954–1959</span><div class="r"><span id="count">Folio <b>01</b> / 21</span><button id="fs" aria-label="Pantalla completa"><svg viewBox="0 0 16 16"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg><span>Pantalla completa</span></button></div></header>
 <div class="bot"><div class="hint" id="hint"><i></i><span id="hintTx">Pulsa → o haz clic</span></div></div>
 <div class="bar"><i id="bar"></i></div>
 
@@ -251,7 +249,6 @@ body.examining{cursor:none}
   <h1><span class="ln"><span>Guatemala</span></span><span class="ln"><span>después <em>de</em> Árbenz</span></span></h1>
   <p class="years">1954 — 1959</p>
   <p class="meta">Integrantes · <b>Víctor Robles · Guillermo Cifuentes</b></p>
-  <img class="tstamp" alt="">
 </div></section>
 
 <section class="tx"></section>
@@ -260,27 +257,29 @@ body.examining{cursor:none}
   <p class="k">La intervención y la Guerra Fría</p>
   <h2><span class="ln"><span>La Guerra Fría</span></span><span class="ln"><span><em>llega a Guatemala</em></span></span></h2>
   <p class="p">El derrocamiento de Jacobo Árbenz en junio de 1954 formó parte de la <strong>Operación PBSUCCESS</strong>, organizada por la CIA en el contexto de la rivalidad global entre Estados Unidos y la Unión Soviética.</p>
+  <p class="p">La impulsó el gobierno de Dwight D. Eisenhower. Su secretario de Estado, <strong>John Foster Dulles</strong>, y el director de la CIA, <strong>Allen Dulles</strong>, eran hermanos.</p>
 </div><p class="cap">El presidente Dwight D. Eisenhower y el secretario de Estado John Foster Dulles, 1956.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Operación PBSUCCESS</p>
   <h2><span class="ln"><span>La acusación</span></span></h2>
-  <p class="p">Se acusó al gobierno de Árbenz de <strong>inclinarse hacia el comunismo</strong> debido a sus políticas nacionalistas.</p>
+  <p class="p">Se acusó al gobierno de Árbenz de <strong>inclinarse hacia el comunismo</strong> debido a sus políticas nacionalistas. En mayo de 1954, la llegada del barco <strong>Alfhem</strong> con armas compradas en Checoslovaquia fue presentada como prueba.</p>
   <p class="p">En 1975, un memorándum interno de la CIA, <strong>«CIA's Role in the Overthrow of Arbenz»</strong>, detalló el papel de la agencia en la operación. Hoy es un documento desclasificado.</p>
 </div><p class="cap">Memorándum de la CIA del 12 de mayo de 1975 (páginas 1 y 5), desclasificado.<span class="mouse"> Examine los documentos con el cursor.</span></p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Junio de 1954</p>
   <h2><span class="ln"><span>La «Liberación»</span></span></h2>
-  <p class="p">Así llamó el nuevo régimen al derrocamiento de Árbenz. Hasta los sellos de correo lo celebraron: <strong>«Liberación 1954-55»</strong>.</p>
+  <p class="p">El 18 de junio, una pequeña fuerza armada y entrenada por la CIA invadió desde Honduras al mando de <strong>Carlos Castillo Armas</strong>, con el apoyo de una radio clandestina y de bombardeos aéreos. Sin el respaldo del Ejército, Árbenz renunció el 27 de junio.</p>
+  <p class="p">El nuevo régimen llamó «Liberación» al derrocamiento. Hasta los sellos de correo lo celebraron: <strong>«Liberación 1954-55»</strong>.</p>
 </div><p class="cap">Oficiales del Ejército, década de 1950. Sello postal «Liberación 1954-55».</p></section>
 
 <section class="tx"><div class="in">
-  <p class="k">Junio de 1954</p>
+  <p class="k">Junio – septiembre de 1954</p>
   <h2><span class="ln"><span>El exilio</span></span></h2>
-  <p class="p">Tras refugiarse en la embajada de México, Árbenz y otros dirigentes del gobierno revolucionario salen del país.</p>
-  <p class="p">Prensa Libre lo publicó en portada: <strong>«Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México».</strong></p>
-</div><p class="cap">Recorte de la portada de Prensa Libre, 1954. Jacobo Árbenz y su esposa, María Vilanova, en el exilio, 1955.</p></section>
+  <p class="p">Árbenz pasó 73 días asilado en la embajada de México. El 9 de septiembre salió del país junto con otros dirigentes del gobierno revolucionario, tras un minucioso registro personal en el aeropuerto La Aurora.</p>
+  <p class="p">Prensa Libre lo publicó en portada: <strong>«Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México».</strong> Árbenz murió en el exilio, en la Ciudad de México, en 1971.</p>
+</div><p class="cap">Recorte de la portada de Prensa Libre del 10 de septiembre de 1954. Jacobo Árbenz y su esposa, María Vilanova, en el exilio, 1955.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Ruptura institucional</p>
@@ -290,8 +289,8 @@ body.examining{cursor:none}
     <div><b>Disuelto</b><span>el Congreso</span></div>
     <div><b>Prohibidas</b><span>las organizaciones populares</span></div>
   </div>
-  <p class="p">Así terminaron, de forma oficial, los diez años de primavera democrática (1944–1954).</p>
-</div><p class="cap">Jacobo Árbenz Guzmán, 1945.</p></section>
+  <p class="p">Así terminaron, de forma oficial, los diez años de primavera democrática (1944–1954), iniciados con la Revolución de Octubre. Miles de simpatizantes del gobierno anterior fueron encarcelados o partieron al exilio.</p>
+</div><p class="cap">Toma de posesión de Jacobo Árbenz, 15 de marzo de 1951: lo saluda el expresidente Juan José Arévalo.</p></section>
 
 <section class="tx"></section>
 
@@ -299,55 +298,59 @@ body.examining{cursor:none}
   <p class="k">Presidente, 1954–1957</p>
   <h2><span class="ln"><span>Carlos</span></span><span class="ln"><span>Castillo Armas</span></span></h2>
   <p class="p">Militar al frente del Ejército de Liberación Nacional. Gobernó de facto y después de manera constitucional, y enfocó su mandato en <strong>desmantelar el legado revolucionario</strong>.</p>
+  <p class="p">Asumió la presidencia en julio de 1954 y en octubre fue confirmado en una votación en la que era el único candidato. Estados Unidos lo respaldó con ayuda económica.</p>
 </div><p class="cap">Retrato oficial de Carlos Castillo Armas, 1954.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Contrarreforma agraria</p>
   <h2><span class="ln"><span>El Estatuto</span></span><span class="ln"><span><em>Agrario</em></span></span></h2>
-  <p class="p">A través del Estatuto Agrario se suspendió el <strong>Decreto 900</strong>. Las tierras que ya habían sido repartidas a los campesinos fueron devueltas a sus antiguos dueños y a la empresa estadounidense <strong>United Fruit Company</strong>.</p>
+  <p class="p">La reforma agraria del <strong>Decreto 900</strong> (1952) había entregado tierras ociosas a cerca de medio millón de campesinos.</p>
+  <p class="p">A través del Estatuto Agrario se suspendió el Decreto 900. Las tierras que ya habían sido repartidas a los campesinos fueron devueltas a sus antiguos dueños y a la empresa estadounidense <strong>United Fruit Company</strong>.</p>
 </div><p class="cap">Grabado de Ismael Aroche sobre la Ley de Reforma Agraria. Anuncio de la Guyamel Fruit Co., que la United Fruit absorbió en 1929.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Constitución de 1956</p>
   <h2><span class="ln"><span>Un Estado</span></span><span class="ln"><span><em>anticomunista</em></span></span></h2>
-  <p class="p">La Constitución de 1956 instituyó un Estado fuertemente anticomunista:</p>
+  <p class="p">Aprobada el 2 de febrero de 1956 por la Asamblea Nacional Constituyente, la nueva Constitución instituyó un Estado fuertemente anticomunista:</p>
   <div class="list">
     <div><b>Poder</b><span>otorgó facultades extraordinarias al presidente en caso de amenazas políticas</span></div>
     <div><b>Trabajo</b><span>dificultó la sindicalización en el campo y la ciudad</span></div>
   </div>
-</div><p class="cap">«Gloriosa victoria», mural de Diego Rivera (1954) que denunció la intervención: al centro, John Foster Dulles estrecha la mano de Castillo Armas. Portada de la Constitución de 1956.</p></section>
+</div><p class="cap">Portada de la Constitución de 1956. Al fondo, «Gloriosa victoria», mural de Diego Rivera (1954) que denunció la intervención: al centro, John Foster Dulles estrecha la mano de Castillo Armas.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Control político</p>
   <h2 class="s"><span class="ln"><span>Comité de Defensa Nacional</span></span><span class="ln"><span><em>contra el Comunismo</em></span></span></h2>
   <p class="p">Se le otorgaron facultades policiales y judiciales extraordinarias para <strong>detener, interrogar y desterrar</strong> a opositores sin debido proceso.</p>
-</div><p class="cap">Palacio Nacional, Ciudad de Guatemala, década de 1950.</p></section>
+  <p class="p">En pocos meses investigó a cerca de <strong>70 000 personas</strong> señaladas como comunistas o simpatizantes.</p>
+</div><p class="cap">Carlos Castillo Armas durante un discurso anticomunista (fotograma de noticiero, Archivos Nacionales de EE. UU.). Al fondo, el Palacio Nacional, década de 1950.</p></section>
 
 <section class="tx"></section>
 
 <section class="tx"><div class="in">
   <p class="k">El magnicidio</p>
   <p class="date"><span class="ln"><span>26 de julio</span></span><span class="ln"><span><em>de 1957</em></span></span></p>
-  <p class="p">El presidente Castillo Armas fue baleado en un corredor de la Casa Presidencial. La versión oficial culpó al soldado <strong>Romeo Vásquez Sánchez</strong>, hallado muerto poco después.</p>
-  <p class="p">Su muerte generó <strong>teorías de conspiración</strong> y una disputa inmediata por el poder dentro de las facciones militares.</p>
-</div></section>
+  <p class="p">Cerca de las nueve de la noche, el presidente Castillo Armas caminaba con su esposa hacia el comedor cuando fue baleado en un corredor de la Casa Presidencial.</p>
+  <p class="p">La versión oficial culpó al soldado <strong>Romeo Vásquez Sánchez</strong>, de la Guardia Presidencial, que según el gobierno se suicidó enseguida. Nunca se aclaró quién ordenó el crimen: su muerte generó <strong>teorías de conspiración</strong> y una disputa inmediata por el poder dentro de las facciones militares.</p>
+</div><p class="cap">Palacio Nacional, década de 1950. Junto a él se levanta la Casa Presidencial, donde ocurrió el crimen.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Transición y elecciones</p>
   <h2><span class="ln"><span>Transición e</span></span><span class="ln"><span><em>inestabilidad</em></span></span></h2>
   <div class="list">
-    <div><b>1957</b><span>Gobierno provisional</span></div>
-    <div><b>1957</b><span>Comicios anulados por denuncias de fraude</span></div>
-    <div><b>Nuevas elecciones</b><span>Triunfa el general Miguel Ydígoras Fuentes</span></div>
+    <div><b>Julio, 1957</b><span>Gobierno provisional de Luis Arturo González López</span></div>
+    <div><b>Octubre, 1957</b><span>Gana el oficialista Miguel Ortiz Passarelli; tras las denuncias de fraude, los comicios se anulan</span></div>
+    <div><b>Enero, 1958</b><span>Nuevas elecciones: triunfa el general Miguel Ydígoras Fuentes</span></div>
     <div><b>Marzo, 1958</b><span>Ydígoras asume la presidencia</span></div>
   </div>
+  <p class="p">Ydígoras, general en tiempos del dictador Jorge Ubico, había quedado segundo frente a Árbenz en las elecciones de 1950.</p>
 </div><p class="cap">Fotografía oficial del presidente Miguel Ydígoras Fuentes.</p></section>
 
 <section class="tx"><div class="in">
   <p class="k">Clima de crisis</p>
   <h2><span class="ln"><span>Un país</span></span><span class="ln"><span><em>en tensión</em></span></span></h2>
-  <p class="p">La administración de Ydígoras enfrentó <strong>protestas estudiantiles y obreras</strong>, así como una profunda división dentro del Ejército.</p>
-  <div class="list"><div><b>13·XI·1960</b><span>Sublevación militar: el germen del posterior enfrentamiento armado.</span></div></div>
+  <p class="p">La administración de Ydígoras enfrentó <strong>protestas estudiantiles y obreras</strong>, denuncias de corrupción y una profunda división dentro del Ejército. Muchos oficiales rechazaban, además, que el gobierno permitiera a la CIA entrenar en Guatemala a exiliados cubanos para invadir Cuba.</p>
+  <div class="list"><div><b>13·XI·1960</b><span>Sublevación militar. Algunos de sus oficiales formaron después las primeras guerrillas: el germen del enfrentamiento armado.</span></div></div>
 </div><p class="cap">Protesta contra Ydígoras, años sesenta.</p></section>
 
 <section class="tx"></section>
@@ -357,7 +360,7 @@ body.examining{cursor:none}
 <section class="tx"><div class="in">
   <p class="k">Conclusión</p>
   <h2><span class="ln"><span>De la primavera</span></span><span class="ln"><span><em>al conflicto</em></span></span></h2>
-  <p class="p">En seis años se desmontó una década de reformas. La sublevación de 1960 fue el germen del enfrentamiento armado que vendría después.</p>
+  <p class="p">En seis años se desmontó una década de reformas. La sublevación de 1960 fue el germen de un conflicto armado interno que duraría 36 años, hasta la firma de los Acuerdos de Paz en 1996.</p>
   <p class="meta">Gracias por su atención<br><b>Víctor Robles · Guillermo Cifuentes</b></p>
 </div><p class="cap">Comunidad campesina durante el conflicto armado, décadas después.</p></section>
 
@@ -375,7 +378,7 @@ body.examining{cursor:none}
     <p>Doyle, Kate y Peter Kornbluh. <i>CIA and Assassinations: The Guatemala 1954 Documents.</i> National Security Archive, Electronic Briefing Book n.º 4, 1997.</p></div>
   <div class="src"><b>La «Liberación» · El exilio</b>
     <p>Schlesinger, Stephen y Stephen Kinzer. <i>Bitter Fruit: The Untold Story of the American Coup in Guatemala.</i> Doubleday, 1982.</p>
-    <p>Prensa Libre. Portada de 1954: «Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México». Hemeroteca de Prensa Libre.</p></div>
+    <p>Prensa Libre. Portada del 10 de septiembre de 1954: «Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México». Hemeroteca de Prensa Libre.</p></div>
   <div class="src"><b>Fin de la primavera · Carlos Castillo Armas</b>
     <p>Gleijeses, Piero. <i>Shattered Hope</i>, 1991.</p>
     <p>Immerman, Richard H. <i>The CIA in Guatemala: The Foreign Policy of Intervention.</i> University of Texas Press, 1982.</p></div>
@@ -384,15 +387,17 @@ body.examining{cursor:none}
     <p>Handy, Jim. <i>Revolution in the Countryside: Rural Conflict and Agrarian Reform in Guatemala, 1944–1954.</i> University of North Carolina Press, 1994.</p></div>
   <div class="src"><b>Constitución de 1956 · Comité de Defensa Nacional contra el Comunismo</b>
     <p>Asamblea Nacional Constituyente. Constitución de la República de Guatemala, decretada el 2 de febrero de 1956.</p>
-    <p>Streeter, Stephen M. <i>Managing the Counterrevolution: The United States and Guatemala, 1954–1961.</i> Ohio University Press, 2000.</p></div>
+    <p>Streeter, Stephen M. <i>Managing the Counterrevolution: The United States and Guatemala, 1954–1961.</i> Ohio University Press, 2000.</p>
+    <p>Schlesinger, Stephen y Stephen Kinzer. <i>Bitter Fruit</i>, 1982.</p></div>
   <div class="src"><b>Magnicidio · Transición · Clima de crisis</b>
     <p>Streeter, Stephen M. <i>Managing the Counterrevolution</i>, 2000.</p>
+    <p>Prensa Libre. Crónicas del 26 de julio de 1957 y de las elecciones de 1957 y 1958. Hemeroteca de Prensa Libre.</p>
     <p>Comisión para el Esclarecimiento Histórico. <i>Guatemala, memoria del silencio.</i> CEH, 1999.</p></div>
   <div class="src"><b>Consulta en línea</b>
     <p>Departamento de Estado de EE. UU., Office of the Historian. <i>Foreign Relations of the United States, 1952–1954, Guatemala.</i> history.state.gov</p>
     <p>CIA FOIA Electronic Reading Room. cia.gov/readingroom</p></div>
   <h4>Imágenes</h4>
-  <p class="small">Archivo reunido por los integrantes del grupo · Wikimedia Commons (dominio público; sello postal: fotografía de Towiki60, CC BY-SA 3.0; «Gloriosa victoria» de Diego Rivera: fotografía de TortugaHalo, CC BY-SA 4.0) · CIA FOIA Electronic Reading Room · Hemeroteca de Prensa Libre.</p>
+  <p class="small">Archivo reunido por los integrantes del grupo · Wikimedia Commons (dominio público; sello postal: fotografía de Towiki60, CC BY-SA 3.0; «Gloriosa victoria» de Diego Rivera: fotografía de TortugaHalo, CC BY-SA 4.0) · Archivos Nacionales de EE. UU. · CIA FOIA Electronic Reading Room · Hemeroteca de Prensa Libre.</p>
 </div></section>
 </div>
 
@@ -416,30 +421,37 @@ const SCENES=[
     {img:'memo5',t:'doc',s:.84,x:.24,y:.05,r:5,z:40,d:.08,stamp:['DESCLASIFICADO','',.5,.7,.66],burn:[.9,1.08,.08]}]},
   {kind:'set', items:[{img:'jeep',t:'photo',s:1,y:-.06,depth:1},{img:'sello',t:'stamp',s:.32,x:-.45,y:.42,r:-9,z:110,d:.12}]},
   {kind:'set', items:[{img:'prensa',t:'clip',s:.8,x:-.12,y:-.3,r:-2.5,torn:1},{img:'exilio',t:'photo',s:.66,x:.18,y:.24,r:3,z:60,d:.1,depth:1}]},
-  {kind:'set', items:[{img:'uniforme',t:'photo',s:1,depth:1}]},
+  {kind:'set', items:[{img:'posesion',t:'photo',s:1,depth:1}]},
   {kind:'inter', n:'II', t:'Cambios principales en el gobierno de Carlos Castillo Armas', y:'1954 – 1957'},
   {kind:'set', items:[{img:'castillo',t:'photo',s:1,depth:1}]},
   {kind:'set', items:[{img:'poster',t:'doc',s:.96,x:.12,stamp:['SUSPENDIDO','Decreto 900 · 1954']},{img:'guyamel',t:'clip',s:.42,x:-.42,y:.42,r:-6,z:90,d:.16}]},
-  {kind:'set', items:[{img:'gloriosa',t:'photo',s:1,y:-.13},{img:'constitucion',t:'doc',s:.5,x:-.4,y:.42,r:-5,z:90,d:.14}]},
-  {kind:'set', items:[{img:'palacio',t:'photo',s:1,depth:1}]},
+  {kind:'set', bg:'gloriosa', bx:.13, dim:.42, items:[{img:'constitucion',t:'doc',s:.78,x:.16,y:.02,r:-4,z:60,d:.06}]},
+  {kind:'set', bg:'palacio', dim:.5, items:[{img:'discurso',t:'photo',s:.78,x:.12,y:-.02,r:2,depth:1}]},
   {kind:'inter', n:'III', t:'Muerte de Castillo Armas e inestabilidad política posterior', y:'1957 – 1959'},
-  {kind:'set', grave:1, items:[{img:'casapres',t:'photo',s:1,depth:1}]},
+  {kind:'set', grave:1, bg:'casapres', bx:.1, by:.55, dim:.46, items:[]},
   {kind:'set', items:[{img:'ydigoras',t:'photo',s:1,depth:1}]},
-  {kind:'set', items:[{img:'protesta',t:'photo',s:1,depth:1}]},
+  {kind:'set', bg:'protesta', bx:.08, dim:.36, items:[]},
   {kind:'inter', n:'IV', t:'Personajes indispensables', y:''},
   {kind:'cards', cards:[
-    ['retrato','Jacobo Árbenz Guzmán','Presidente, 1951–1954','Presidente constitucional cuyo proyecto de soberanía económica y reforma agraria chocó contra los intereses de monopolios extranjeros y la geopolítica estadounidense.'],
-    ['castillo','Carlos Castillo Armas','Presidente, 1954–1957','Militar al frente del Ejército de Liberación Nacional que gobernó de facto y constitucionalmente, enfocando su mandato en desmantelar el legado revolucionario.'],
-    ['ydigoras','Miguel Ydígoras Fuentes','Presidente, 1958–1963','Político y militar opositor tradicional que asumió la presidencia en un ambiente de alta polarización social y económica al cierre de la década.']]},
+    ['retrato','Jacobo Árbenz Guzmán','1913–1971 · Presidente, 1951–1954','Presidente constitucional cuyo proyecto de soberanía económica y reforma agraria chocó contra los intereses de monopolios extranjeros y la geopolítica estadounidense.'],
+    ['castillo','Carlos Castillo Armas','1914–1957 · Presidente, 1954–1957','Militar al frente del Ejército de Liberación Nacional que gobernó de facto y constitucionalmente, enfocando su mandato en desmantelar el legado revolucionario.'],
+    ['ydigoras','Miguel Ydígoras Fuentes','1895–1982 · Presidente, 1958–1963','Político y militar opositor tradicional que asumió la presidencia en un ambiente de alta polarización social y económica al cierre de la década.']]},
   {kind:'layers', img:'multitud'},
   {kind:'credits', last:1}
 ];
 const SIZES=__SIZES__;
-/* portada: fotografías de la época que no salen en las diapositivas */
-const PRINTS=['p_banda','p_vapor','p_cia2','p_ministros','p_desfile','p_reforma','p_plana','p_1945','p_estadio','p_discurso','p_posesion','p_cia4'];
-const N=SCENES.length, P=1000, PZ=.955;
+/* portada: muro de archivo con fotografías de la época que no salen en las diapositivas */
+const WALLIMG=['p_junta','p_arevalo','p_cia2','p_banda','p_vapor','p_1944','p_reforma','p_ministros','p_arana','p_estadio','p_1945','p_cia3',
+  'p_desfile','p_ufco','p_retrato','p_plana','p_militar','p_palacio2','p_arevalo2','p_portrait','p_cia4','p_ydigoras50','p_sonrie','p_uniforme'];
+const WROWS=6, WPER=18;
+const N=SCENES.length, P=1000, PZ=.93;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const touch=matchMedia('(pointer:coarse)').matches;
+/* sin aceleración gráfica (el navegador dibuja por software) se apagan los efectos más caros: grano animado, polvo, lámpara móvil y relieve */
+const lite=(()=>{ try{ const c=document.createElement('canvas'), g=c.getContext('webgl'); if(!g) return true;
+  const e=g.getExtension('WEBGL_debug_renderer_info'), r=e?String(g.getParameter(e.UNMASKED_RENDERER_WEBGL)):'';
+  const x=g.getExtension('WEBGL_lose_context'); x&&x.loseContext(); return /swiftshader|llvmpipe|software|basic render/i.test(r); }catch(err){ return false; } })();
+if(lite) document.documentElement.classList.add('lite');
 const de=document.documentElement;
 if(touch) de.classList.add('touch');
 const clamp=(v,a,b)=>v<a?a:v>b?b:v, sm=(a,b,x)=>{x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x)};
@@ -459,11 +471,12 @@ const S=SCENES.map((s,i)=>{
   const cam=el('div','cam',sc); const L={items:[]};
   if(s.kind==='set'||s.kind==='title'||s.kind==='cards') el('div','beam',sc).style.setProperty('--bx',s.kind==='set'?'70%':'50%');
   if(s.kind==='set'){
-    s.items.forEach(it=>{
-      const d=el('div','L item '+it.t+(it.torn?' torn':'')+(it.depth?' z3':''),cam);
-      if(it.t!=='stamp') d._shd=el('i','shd',d);
+    (s.bg?[{img:s.bg,t:'bg',depth:1},...s.items]:s.items).forEach(it=>{
+      const d=el('div','L item '+it.t+(it.torn?' torn':'')+(it.depth?' z3':''),cam), flat=it.t==='stamp'||it.t==='bg';
+      if(!flat) d._shd=el('i','shd',d);
       d._ph=el('div','ph',d); d._img=imgEl(`img/${it.img}.webp`,d._ph);
-      if(it.t!=='stamp') d._glare=el('i','glare',d);
+      if(!flat) d._glare=el('i','glare',d);
+      if(it.t==='bg') d.style.setProperty('--dim',s.dim||.3);
       if(it.torn) d.style.setProperty('--torn',torn());
       if(it.stamp){ d._rubber=el('img','rubber',d); d._rubber.alt=''; const sp=it.stamp; if(sp[2]!=null){ d._rubber.style.left=sp[2]*100+'%'; d._rubber.style.top=sp[3]*100+'%'; d._rubber.style.width=sp[4]*100+'%'; } }
       if(it.clip){ d.insertAdjacentHTML('beforeend',CLIP); d._pclip=d.lastElementChild; }
@@ -472,25 +485,24 @@ const S=SCENES.map((s,i)=>{
   } else if(s.kind==='layers'){
     L.blur=el('div','L',cam); imgEl(`img/${s.img}_blur.webp`,L.blur); L.bg=el('div','L',cam); imgEl(`img/${s.img}_bg.webp`,L.bg); L.fg=el('div','L',cam); imgEl(`img/${s.img}_fg.webp`,L.fg);
     [L.blur,L.bg,L.fg].forEach(x=>{ x.firstChild.style.cssText='width:100%;height:100%;object-fit:cover'; });
-  } else if(s.kind==='title'){
-    L.prints=PRINTS.map((n,k)=>{ const p=el('div','L print'+(n.indexOf('cia')>0?' docp':''),cam); p._img=imgEl(`img/${n}.webp`,p); p._n=n;
-      const ang=k*2.39996+.6, rad=.55+.45*((k*.618)%1);
-      p._p={x:.42+Math.cos(ang)*rad*.95, y:-.28+Math.sin(ang)*rad*.8, ph:(k/PRINTS.length+rnd(-.02,.02)+1)%1, sp:1/rnd(46,58), rz:rnd(-9,9), w:rnd(.85,1.15)};
-      return p; });
+  } else if(s.kind==='title'){   /* muro de archivo: filas de fotografías que se desplazan despacio, iluminadas por una lámpara */
+    L.wall=el('div','L wall',cam); L.tiles=[]; L.lift=null; L.liftT=0;
+    for(let r=0;r<WROWS;r++) for(let k=0;k<WPER;k++){ const n=WALLIMG[(r*7+k)%WALLIMG.length], t=el('div','wt',L.wall); imgEl(`img/${n}.webp`,t); t._n=n; t._r=r; t._k=k; L.tiles.push(t); }
+    L.spot=el('div','spot',sc);
   } else if(s.kind==='inter'){
     L.card=el('div','L inter',cam); L.card.innerHTML=`<div><small>Capítulo</small><b>${s.n}</b><h3>${s.t}</h3>${s.y?`<i>${s.y}</i>`:''}</div>`;
   } else if(s.kind==='cards'){
     L.cards=s.cards.map(c=>{ const f=el('figure','L card',cam); imgEl(`img/${c[0]}.webp`,f,c[1]); const cap=el('figcaption','',f); cap.innerHTML=`<b>${c[1]}</b><i>${c[2]}</i><span>${c[3]}</span>`; f.insertAdjacentHTML('beforeend',CLIP); return f; });
   }
-  if(s.kind!=='open'&&s.kind!=='credits'&&!reduce){ /* polvo suspendido a distintas profundidades */
+  if(s.kind!=='open'&&s.kind!=='credits'&&!reduce&&!lite){ /* polvo suspendido a distintas profundidades */
     L.motes=[]; for(let k=0;k<(touch?8:14);k++){ const m=el('div','mote',cam); const sz=rnd(2,5.5);
       m.style.setProperty('--s',sz+'px'); m._p=[rnd(-.5,.5),rnd(-.5,.5),rnd(-350,550)];
       const ii=el('i','',m); ii.style.setProperty('--o',rnd(.15,.5).toFixed(2)); ii.style.setProperty('--t',rnd(9,18).toFixed(1)+'s'); ii.style.setProperty('--dx',rnd(-40,40).toFixed(0)+'px'); ii.style.setProperty('--dy',rnd(-60,20).toFixed(0)+'px'); L.motes.push(m); } }
   el('div','vig',sc);
-  if(s.kind==='set') el('div','shade',sc); if(s.kind==='layers') el('div','shade full',sc); if(s.kind==='title') el('div','shade tl',sc);
+  if(s.kind==='set') el('div',s.bg?'shade full':'shade',sc); if(s.kind==='layers') el('div','shade full',sc); if(s.kind==='title') el('div','shade tl',sc);
   const t=texts[i];
   return {s,sc,cam,L,tx:t,inner:t.querySelector('.in'),cap:t.querySelector('.cap'),lines:[...t.querySelectorAll('.ln>span')],
-    blocks:[...t.querySelectorAll('.in>:not(h1):not(h2):not(.date):not(.tstamp)')],imgs:[...sc.querySelectorAll('img')].filter(x=>x.dataset.src),loaded:false,vis:false,burnMode:0};
+    blocks:[...t.querySelectorAll('.in>:not(h1):not(h2):not(.date)')],imgs:[...sc.querySelectorAll('img')].filter(x=>x.dataset.src),loaded:false,vis:false,burnMode:0};
 });
 
 /* ---------- carga progresiva ---------- */
@@ -550,7 +562,7 @@ function nS(u,v){ const Z=256, D=GL.noise; let x=u*Z-.5, y=v*Z-.5; x=((x%Z)+Z)%Z
   return ((D[y0*Z+x0]*(1-tx)+D[y0*Z+x1]*tx)*(1-ty)+(D[y1*Z+x0]*(1-tx)+D[y1*Z+x1]*tx)*ty)/255; }
 function burnField(d,u,v){ const it=d._it, asp=d._rest.w/d._rest.h, wx=u*asp, n1=nS(wx*.55,v*.55), n2=nS(wx*2.3+.31,v*2.3+.17);
   const dx=(u-it.burn[0])*asp, dy=v-it.burn[1]; return Math.sqrt(dx*dx+dy*dy)/(Math.sqrt(asp*asp+1)*1.05)*.72+n1*.22+n2*.06; }
-function glReady(d){ const im=d._img; return im.complete&&im.naturalWidth>0&&d._rest&&(!d._it.depth||(d._dimg&&d._dimg.complete&&d._dimg.naturalWidth>0)); }
+function glReady(d){ const im=d._img; if(lite&&d._it.depth) return false; return im.complete&&im.naturalWidth>0&&d._rest&&(!d._it.depth||(d._dimg&&d._dimg.complete&&d._dimg.naturalWidth>0)); }
 function glSize(d){ const R=d._rest, cw=Math.max(2,Math.round(Math.min(R.w*dpr,d._img.naturalWidth))); return [cw,Math.max(2,Math.round(cw*R.h/R.w))]; }
 function glSource(d){ /* la imagen se reescala una vez al tamaño exacto del lienzo (muestreo 1:1, nítido), fuera del hilo principal si se puede */
   const [cw,ch]=glSize(d), img=d._img, it=d._it;
@@ -689,26 +701,27 @@ function layout(){
         ox=(A.l+A.r)/2-W/2; oy=(A.t+A.b)/2-H/2;
         const u={l:1e9,r:-1e9,t:1e9,b:-1e9};
         L.items.forEach(d=>{ const it=d._it, sz=SIZES[it.img], ar=sz[0]/sz[1], scl=it.s||1;
+          if(it.t==='bg'){ /* fondo a sangre: cubre la pantalla con margen; bx lo desplaza para que lo importante no quede bajo el texto */
+            const w0=Math.max(W*1.12,H*1.12*ar), bx=wide?(s.bx||0)*W:0, w=Math.max(w0,W*1.12+2*Math.abs(bx)), h=w/ar, by=(s.by||0)*Math.max(0,h-H*1.12)/2; d._rest={cx:W/2+bx,cy:H/2+by,w,h,r:0}; place(d,w,h,bx,by,-200,ox,oy,1,0); return; }
           let w=Math.min(aw*scl,ah*scl*ar); w=Math.min(w,sz[0]*1.15); const h=w/ar;
           const rr=(it.r||0)*Math.PI/180, bx=(Math.abs(w*Math.cos(rr))+Math.abs(h*Math.sin(rr)))/2, by=(Math.abs(w*Math.sin(rr))+Math.abs(h*Math.cos(rr)))/2;
           const cx=mid((A.l+A.r)/2+(it.x||0)*aw,A.l+bx,A.r-bx), cy=mid((A.t+A.b)/2+(it.y||0)*ah,A.t+by,A.b-by);
           d._rest={cx,cy,w,h,r:rr};
           place(d,w,h,cx-W/2,cy-H/2,it.z||0,ox,oy,1,it.r||0);
           if(it.t!=='stamp'){ u.l=Math.min(u.l,cx-bx); u.r=Math.max(u.r,cx+bx); } u.b=Math.max(u.b,cy+by); });
-        if(cap){ const cl=Math.max(A.l,Math.min(u.l,A.r-capW)); cap.style.left=Math.round(cl)+'px'; cap.style.top=Math.round(Math.min(u.b+14,H-bot-capH+16))+'px'; }
+        if(cap&&u.l<1e8){ const cl=Math.max(A.l,Math.min(u.l,A.r-capW)); cap.style.left=Math.round(cl)+'px'; cap.style.top=Math.round(Math.min(u.b+14,H-bot-capH+16))+'px'; }
+        else if(cap){ cap.style.left=Math.round(wide?aR-capW:pad)+'px'; cap.style.top=Math.round(wide?H-bot-cap.offsetHeight:Math.max(top+4,inner.offsetTop-cap.offsetHeight-18))+'px'; }
       } else if(s.kind==='layers'){
-        if(cap){ cap.style.width=capW+'px'; if(wide){ cap.style.left=Math.round(aR-capW)+'px'; cap.style.top=Math.round(H-bot-cap.offsetHeight)+'px'; } else { cap.style.left=pad+'px'; cap.style.top=Math.round(top)+'px'; } }
+        if(cap){ cap.style.width=capW+'px'; if(wide){ cap.style.left=Math.round(aR-capW)+'px'; cap.style.top=Math.round(H-bot-cap.offsetHeight)+'px'; } else { cap.style.left=pad+'px'; cap.style.top=Math.round(Math.max(top+4,inner.offsetTop-cap.offsetHeight-18))+'px'; } }
         place(L.bg,W,H,0,0,-420,0,0,1.06); place(L.fg,W,H,0,0,0,0,0,1.06); place(L.blur,W,H,0,0,-900,0,0,1.3);
       } else if(isT){
-        ox=wide?W*.17:0; oy=wide?-H*.1:-H*.16;
-        const st=inner.querySelector('.tstamp'), h1=inner.querySelector('h1');
-        if(st){ const l1=h1.firstElementChild.firstElementChild, sw=st.offsetWidth||200, yr=inner.querySelector('.years');
-          if(wide){ const xr=Math.min(l1.offsetWidth+sw*.68, inner.offsetWidth-sw*.5); st.style.left=Math.round(xr)+'px'; st.style.top=Math.round(l1.offsetTop+l1.offsetHeight*.55)+'px'; }
-          else { const kk=inner.querySelector('.k'); st.style.left=Math.round(inner.offsetWidth-sw*.55)+'px'; st.style.top=Math.round(kk.offsetTop-sw*.3)+'px'; } }
-        const pw=wide?Math.min(W*.15,H*.27):W*.34;
-        L.prints.forEach(p=>{ const sz=SIZES[p._n], ar=sz[0]/sz[1], w=pw*p._p.w, bd=p.classList.contains('docp')?0:w*.045, iw=w-2*bd, h=iw/ar+2*bd;
-          p.style.width=w+'px'; p.style.height=h+'px'; p.style.marginLeft=(-w/2)+'px'; p.style.marginTop=(-h/2)+'px';
-          p._img.style.cssText=`left:${bd}px;top:${bd}px;width:${iw}px;height:${iw/ar}px`; p._sx=W*.62; p._sy=H*.56; });
+        ox=wide?W*.12:0; oy=wide?-H*.06:-H*.14;
+        /* filas del muro: cada una es más larga que lo visible, así el salto al dar la vuelta queda fuera de cuadro */
+        const th=Math.round(H*(wide?1.32:1.2)/WROWS*.9), g=Math.max(6,Math.round(th*.085)); L.len=[];
+        for(let r=0;r<WROWS;r++){ let x=0; L.tiles.filter(t=>t._r===r).forEach(t=>{ const sz=SIZES[t._n], w=Math.round(th*clamp(sz[0]/sz[1],.62,1.7));
+          t.style.width=w+'px'; t.style.height=th+'px'; t._x0=x; t._y=Math.round((r-(WROWS-1)/2)*(th+g)-th/2); x+=w+g; }); L.len[r]=x; }
+        L.wall._base=wide?`translate3d(${(W*.14).toFixed(0)}px,${(-H*.03).toFixed(0)}px,-260px) rotateY(-20deg) rotateX(5deg)`:`translate3d(${(W*.06).toFixed(0)}px,${(-H*.13).toFixed(0)}px,-220px) rotateY(-15deg) rotateX(7deg)`;
+        L.wall.style.transform=L.wall._base; L.shift=wide?-W*.3:-W*.2;
       }
     } else if(s.kind==='inter'){
       const cw=Math.min(W*(wide?.52:.88),860), ch=Math.min(H*(wide?.62:.5),cw*.62); place(L.card,cw,ch,0,0,0,0,0);
@@ -758,10 +771,10 @@ addEventListener('keydown',e=>{
   else if(k==='f'||k==='F') toggleFS();
 });
 /* rueda o panel táctil: un gesto = una diapositiva */
-let wLast=0, wStep=0;
-addEventListener('wheel',e=>{ e.preventDefault(); const now=performance.now(), quiet=now-wLast>220; wLast=now;
+let wLast=0;
+addEventListener('wheel',e=>{ e.preventDefault(); const now=performance.now(), quiet=now-wLast>320; wLast=now;
   const dv=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX; if(Math.abs(dv)<3) return;
-  if(quiet||now-wStep>1300){ wStep=now; step(dv>0?1:-1); } },{passive:false});
+  if(quiet) step(dv>0?1:-1); },{passive:false});
 /* clic del ratón: avanza (como en un pase de diapositivas) */
 addEventListener('pointerup',e=>{ if(e.pointerType==='mouse'&&e.button===0&&!e.target.closest('button')) step(1); });
 addEventListener('contextmenu',e=>{ if(!touch){ e.preventDefault(); step(-1); } });
@@ -798,7 +811,7 @@ function lens(o,q){
   if(o.inner){ const ir=o.inner.getBoundingClientRect(); if(m.cx<ir.right+20&&m.cy>ir.top-20&&m.cy<ir.bottom+20) return false; }
   for(let k=o.L.items.length-1;k>=0;k--){ const d=o.L.items[k], r=d.getBoundingClientRect();
     if(m.cx<r.left||m.cx>r.right||m.cy<r.top||m.cy>r.bottom) continue;
-    if(d._it.t==='stamp') return false;
+    if(d._it.t==='stamp'||d._it.t==='bg') return false;
     const im=d._img, Z=Math.min(2.4,im.naturalWidth/r.width); if(!(Z>=1.6)) return false;   /* sin resolución suficiente no se amplía */
     const pz=d._it.depth?PZ:1, u=.5+((m.cx-r.left)/r.width-.5)*pz, v=.5+((m.cy-r.top)/r.height-.5)*pz, bw=r.width*Z/pz, bh=r.height*Z/pz;
     if(lupa._src!==im.src){ lupa._src=im.src; lupa.style.backgroundImage=`url(${im.src})`; }
@@ -817,7 +830,7 @@ let fxT=0; const weave={x:0,y:0};
 function film(now,strength,steady){
   if(reduce) return;
   if(now-fxT>42){ fxT=now;   /* ~24 fotogramas por segundo, como el proyector */
-    grain.style.transform=`translate3d(${(Math.random()*100-50)|0}px,${(Math.random()*100-50)|0}px,0)`;
+    if(!lite) grain.style.transform=`translate3d(${(Math.random()*100-50)|0}px,${(Math.random()*100-50)|0}px,0)`;
     const fl=steady?Math.random()*.012:(Math.random()<.04?.05+Math.random()*.05:Math.random()*.028*strength);
     flick.style.opacity=fl.toFixed(3);
     weave.x=weave.x*.6+(Math.random()-.5)*.7; weave.y=weave.y*.6+(Math.random()-.5)*.5;
@@ -835,7 +848,7 @@ const openBox=$('#open'); let openEnd=0;
   openEnd=t+.3; }
 
 /* ---------- bucle ---------- */
-const counter=$('#count'), barEl=$('#bar'), hint=$('#hint'), roll=$('#roll'), fin=$('#fin'), iris=$('#iris');
+const counter=$('#count'), barEl=$('#bar'), hint=$('#hint'), roll=$('#roll'), fin=$('#fin');
 $('#hintTx').textContent=touch?'Toca para avanzar':'Pulsa → o haz clic';
 function showCount(){ counter.innerHTML=`Folio <b>${String(idx+1).padStart(2,'0')}</b> / ${N}`; load(idx); load(idx+1); load(idx+2); }
 let t0=0, last=0, restT=0;
@@ -866,14 +879,15 @@ function frame(now){
     const L=o.L, rest=1-sm(.18,.4,Math.abs(q-.34));
     /* objetos: cada tipo llega a su manera, despacio; en reposo se inclinan con el cursor */
     L.items.forEach(d=>{ const it=d._it, dd=it.d||0, a=eOut(sm(-.55+dd,.12+dd,q)), f=1-a;
-      const tY=touch?0:m.x*6*rest, tX=touch?0:-m.y*4.5*rest;
+      const tY=touch?Math.sin(time*.32+i)*3*rest:m.x*6*rest, tX=touch?Math.cos(time*.27+i*1.3)*2.2*rest:-m.y*4.5*rest;
       let tr;
-      if(it.t==='doc') tr=` translate3d(0,${(f*-H*.07).toFixed(1)}px,${(f*140).toFixed(1)}px) rotateX(${(f*22+tX).toFixed(2)}deg) rotateY(${tY.toFixed(2)}deg) rotateZ(${(f*-4).toFixed(2)}deg)`;
+      if(it.t==='bg') tr='';
+      else if(it.t==='doc') tr=` translate3d(0,${(f*-H*.07).toFixed(1)}px,${(f*140).toFixed(1)}px) rotateX(${(f*22+tX).toFixed(2)}deg) rotateY(${tY.toFixed(2)}deg) rotateZ(${(f*-4).toFixed(2)}deg)`;
       else if(it.t==='photo') tr=` translate3d(${(f*W*.035).toFixed(1)}px,0,${(f*-220).toFixed(1)}px) rotateX(${tX.toFixed(2)}deg) rotateY(${(f*-9+tY).toFixed(2)}deg)`;
       else if(it.t==='clip') tr=` translate3d(${(-f*W*.05).toFixed(1)}px,${(f*H*.03).toFixed(1)}px,${(f*90).toFixed(1)}px) rotateX(${tX.toFixed(2)}deg) rotateY(${tY.toFixed(2)}deg) rotateZ(${(f*-7).toFixed(2)}deg)`;
       else tr=` translate3d(0,0,${(f*240).toFixed(1)}px) rotateZ(${(f*14).toFixed(2)}deg)`;
       d.style.transform=d._base+tr;
-      let opa=Math.min(1,a*1.5);
+      let opa=it.t==='bg'?1:Math.min(1,a*1.5);
       const G=d._gl;
       if(it.burn){
         const b=burning?sm(.4+it.burn[2],.95,q):0;
@@ -885,17 +899,21 @@ function frame(now){
         if(d._pclip){ const fb=sm(.42,.75,b); d._pclip.style.transform=`translate3d(0,${(fb*H*.5).toFixed(1)}px,0) rotate(${(-5+fb*70).toFixed(1)}deg)`; setOp(d._pclip,1-sm(.5,.8,b)); }
         if(G&&b>0&&b<1&&!reduce) spawn(d,b);
       } else if(G){   /* relieve: el cursor, una deriva lenta y el movimiento de la cámara mueven los planos de la foto */
-        const ga=sm(0,900,now-G.t0), dr=reduce?0:1;
-        const offx=(-m.x*.024*rest+Math.sin(time*.23+d._si)*.0075*dr+f*.016)*ga, offy=(-m.y*.016*rest+Math.cos(time*.19+d._si*1.7)*.005*dr)*ga;
-        const dol=(.01+Math.sin(time*.13+d._si)*.008*dr+f*.025+ex*.03)*ga;
+        const ga=sm(0,900,now-G.t0)*(it.t==='bg'?.8:1), dr=reduce?0:touch?1.6:1, ff_=it.t==='bg'?0:f;
+        const offx=(-m.x*.034*rest+Math.sin(time*.23+d._si)*.011*dr+ff_*.02)*ga, offy=(-m.y*.022*rest+Math.cos(time*.19+d._si*1.7)*.007*dr)*ga;
+        const dol=(.014+Math.sin(time*.13+d._si)*.012*dr+ff_*.03+ex*.035)*ga;
         G.gl.uniform2f(G.u.off,offx,offy); G.gl.uniform1f(G.u.dol,dol); G.gl.drawArrays(G.gl.TRIANGLE_STRIP,0,4);
         if(!G.shown){ G.shown=true; G.c.style.opacity=1; } }
       setOp(d,opa);
       if(d._rubber){ if(!d._hit&&q>.16){ d._hit=1; d.classList.add('hit'); } else if(d._hit&&(q<-.2||q>1.2)){ d._hit=0; d.classList.remove('hit'); } } });
-    if(L.prints){ /* fotografías que flotan despacio hacia el espectador, como en un archivo suspendido en la oscuridad */
-      L.prints.forEach(p=>{ const P_=p._p, ph=((time*P_.sp*(reduce?0:1)+P_.ph)%1+1)%1, zz=-2300+ph*2800, po=sm(-2300,-1600,zz)*(1-sm(140,460,zz));
-        p.style.transform=`translate3d(${(P_.x*p._sx).toFixed(1)}px,${(P_.y*p._sy).toFixed(1)}px,${zz.toFixed(1)}px) rotateZ(${(P_.rz+Math.sin(time*.07+P_.ph*6)*5).toFixed(2)}deg) rotateY(${(Math.sin(time*.1+P_.ph*9)*20).toFixed(2)}deg) rotateX(${(Math.cos(time*.085+P_.ph*7)*12).toFixed(2)}deg)`;
-        setOp(p,po); }); }
+    if(L.tiles){ /* muro de archivo: las filas se deslizan despacio y, de vez en cuando, una fotografía se adelanta como si alguien la tomara */
+      const sp=reduce?0:1;
+      if(!reduce&&time-L.liftT>2.6){ L.liftT=time; const c=L.tiles.filter(t=>t._r>0&&t._r<WROWS-1&&Math.abs(t._xd)<W*.55); if(c.length) L.lift=[c[(Math.random()*c.length)|0],time]; }
+      L.tiles.forEach(t=>{ const r=t._r, len=L.len[r], v=(r%2?-1:1)*(10+(r*3)%7)*sp;
+        let x=((t._x0+v*time)%len+len)%len-len/2+L.shift; t._xd=x;
+        let z=0, ry=0; if(L.lift&&L.lift[0]===t){ const lp=(time-L.lift[1])/2.4; if(lp<1){ const e=Math.sin(Math.PI*lp); z=e*70; ry=-e*7; } }
+        t.style.transform=`translate3d(${x.toFixed(1)}px,${t._y}px,${z.toFixed(1)}px)`+(ry?` rotateY(${ry.toFixed(2)}deg)`:''); });
+      if(!lite){ L.spot.style.transform=`translate3d(${(W*(.16+.14*Math.sin(time*.09))).toFixed(0)}px,${(H*(-.04+.07*Math.cos(time*.07))).toFixed(0)}px,0)`; } }
     if(L.card){ const a=eOut(sm(-.5,.14,q)), f=1-a; L.card.style.transform=L.card._base+` translate3d(0,0,${(f*-160).toFixed(1)}px)`; setOp(L.card,a); }
     if(L.cards) L.cards.forEach((c,k)=>{ const b=eOut(sm(-.5+k*.07,.16+k*.07,q)), f=1-b;
       let hov=0; if(m.mouse&&m.cx>=0){ const r=c.getBoundingClientRect(); hov=(m.cx>r.left&&m.cx<r.right&&m.cy>r.top&&m.cy<r.bottom)?1:0; } c._h=(c._h||0)+(hov-(c._h||0))*.1;
@@ -920,12 +938,9 @@ function frame(now){
     o.lines.forEach((l,k)=>{ const p=eOut((q+.16-k*.05)/.3); l.style.transform=`translate3d(0,${((1-p)*105).toFixed(1)}%,0)`; });
     o.blocks.forEach((b,k)=>{ const p=eOut((q+.04-k*.035)/.26); b.style.opacity=p.toFixed(3); b.style.transform=`translate3d(0,${((1-p)*14).toFixed(1)}px,0)`; });
     if(o.cap) o.cap.style.opacity=(Math.min(sm(-.02,.24,q),tout)*.95).toFixed(3);
-    if(s.kind==='title'){ const st=o.inner.querySelector('.tstamp'); if(!st._hit&&q>.12){ st._hit=1; st.classList.add('hit'); } else if(st._hit&&(q<-.3||q>1.2)){ st._hit=0; st.classList.remove('hit'); } }
   });
-  /* FIN: queda solo y centrado, con un cierre de iris como en el cine mudo */
-  const fa=credOn?sm(.2,1.8,finT):0, ia=credOn?eOut(sm(.4,3.2,finT)):0;
-  setOp(fin,fa); setOp(iris,credOn&&finT>0?1:0);
-  if(credOn&&finT>0) iris.style.setProperty('--ir',(150-ia*(150-38))+'vmin');
+  /* FIN: queda solo y centrado sobre el fondo de siempre */
+  setOp(fin,credOn?sm(.2,1.8,finT):0);
   lupa.classList.toggle('on',lensOn); document.body.classList.toggle('examining',lensOn);
   film(now,1+grave*1.4,g<.6);
   fxStep(dt);
@@ -943,7 +958,7 @@ let rz=0; addEventListener('resize',()=>{ cancelAnimationFrame(rz); rz=requestAn
 const fontsReady=document.fonts?Promise.all([document.fonts.load('500 100px Oswald').catch(()=>{}),document.fonts.ready]):Promise.resolve();   /* Oswald también para los sellos del lienzo */
 let started=false, fontsOk=!document.fonts||document.fonts.status==='loaded';
 function stamps(){ S.forEach(o=>o.L.items.forEach(d=>{ if(d._it.stamp){ const c=stampCanvas(d._it.stamp[0],d._it.stamp[1]); d._stampC=c; d._rubber.src=c.toDataURL(); } }));
-  $('.tstamp').src=stampCanvas('CONFIDENCIAL','Expediente 1954–1959').toDataURL(); }
+}
 fontsReady.then(()=>{ const was=fontsOk; fontsOk=true; if(started&&!was){ stamps(); layout(); } });
 Promise.all([Promise.race([fontsReady,new Promise(r=>setTimeout(r,3000))]),Promise.race([load(0),new Promise(r=>setTimeout(r,6000))])]).then(()=>{
   started=true; fontsOk=fontsOk||!document.fonts||document.fonts.status==='loaded';
