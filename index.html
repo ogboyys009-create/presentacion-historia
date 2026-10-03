@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guatemala después de Árbenz (1954–1959)</title>
+<meta name="description" content="Guatemala después de Árbenz, 1954–1959. Historia, 4.º Bachillerato, ZETH Centro Educativo. Víctor Robles y Guillermo Cifuentes.">
+<meta name="theme-color" content="#0a0907">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Árbenz 1954">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icono.png">
+<link rel="icon" href="icono.png">
+<link rel="preload" href="fonts/playfair-display-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair-display-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/oswald-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/libre-caslon-text-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/special-elite-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* fuentes alojadas en la propia web (licencia OFL): no dependen de ningún servidor externo */
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/playfair-display-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/playfair-display-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:900;font-display:swap;src:url(fonts/playfair-display-900-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/playfair-display-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:italic;font-weight:700;font-display:swap;src:url(fonts/playfair-display-700-italic.woff2) format("woff2")}
+@font-face{font-family:"Cinzel";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/cinzel-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Cinzel";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cinzel-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/oswald-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/oswald-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Libre Caslon Text";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/libre-caslon-text-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Libre Caslon Text";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/libre-caslon-text-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Libre Caslon Text";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/libre-caslon-text-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Special Elite";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/special-elite-400-normal.woff2) format("woff2")}
+:root{--bg:#0a0907;--fg:#ece4d4;--dim:rgba(236,228,212,.76);--faint:rgba(236,228,212,.56);--line:rgba(236,228,212,.2);--gold:#b8955c;
+  --display:"Playfair Display",Georgia,serif;--deco:Cinzel,"Times New Roman",serif;--label:Oswald,"Arial Narrow",sans-serif;--body:"Libre Caslon Text",Georgia,serif;--type:"Special Elite","Courier New",monospace;
+  --pad:24px;--bar:0px;--gx:0;--gy:0}
+.wide{--bar:6.5vh}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{position:fixed;inset:0;color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+img{display:block;-webkit-user-drag:none}
+button{all:unset;cursor:pointer}
+#probe{position:fixed;left:0;top:0;width:0;height:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);visibility:hidden;pointer-events:none}
+
+/* ---------- escenario 3D ---------- */
+#stage{position:fixed;inset:0;will-change:transform}
+.sc{position:fixed;inset:0;overflow:hidden;visibility:hidden;perspective:1000px;contain:strict;pointer-events:none}
+.cam{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.L{position:absolute;left:50%;top:50%;will-change:transform}
+.beam{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 70% at var(--bx,68%) var(--by,48%),rgba(236,222,196,.085),transparent 70%)}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(115% 95% at 55% 45%,transparent 45%,rgba(0,0,0,.74))}
+.shade{position:absolute;inset:0;pointer-events:none}
+.wide .shade{background:linear-gradient(90deg,rgba(10,9,7,.8) 0%,rgba(10,9,7,.45) 30%,rgba(10,9,7,0) 46%)}
+.narrow .shade{background:linear-gradient(0deg,rgba(10,9,7,.9) 0%,rgba(10,9,7,.6) 38%,rgba(10,9,7,0) 58%)}
+.wide .shade.full{background:linear-gradient(90deg,rgba(10,9,7,.94) 0%,rgba(10,9,7,.78) 30%,rgba(10,9,7,0) 62%)}
+.narrow .shade.full{background:linear-gradient(0deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.82) 46%,rgba(10,9,7,0) 72%)}
+.wide .shade.tl{background:linear-gradient(12deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.86) 30%,rgba(10,9,7,.25) 52%,rgba(10,9,7,0) 66%)}
+.narrow .shade.tl{background:linear-gradient(0deg,rgba(10,9,7,.97) 0%,rgba(10,9,7,.82) 38%,rgba(10,9,7,.2) 58%,rgba(10,9,7,0) 70%)}
+
+/* objetos físicos: copias fotográficas, documentos, recortes y sellos, siempre enteros */
+.item{backface-visibility:hidden}
+.item>.ph{position:absolute;inset:0;overflow:hidden}
+.item .ph>img,.item .ph>canvas{position:absolute;left:0;top:0;width:100%;height:100%}
+.item .ph>img{object-fit:fill}
+.item.z3 .ph>img{transform:scale(1.0753)}   /* mismo encuadre que el lienzo con relieve */
+.item .ph>canvas{opacity:0}
+.shd{position:absolute;inset:0;pointer-events:none}
+.item.bg .ph::after{content:"";position:absolute;inset:0;background:rgba(9,8,6,var(--dim,.3))}
+.item.photo .shd{box-shadow:0 40px 80px -18px rgba(0,0,0,.9),0 8px 22px rgba(0,0,0,.55)}
+.item.doc .shd,.item.clip .shd{box-shadow:0 46px 90px -20px rgba(0,0,0,.9),0 12px 26px rgba(0,0,0,.5)}
+.item.torn{filter:drop-shadow(0 22px 26px rgba(0,0,0,.65))}
+.item.torn .shd{display:none}
+.item.torn .ph,.item.torn .glare{clip-path:var(--torn)}
+.item.stamp .ph{overflow:visible}
+.item.stamp img{object-fit:contain;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7))}
+.glare{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen;box-shadow:inset 0 0 0 1px rgba(255,248,232,.07);
+  background:radial-gradient(circle at calc(50% + var(--gx) * 55%) calc(38% + var(--gy) * 45%),rgba(255,247,230,.17),rgba(255,247,230,.035) 32%,transparent 60%),
+             linear-gradient(115deg,transparent 40%,rgba(255,250,240,.05) 50%,transparent 60%)}
+.item.stamp .glare{display:none}
+.pclip{position:absolute;top:-5.2%;left:11%;width:7.5%;height:auto;transform:rotate(-5deg);filter:drop-shadow(1px 3px 2px rgba(0,0,0,.55));pointer-events:none;overflow:visible}
+/* sellos de goma (dibujados una vez en un lienzo) */
+.rubber{position:absolute;left:50%;top:46%;width:62%;transform:translate(-50%,-50%) rotate(-12deg);opacity:0;pointer-events:none}
+.hit>.rubber,.rubber.hit{animation:slam .6s cubic-bezier(.2,.75,.25,1) forwards}
+@keyframes slam{0%{opacity:0;transform:translate(-50%,-50%) rotate(-12deg) scale(1.75)}60%{opacity:1;transform:translate(-50%,-50%) rotate(-12deg) scale(.97)}100%{opacity:.92;transform:translate(-50%,-50%) rotate(-12deg) scale(1)}}
+.item.hit{animation:jolt .4s .2s cubic-bezier(.3,.7,.3,1)}
+@keyframes jolt{0%,100%{translate:0 0}30%{translate:1px 3px}60%{translate:-1px -1px}}
+/* polvo en el haz del proyector */
+.mote{position:absolute;left:0;top:0;width:var(--s);height:var(--s);transform-style:preserve-3d}
+.mote i{display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(255,244,220,.9),rgba(255,244,220,0) 70%);opacity:var(--o);animation:drift var(--t) ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(var(--dx),var(--dy),0)}}
+
+/* portada: fotografías suspendidas en la oscuridad */
+.wall{transform-style:preserve-3d}
+.wt{position:absolute;left:0;top:0;background:#141210;box-shadow:0 14px 30px -6px rgba(0,0,0,.7);will-change:transform;backface-visibility:hidden}
+.wt img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.lite .spot,.lite .beam{display:none}
+.wt::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,248,232,.07);background:linear-gradient(180deg,rgba(255,244,224,.05),rgba(0,0,0,.18))}
+.spot{position:absolute;left:50%;top:50%;width:240vmax;height:240vmax;margin:-120vmax 0 0 -120vmax;pointer-events:none;will-change:transform;
+  background:radial-gradient(circle at 50% 50%,rgba(0,0,0,0) 0,rgba(0,0,0,0) 12vmax,rgba(6,5,4,.55) 34vmax,rgba(6,5,4,.88) 60vmax)}
+
+/* intertítulo de cine mudo */
+.inter{border:2px solid var(--fg);padding:8px;background:rgba(10,9,7,.6);box-shadow:0 0 120px 40px rgba(0,0,0,.6)}
+.inter>div{border:1px solid rgba(236,228,212,.55);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6% 8%;position:relative}
+.inter>div::before,.inter>div::after{content:"";position:absolute;width:14px;height:14px;border:1px solid var(--gold);transform:rotate(45deg);left:calc(50% - 7px);background:var(--bg)}
+.inter>div::before{top:-8px}.inter>div::after{bottom:-8px}
+.inter small{font-family:var(--label);font-size:clamp(.7rem,1vw,.9rem);letter-spacing:.5em;text-transform:uppercase;color:var(--gold);padding-left:.5em}
+.inter b{display:block;font-family:var(--deco);font-weight:400;font-size:clamp(3rem,7vw,6.5rem);line-height:1;margin:.12em 0 .18em;color:var(--fg)}
+.inter h3{font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(1.3rem,2.6vw,2.5rem);line-height:1.2;max-width:22ch}
+.inter i{display:flex;align-items:center;gap:16px;margin-top:1.1em;font-style:normal;font-family:var(--deco);font-size:clamp(.85rem,1.3vw,1.15rem);letter-spacing:.3em;color:var(--dim)}
+.inter i::before,.inter i::after{content:"";width:40px;height:1px;background:var(--gold)}
+
+/* fichas de personajes */
+.card{background:#e8e0cf;box-shadow:0 40px 70px -24px rgba(0,0,0,.85)}
+.L.card>img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%}
+.card figcaption{color:#1a1814;padding:.9em .1em 1em}
+.card b{display:block;font-family:var(--display);font-weight:700;font-size:var(--cb,1.3rem);line-height:1.08}
+.card i{display:block;font-style:normal;font-family:var(--type);font-size:var(--ci,.72rem);letter-spacing:.06em;color:#7c2a1f;margin-top:.5em}
+.card span{display:block;font-size:var(--cs,.8rem);line-height:1.5;margin-top:.6em;color:#37332c}
+.card .pclip{top:-3.5%;left:14%;width:10%}
+.narrow .card span{display:none}
+
+/* ---------- textos ---------- */
+.tx{position:fixed;inset:0;visibility:hidden;pointer-events:none;z-index:50;--z:1}
+.tx .in{position:absolute;left:0;top:0;will-change:transform,opacity}
+.k{font-family:var(--label);font-size:calc(.76rem*var(--z));letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:1.5em;line-height:1.4}
+.k::before{content:"";flex:none;width:34px;height:1px;background:var(--gold)}
+.cardsx .k{justify-content:center}.cardsx .k::after{content:"";flex:none;width:34px;height:1px;background:var(--gold)}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:.98}
+h1{font-size:calc(clamp(3.2rem,7.2vw,8rem)*var(--z));font-weight:900}
+h2{font-size:calc(clamp(2.3rem,4.4vw,5rem)*var(--z))}
+h2.s{font-size:calc(clamp(1.8rem,3.1vw,3.4rem)*var(--z))}
+.narrow h1{font-size:calc(clamp(2.6rem,12vw,5rem)*var(--z))}
+.narrow h2{font-size:calc(clamp(2rem,9vw,3.6rem)*var(--z))}
+.narrow h2.s{font-size:calc(clamp(1.6rem,7vw,2.6rem)*var(--z))}
+h1 em,h2 em,.date em{font-style:italic;font-weight:400;color:var(--dim)}
+.ln{display:block;overflow:hidden;padding:.42em 0 .12em;margin:-.42em 0 -.12em}
+.ln>span{display:inline-block;will-change:transform}
+.p{font-size:calc(clamp(1rem,1.12vw,1.18rem)*var(--z));line-height:1.72;color:var(--dim);margin-top:1.3em}
+.narrow .p{font-size:calc(clamp(.95rem,2.05vw,1.15rem)*var(--z));line-height:1.6;margin-top:.9em}
+.p strong{color:var(--fg);font-weight:700}
+.meta{margin-top:1.8em;font-family:var(--label);font-size:calc(.8rem*var(--z));letter-spacing:.2em;text-transform:uppercase;color:var(--dim);line-height:2}
+.meta b{font-weight:500;color:var(--fg)}
+.years{font-family:var(--deco);font-size:calc(clamp(1.2rem,2.2vw,2.2rem)*var(--z));letter-spacing:.3em;color:var(--gold);margin-top:.5em}
+.title .years{display:inline-block;margin-right:2.2rem}.title .meta{display:inline-block;margin-top:.6em}
+.list{margin-top:1.4em;display:grid;gap:.75em;font-size:calc(1rem*var(--z))}
+.list div{display:grid;grid-template-columns:8.6em 1fr;gap:1.1em;align-items:baseline;border-top:1px solid var(--line);padding-top:.75em}
+.list b{font-family:var(--display);font-weight:700;font-style:italic;font-size:1.32em;color:var(--fg);line-height:1.15}
+.list span{font-size:1em;color:var(--dim);line-height:1.5}
+.narrow .list{font-size:calc(clamp(.86rem,1.9vw,1.05rem)*var(--z));gap:.5em;margin-top:1em}.narrow .list div{grid-template-columns:7.4em 1fr;padding-top:.5em}
+.date{font-family:var(--display);font-weight:900;font-size:calc(clamp(3.2rem,7vw,7.6rem)*var(--z));line-height:.92;letter-spacing:-.025em}
+.narrow .date{font-size:calc(clamp(2.6rem,12vw,4.6rem)*var(--z))}
+.cap{position:absolute;left:0;top:0;font-family:var(--type);font-size:.74rem;line-height:1.55;color:rgba(236,228,212,.66);text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 12px rgba(0,0,0,.7);padding-left:12px;border-left:1px solid rgba(184,149,92,.55);will-change:opacity}
+.narrow .cap{font-size:clamp(.64rem,1.55vw,.74rem)}
+.touch .mouse{display:none}
+
+/* apertura a máquina: el texto ya está colocado, solo se revela (sin saltos) */
+.openx{display:flex;align-items:center;justify-content:center;padding:0 var(--pad)}
+.open{font-family:var(--type);font-size:clamp(1.05rem,2vw,1.7rem);line-height:1.9;color:var(--fg);max-width:36ch;text-align:left}
+.open p{min-height:1.9em}
+.open p span{opacity:0}
+.open.go p span{animation:key .01s linear forwards;animation-delay:var(--d)}
+@keyframes key{to{opacity:1}}
+.open .car{display:inline-block;width:.55em;height:1.05em;background:var(--fg);vertical-align:-.15em;opacity:0;margin-left:.1em}
+.open.go .car{animation:blink 1s steps(1) infinite;animation-delay:var(--d)}
+@keyframes blink{0%{opacity:1}50%{opacity:0}}
+
+/* créditos de película y FIN */
+.creditsx{-webkit-mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent);mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent)}
+.roll{position:absolute;left:0;top:0;text-align:center;will-change:transform}
+.roll h4{font-family:var(--deco);font-weight:400;font-size:clamp(1.3rem,2.4vw,2.2rem);letter-spacing:.2em;margin:4.2rem 0 1.6rem;line-height:1.3}
+.roll h4:first-child{margin-top:0}
+.roll .rsub{font-family:var(--deco);letter-spacing:.4em;color:var(--gold);font-size:.9rem;margin:-.6rem 0 2.2rem}
+.roll p{font-size:clamp(.86rem,1.02vw,1rem);line-height:1.65;color:var(--dim);margin:.5rem 0}
+.roll p i{font-style:italic;color:var(--fg)}
+.roll p>b,.roll .src>b{display:block;font-family:var(--label);font-weight:400;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;line-height:1.6}
+.roll .src{margin:2.1rem 0}
+.roll .src p{margin:.35rem 0}
+.roll .small{font-size:.8rem;color:var(--faint)}
+#fin{position:fixed;inset:0;z-index:59;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none;opacity:0}
+#fin span{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(3.4rem,9vw,7rem);line-height:1;color:var(--fg)}
+#fin i{display:block;width:clamp(80px,12vw,160px);height:1px;background:var(--gold);margin:.9rem 0}
+
+/* ---------- película ---------- */
+.bars::before,.bars::after{content:"";position:fixed;left:0;right:0;height:var(--bar);background:#000;z-index:58;pointer-events:none}
+.bars::before{top:0}.bars::after{bottom:0}
+#grain{position:fixed;inset:-100px;z-index:56;pointer-events:none;opacity:.13;background-size:256px 256px;will-change:transform}
+#flick{position:fixed;inset:0;z-index:55;pointer-events:none;background:#000;opacity:0}
+.scr{position:fixed;top:0;bottom:0;width:1px;z-index:56;pointer-events:none;background:rgba(236,228,212,.35);opacity:0}
+#fx{position:fixed;left:0;top:0;width:100%;height:100%;z-index:49;pointer-events:none}
+
+/* ---------- lupa ---------- */
+#lupa{position:fixed;left:0;top:0;width:240px;height:240px;margin:-120px 0 0 -120px;border-radius:50%;z-index:57;pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1);
+  background-repeat:no-repeat;background-color:#111;box-shadow:0 0 0 1px rgba(236,228,212,.85),0 0 0 7px rgba(10,9,7,.65),0 0 0 8px rgba(184,149,92,.7),0 30px 60px rgba(0,0,0,.6),inset 0 0 30px rgba(0,0,0,.45)}
+#lupa.on{opacity:1;transform:scale(1)}
+body.examining{cursor:none}
+
+/* ---------- interfaz ---------- */
+.top{position:fixed;left:0;right:0;top:0;z-index:60;display:flex;justify-content:space-between;align-items:center;height:var(--bar);padding:0 var(--pad);font-family:var(--type);font-size:.74rem;letter-spacing:.12em;color:var(--dim);pointer-events:none}
+.narrow .top{height:auto;padding-top:calc(16px + var(--st,0px));padding-bottom:22px;background:linear-gradient(rgba(10,9,7,.78),rgba(10,9,7,0))}
+.narrow .top>.lab{display:none}.narrow .top{justify-content:flex-end}
+.top .r{display:flex;align-items:center;gap:24px;pointer-events:auto}
+#count{font-variant-numeric:tabular-nums}#count b{color:var(--fg);font-weight:400}
+#fs{display:flex;align-items:center;gap:9px;color:var(--dim);transition:color .3s;font-family:var(--label);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;padding:8px 0}
+#fs:hover,#fs:focus-visible{color:var(--fg)}
+#fs svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.4}
+.narrow #fs span{display:none}
+.bot{position:fixed;left:var(--pad);right:var(--pad);bottom:0;height:var(--bar);z-index:60;display:flex;align-items:center;justify-content:flex-end;pointer-events:none}
+.narrow .bot{height:40px;bottom:var(--sb,0px)}
+.bar{position:fixed;left:0;right:0;bottom:0;height:2px;z-index:61;background:rgba(236,228,212,.08)}
+.bar i{display:block;height:100%;background:var(--gold);transform-origin:left;transform:scaleX(0)}
+.hint{font-family:var(--label);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:12px;opacity:0;transition:opacity 1s}
+.hint i{width:1px;height:26px;background:linear-gradient(var(--fg),transparent);animation:drip 2.2s cubic-bezier(.6,0,.3,1) infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.loader{position:fixed;inset:0;z-index:100;background:#000;display:grid;place-items:center;transition:opacity .9s ease,visibility .9s}
+.loader.done{opacity:0;visibility:hidden}
+.loader div{font-family:var(--deco);letter-spacing:.5em;font-size:.8rem;color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.hint i,.mote i{animation:none}}
+</style>
+</head>
+<body>
+<div id="probe"></div>
+<div class="loader" id="loader"><div>1954</div></div>
+<div id="stage"></div>
+<canvas id="fx"></canvas>
+<div class="bars"></div>
+<div id="flick"></div><div id="grain"></div><div class="scr"></div><div class="scr"></div>
+<div id="fin"><i></i><span>Fin</span><i></i></div>
+<div id="lupa"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#8d8b84"/><stop offset=".45" stop-color="#e9e7df"/><stop offset="1" stop-color="#9a978f"/></linearGradient></defs></svg>
+
+<header class="top"><span class="lab">Guatemala después de Árbenz · 1954–1959</span><div class="r"><span id="count">Folio <b>01</b> / 21</span><button id="fs" aria-label="Pantalla completa"><svg viewBox="0 0 16 16"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg><span>Pantalla completa</span></button></div></header>
+<div class="bot"><div class="hint" id="hint"><i></i><span id="hintTx">Pulsa → o haz clic</span></div></div>
+<div class="bar"><i id="bar"></i></div>
+
+<!-- textos (el orden coincide con SCENES) -->
+<div id="texts">
+<section class="tx openx"><div class="open" id="open">
+  <p data-t="Guatemala, 27 de junio de 1954."></p>
+  <p data-t="Tras la llamada «primavera democrática»,"></p>
+  <p data-t="el presidente Jacobo Árbenz renuncia."></p>
+  <p data-t=""></p>
+  <p data-t="Lo que vino después cambió al país."></p>
+</div></section>
+
+<section class="tx title"><div class="in">
+  <p class="k">ZETH Centro Educativo · Historia, 4.º Bachillerato</p>
+  <h1><span class="ln"><span>Guatemala</span></span><span class="ln"><span>después <em>de</em> Árbenz</span></span></h1>
+  <p class="years">1954 — 1959</p>
+  <p class="meta">Integrantes · <b>Víctor Robles · Guillermo Cifuentes</b></p>
+</div></section>
+
+<section class="tx"></section>
+
+<section class="tx"><div class="in">
+  <p class="k">La intervención y la Guerra Fría</p>
+  <h2><span class="ln"><span>La Guerra Fría</span></span><span class="ln"><span><em>llega a Guatemala</em></span></span></h2>
+  <p class="p">El derrocamiento de Jacobo Árbenz en junio de 1954 formó parte de la <strong>Operación PBSUCCESS</strong>, organizada por la CIA en plena rivalidad entre Estados Unidos y la Unión Soviética. Washington temía que Guatemala se convirtiera en la primera cabeza de playa soviética en el continente.</p>
+  <p class="p">La impulsó el gobierno de Dwight D. Eisenhower. Su secretario de Estado, <strong>John Foster Dulles</strong>, y el director de la CIA, <strong>Allen Dulles</strong>, eran hermanos.</p>
+</div><p class="cap">El presidente Dwight D. Eisenhower y el secretario de Estado John Foster Dulles, 1956.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Operación PBSUCCESS</p>
+  <h2><span class="ln"><span>La acusación</span></span></h2>
+  <p class="p">Se acusó al gobierno de Árbenz de <strong>inclinarse hacia el comunismo</strong>, y la acusación tenía base: el dirigente comunista <strong>José Manuel Fortuny</strong> era uno de sus asesores más cercanos, y el Partido Guatemalteco del Trabajo, legalizado en 1952, tenía gran influencia en el gobierno, los sindicatos y la reforma agraria. En mayo de 1954 llegó el barco <strong>Alfhem</strong> con armas compradas en secreto a Checoslovaquia, país del bloque soviético.</p>
+  <p class="p">En 1975, un memorándum interno de la CIA, <strong>«CIA's Role in the Overthrow of Arbenz»</strong>, detalló el papel de la agencia en la operación. Hoy es un documento desclasificado.</p>
+</div><p class="cap">Memorándum de la CIA del 12 de mayo de 1975 (páginas 1 y 5), desclasificado.<span class="mouse"> Examine los documentos con el cursor.</span></p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Junio de 1954</p>
+  <h2><span class="ln"><span>La Liberación</span></span></h2>
+  <p class="p">El 18 de junio, el Ejército de Liberación Nacional de <strong>Carlos Castillo Armas</strong>, armado y entrenado por la CIA, entró desde Honduras con el apoyo de una radio clandestina y de bombardeos aéreos. El gobierno ya había suspendido las garantías constitucionales: cientos de opositores fueron detenidos y hubo denuncias de torturas y asesinatos de presos. Sin el respaldo del Ejército, Árbenz renunció el 27 de junio.</p>
+  <p class="p">Para la Iglesia católica, buena parte de la clase media y los propietarios, fue una liberación del comunismo: en abril, el arzobispo <strong>Mariano Rossell y Arellano</strong> había llamado en una carta pastoral a levantarse contra él. Hasta los sellos de correo lo celebraron: <strong>«Liberación 1954-55»</strong>.</p>
+</div><p class="cap">Oficiales del Ejército, década de 1950. Sello postal «Liberación 1954-55».</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Junio – septiembre de 1954</p>
+  <h2><span class="ln"><span>El exilio</span></span></h2>
+  <p class="p">Árbenz pasó 73 días asilado en la embajada de México. El 9 de septiembre salió del país junto con otros dirigentes del gobierno revolucionario, tras un minucioso registro personal en el aeropuerto La Aurora.</p>
+  <p class="p">Prensa Libre lo publicó en portada: <strong>«Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México».</strong> Árbenz murió en el exilio, en la Ciudad de México, en 1971.</p>
+</div><p class="cap">Recorte de la portada de Prensa Libre del 10 de septiembre de 1954. Jacobo Árbenz y su esposa, María Vilanova, en el exilio, 1955.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Ruptura institucional</p>
+  <h2><span class="ln"><span>Fin de la</span></span><span class="ln"><span><em>«primavera»</em></span></span></h2>
+  <div class="list">
+    <div><b>Anulada</b><span>la Constitución de 1945</span></div>
+    <div><b>Disuelto</b><span>el Congreso</span></div>
+    <div><b>Ilegalizados</b><span>el PGT y las organizaciones ligadas a él</span></div>
+  </div>
+  <p class="p">Así terminaron los diez años de la llamada «primavera democrática» (1944–1954), iniciados con la Revolución de Octubre: una década de reformas, pero también de polarización, creciente influencia comunista y más de veinte intentos de golpe. Miles de simpatizantes del gobierno anterior fueron encarcelados o partieron al exilio.</p>
+</div><p class="cap">Toma de posesión de Jacobo Árbenz, 15 de marzo de 1951: lo saluda el expresidente Juan José Arévalo.</p></section>
+
+<section class="tx"></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Presidente, 1954–1957</p>
+  <h2><span class="ln"><span>Carlos</span></span><span class="ln"><span>Castillo Armas</span></span></h2>
+  <p class="p">Militar al frente del Ejército de Liberación Nacional. Gobernó de facto y después de manera constitucional, con un programa definido: <strong>erradicar la influencia comunista</strong>, restablecer la propiedad privada y reconciliar al Estado con la Iglesia.</p>
+  <p class="p">Asumió la presidencia en julio de 1954 y en octubre fue confirmado en una votación en la que era el único candidato. Estados Unidos lo respaldó con ayuda económica.</p>
+</div><p class="cap">Retrato oficial de Carlos Castillo Armas, 1954.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Contrarreforma agraria</p>
+  <h2><span class="ln"><span>El Estatuto</span></span><span class="ln"><span><em>Agrario</em></span></span></h2>
+  <p class="p">La reforma agraria del <strong>Decreto 900</strong> (1952) había entregado tierras ociosas a cerca de medio millón de campesinos. Su aplicación fue polémica: no admitía apelación ante los tribunales, hubo invasiones de fincas y, cuando la Corte Suprema aceptó un amparo en 1953, el Congreso oficialista destituyó a sus magistrados.</p>
+  <p class="p">El Estatuto Agrario suspendió el Decreto 900 y devolvió las tierras expropiadas a sus propietarios, entre ellos la estadounidense <strong>United Fruit Company</strong>. Muchas parcelas del Decreto 900 se habían entregado en usufructo; el nuevo gobierno impulsó parcelamientos con títulos de propiedad privada.</p>
+</div><p class="cap">Grabado de Ismael Aroche sobre la Ley de Reforma Agraria. Anuncio de la Guyamel Fruit Co., que la United Fruit absorbió en 1929.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Constitución de 1956</p>
+  <h2><span class="ln"><span>Un Estado</span></span><span class="ln"><span><em>anticomunista</em></span></span></h2>
+  <p class="p">Aprobada el 2 de febrero de 1956 por la Asamblea Nacional Constituyente, la nueva Constitución instituyó un Estado fuertemente anticomunista:</p>
+  <div class="list">
+    <div><b>Poder</b><span>otorgó facultades extraordinarias al presidente en caso de amenazas políticas</span></div>
+    <div><b>Trabajo</b><span>dificultó la sindicalización en el campo y la ciudad</span></div>
+    <div><b>Iglesia</b><span>reconoció la personalidad jurídica de la Iglesia católica</span></div>
+  </div>
+</div><p class="cap">Portada de la Constitución de 1956. Al fondo, «Gloriosa victoria», mural de Diego Rivera (1954) que denunció la intervención: al centro, John Foster Dulles estrecha la mano de Castillo Armas.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Control político</p>
+  <h2 class="s"><span class="ln"><span>Comité de Defensa Nacional</span></span><span class="ln"><span><em>contra el Comunismo</em></span></span></h2>
+  <p class="p">Su objetivo era desarticular al PGT, que pasó a la clandestinidad. Se le otorgaron facultades policiales y judiciales extraordinarias para <strong>detener, interrogar y desterrar</strong> a opositores sin debido proceso.</p>
+  <p class="p">En pocos meses investigó a cerca de <strong>70 000 personas</strong> señaladas como comunistas o simpatizantes.</p>
+</div><p class="cap">Carlos Castillo Armas durante un discurso anticomunista (fotograma de noticiero, Archivos Nacionales de EE. UU.). Al fondo, el Palacio Nacional, década de 1950.</p></section>
+
+<section class="tx"></section>
+
+<section class="tx"><div class="in">
+  <p class="k">El magnicidio</p>
+  <p class="date"><span class="ln"><span>26 de julio</span></span><span class="ln"><span><em>de 1957</em></span></span></p>
+  <p class="p">Cerca de las nueve de la noche, el presidente Castillo Armas caminaba con su esposa hacia el comedor cuando fue baleado en un corredor de la Casa Presidencial.</p>
+  <p class="p">La versión oficial culpó al soldado <strong>Romeo Vásquez Sánchez</strong>, de la Guardia Presidencial, que según el gobierno se suicidó enseguida y tenía simpatías comunistas. Nunca se aclaró quién ordenó el crimen: su muerte generó <strong>teorías de conspiración</strong> y una disputa inmediata por el poder dentro de las facciones militares.</p>
+</div><p class="cap">Palacio Nacional, década de 1950. Junto a él se levanta la Casa Presidencial, donde ocurrió el crimen.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Transición y elecciones</p>
+  <h2><span class="ln"><span>Transición e</span></span><span class="ln"><span><em>inestabilidad</em></span></span></h2>
+  <div class="list">
+    <div><b>Julio, 1957</b><span>Gobierno provisional de Luis Arturo González López</span></div>
+    <div><b>Octubre, 1957</b><span>Gana el oficialista Miguel Ortiz Passarelli; tras las denuncias de fraude, los comicios se anulan</span></div>
+    <div><b>Enero, 1958</b><span>Nuevas elecciones: triunfa el general Miguel Ydígoras Fuentes</span></div>
+    <div><b>Marzo, 1958</b><span>Ydígoras asume la presidencia</span></div>
+  </div>
+  <p class="p">Ydígoras, general en tiempos del dictador Jorge Ubico, había quedado segundo frente a Árbenz en las elecciones de 1950.</p>
+</div><p class="cap">Fotografía oficial del presidente Miguel Ydígoras Fuentes.</p></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Clima de crisis</p>
+  <h2><span class="ln"><span>Un país</span></span><span class="ln"><span><em>en tensión</em></span></span></h2>
+  <p class="p">La administración de Ydígoras enfrentó <strong>protestas estudiantiles y obreras</strong>, denuncias de corrupción y una profunda división dentro del Ejército. Muchos oficiales rechazaban, además, que el gobierno permitiera a la CIA entrenar en Guatemala a exiliados cubanos para invadir Cuba.</p>
+  <div class="list"><div><b>13·XI·1960</b><span>Sublevación militar. Algunos de sus oficiales formaron después las primeras guerrillas: el germen del enfrentamiento armado.</span></div></div>
+</div><p class="cap">Protesta contra Ydígoras, años sesenta.</p></section>
+
+<section class="tx"></section>
+
+<section class="tx cardsx"><div class="in"><p class="k">Personajes indispensables</p></div></section>
+
+<section class="tx"><div class="in">
+  <p class="k">Conclusión</p>
+  <h2><span class="ln"><span>De la «primavera»</span></span><span class="ln"><span><em>al conflicto</em></span></span></h2>
+  <p class="p">En seis años, Guatemala pasó de un gobierno con fuerte influencia comunista a un Estado anticomunista alineado con Occidente. La sublevación de 1960 dio origen a guerrillas que se aliaron con el PGT y recibieron apoyo de Cuba: un conflicto armado interno que duraría 36 años, hasta los Acuerdos de Paz de 1996.</p>
+  <p class="meta">Gracias por su atención<br><b>Víctor Robles · Guillermo Cifuentes</b></p>
+</div><p class="cap">Comunidad campesina durante el conflicto armado, décadas después.</p></section>
+
+<section class="tx creditsx"><div class="roll" id="roll">
+  <h4>Guatemala después de Árbenz</h4>
+  <p class="rsub">1954 — 1959</p>
+  <p><b>Investigación y presentación</b>Víctor Robles · Guillermo Cifuentes</p>
+  <p><b>Curso</b>Historia, 4.º Bachillerato · ZETH Centro Educativo</p>
+  <h4>Fuentes de la información</h4>
+  <div class="src"><b>La Guerra Fría llega a Guatemala · Operación PBSUCCESS</b>
+    <p>Cullather, Nick. <i>Secret History: The CIA's Classified Account of Its Operations in Guatemala, 1952–1954.</i> Stanford University Press, 1999.</p>
+    <p>Gleijeses, Piero. <i>Shattered Hope: The Guatemalan Revolution and the United States, 1944–1954.</i> Princeton University Press, 1991.</p></div>
+  <div class="src"><b>La acusación · El memorándum de 1975</b>
+    <p>Central Intelligence Agency. «CIA's Role in the Overthrow of Arbenz», memorándum del 12 de mayo de 1975. CIA FOIA Electronic Reading Room.</p>
+    <p>Schneider, Ronald M. <i>Communism in Guatemala, 1944–1954.</i> Frederick A. Praeger, 1958.</p>
+    <p>Doyle, Kate y Peter Kornbluh. <i>CIA and Assassinations: The Guatemala 1954 Documents.</i> National Security Archive, Electronic Briefing Book n.º 4, 1997.</p></div>
+  <div class="src"><b>La Liberación · El exilio</b>
+    <p>Rossell y Arellano, Mariano. Carta pastoral «Sobre los avances del comunismo en Guatemala», 4 de abril de 1954.</p>
+    <p>Schlesinger, Stephen y Stephen Kinzer. <i>Bitter Fruit: The Untold Story of the American Coup in Guatemala.</i> Doubleday, 1982.</p>
+    <p>Prensa Libre. Portada del 10 de septiembre de 1954: «Arbenz, Díaz, Fortuny y Otros más Salieron Anoche a México». Hemeroteca de Prensa Libre.</p>
+    <p>Cullather, Nick. <i>Secret History</i>, 1999.</p></div>
+  <div class="src"><b>Fin de la «primavera» · Carlos Castillo Armas</b>
+    <p>Gleijeses, Piero. <i>Shattered Hope</i>, 1991.</p>
+    <p>Immerman, Richard H. <i>The CIA in Guatemala: The Foreign Policy of Intervention.</i> University of Texas Press, 1982.</p></div>
+  <div class="src"><b>El Estatuto Agrario · Decreto 900</b>
+    <p>Congreso de la República de Guatemala. Decreto 900, Ley de Reforma Agraria, 17 de junio de 1952.</p>
+    <p>Handy, Jim. <i>Revolution in the Countryside: Rural Conflict and Agrarian Reform in Guatemala, 1944–1954.</i> University of North Carolina Press, 1994.</p></div>
+  <div class="src"><b>Constitución de 1956 · Comité de Defensa Nacional contra el Comunismo</b>
+    <p>Asamblea Nacional Constituyente. Constitución de la República de Guatemala, decretada el 2 de febrero de 1956.</p>
+    <p>Streeter, Stephen M. <i>Managing the Counterrevolution: The United States and Guatemala, 1954–1961.</i> Ohio University Press, 2000.</p>
+    <p>Schlesinger, Stephen y Stephen Kinzer. <i>Bitter Fruit</i>, 1982.</p></div>
+  <div class="src"><b>Magnicidio · Transición · Clima de crisis</b>
+    <p>Streeter, Stephen M. <i>Managing the Counterrevolution</i>, 2000.</p>
+    <p>Prensa Libre. Crónicas del 26 de julio de 1957 y de las elecciones de 1957 y 1958. Hemeroteca de Prensa Libre.</p>
+    <p>Comisión para el Esclarecimiento Histórico. <i>Guatemala, memoria del silencio.</i> CEH, 1999.</p></div>
+  <div class="src"><b>Consulta en línea</b>
+    <p>Departamento de Estado de EE. UU., Office of the Historian. <i>Foreign Relations of the United States, 1952–1954, Guatemala.</i> history.state.gov</p>
+    <p>CIA FOIA Electronic Reading Room. cia.gov/readingroom</p></div>
+  <div class="src"><b>Personajes · Jacobo Árbenz</b>
+    <p>Gleijeses, Piero. <i>Shattered Hope</i>, 1991 (sobre la muerte del coronel Arana y la relación de Árbenz con el PGT).</p>
+    <p>Handy, Jim. <i>Revolution in the Countryside</i>, 1994.</p></div>
+  <h4>Imágenes</h4>
+  <p class="small">Archivo reunido por los integrantes del grupo · Wikimedia Commons (dominio público; sello postal: fotografía de Towiki60, CC BY-SA 3.0; «Gloriosa victoria» de Diego Rivera: fotografía de TortugaHalo, CC BY-SA 4.0) · Archivos Nacionales de EE. UU. · CIA FOIA Electronic Reading Room · Hemeroteca de Prensa Libre.</p>
+</div></section>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- escenas ----------
+  kind 'set': objetos físicos completos a la derecha (arriba en pantallas verticales), nunca recortados.
+    item: img, t (photo | doc | clip | stamp), s (tamaño relativo al área), x, y (desplazamiento en fracciones del área),
+          r (giro en grados), z (profundidad px), d (retraso de llegada), torn (borde rasgado), depth (relieve sutil con mapa
+          de profundidad), stamp [texto, línea pequeña] (sello de goma), clip (clip de metal), burn [origen x, origen y, retraso]
+  burn: la escena sale quemándose (solo al avanzar). grave: parpadeo más fuerte.
+  kind 'layers': solo el último folio (sujeto y fondo separados, con desenfoque). */
+const SCENES=[
+  {kind:'open'},
+  {kind:'title'},
+  {kind:'inter', n:'I', t:'El inicio del nuevo período político y la Liberación', y:'1954'},
+  {kind:'set', items:[{img:'eisenhower',t:'photo',s:1,depth:1}]},
+  {kind:'set', burn:1, items:[
+    {img:'memo1',t:'doc',s:.9,x:-.22,y:.02,r:-4,clip:1,burn:[.12,1.1,0]},
+    {img:'memo5',t:'doc',s:.84,x:.24,y:.05,r:5,z:40,d:.08,stamp:['DESCLASIFICADO','',.5,.7,.66],burn:[.9,1.08,.08]}]},
+  {kind:'set', items:[{img:'jeep',t:'photo',s:1,y:-.06,depth:1},{img:'sello',t:'stamp',s:.32,x:-.45,y:.42,r:-9,z:110,d:.12}]},
+  {kind:'set', items:[{img:'prensa',t:'clip',s:.8,x:-.12,y:-.3,r:-2.5,torn:1},{img:'exilio',t:'photo',s:.66,x:.18,y:.24,r:3,z:60,d:.1,depth:1}]},
+  {kind:'set', items:[{img:'posesion',t:'photo',s:1,depth:1}]},
+  {kind:'inter', n:'II', t:'Cambios principales en el gobierno de Carlos Castillo Armas', y:'1954 – 1957'},
+  {kind:'set', items:[{img:'castillo',t:'photo',s:1,depth:1}]},
+  {kind:'set', items:[{img:'poster',t:'doc',s:.96,x:.12,stamp:['SUSPENDIDO','Decreto 900 · 1954']},{img:'guyamel',t:'clip',s:.42,x:-.42,y:.42,r:-6,z:90,d:.16}]},
+  {kind:'set', bg:'gloriosa', bx:.13, dim:.42, items:[{img:'constitucion',t:'doc',s:.78,x:.16,y:.02,r:-4,z:60,d:.06}]},
+  {kind:'set', bg:'palacio', dim:.5, items:[{img:'discurso',t:'photo',s:.78,x:.12,y:-.02,r:2,depth:1}]},
+  {kind:'inter', n:'III', t:'Muerte de Castillo Armas e inestabilidad política posterior', y:'1957 – 1959'},
+  {kind:'set', grave:1, bg:'casapres', bx:.1, by:.55, dim:.46, items:[]},
+  {kind:'set', items:[{img:'ydigoras',t:'photo',s:1,depth:1}]},
+  {kind:'set', bg:'protesta', bx:.08, dim:.36, items:[]},
+  {kind:'inter', n:'IV', t:'Personajes indispensables', y:''},
+  {kind:'cards', cards:[
+    ['retrato','Jacobo Árbenz Guzmán','1913–1971 · Presidente, 1951–1954','Militar electo en 1950. Impulsó la reforma agraria, pero se apoyó en los comunistas, destituyó a la Corte Suprema que frenaba su reforma y quedó ligado a la muerte de su rival, el coronel Francisco J. Arana (1949).'],
+    ['castillo','Carlos Castillo Armas','1914–1957 · Presidente, 1954–1957','Líder del Movimiento de Liberación Nacional que derrocó a Árbenz. Gobernó con un programa anticomunista, devolvió las tierras expropiadas y restableció los lazos con la Iglesia. Asesinado en 1957.'],
+    ['ydigoras','Miguel Ydígoras Fuentes','1895–1982 · Presidente, 1958–1963','Político y militar opositor tradicional que asumió la presidencia en un ambiente de alta polarización social y económica al cierre de la década.']]},
+  {kind:'layers', img:'multitud'},
+  {kind:'credits', last:1}
+];
+const SIZES={"jeep": [806, 464], "castillo": [1207, 1700], "posesion": [909, 687], "discurso": [442, 464], "ydigoras": [710, 977], "protesta": [933, 652], "palacio": [762, 454], "casapres": [893, 1387], "eisenhower": [575, 453], "exilio": [1600, 1151], "retrato": [387, 392], "poster": [602, 812], "constitucion": [330, 570], "guyamel": [448, 252], "memo1": [635, 825], "memo5": [633, 825], "gloriosa": [1904, 925], "prensa": [351, 162], "sello": [563, 700], "multitud": [1200, 804], "p_junta": [562, 420], "p_arevalo": [322, 420], "p_arana": [198, 283], "p_1944": [274, 289], "p_1945": [313, 420], "p_uniforme": [332, 420], "p_militar": [300, 331], "p_retrato": [343, 420], "p_portrait": [293, 420], "p_sonrie": [344, 344], "p_banda": [420, 420], "p_ministros": [559, 420], "p_desfile": [337, 420], "p_plana": [628, 420], "p_reforma": [281, 360], "p_estadio": [452, 372], "p_vapor": [632, 420], "p_ufco": [640, 389], "p_palacio2": [522, 420], "p_ydigoras50": [318, 420], "p_arevalo2": [293, 420], "p_cia2": [323, 420], "p_cia3": [323, 420], "p_cia4": [323, 420]};
+/* portada: muro de archivo con fotografías de la época que no salen en las diapositivas */
+const WALLIMG=['p_junta','p_arevalo','p_cia2','p_banda','p_vapor','p_1944','p_reforma','p_ministros','p_arana','p_estadio','p_1945','p_cia3',
+  'p_desfile','p_ufco','p_retrato','p_plana','p_militar','p_palacio2','p_arevalo2','p_portrait','p_cia4','p_ydigoras50','p_sonrie','p_uniforme'];
+const WROWS=6, WPER=18;
+const N=SCENES.length, P=1000, PZ=.93;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const touch=matchMedia('(pointer:coarse)').matches;
+/* sin aceleración gráfica (el navegador dibuja por software) se apagan los efectos más caros: grano animado, polvo, lámpara móvil y relieve */
+const lite=(()=>{ try{ const c=document.createElement('canvas'), g=c.getContext('webgl'); if(!g) return true;
+  const e=g.getExtension('WEBGL_debug_renderer_info'), r=e?String(g.getParameter(e.UNMASKED_RENDERER_WEBGL)):'';
+  const x=g.getExtension('WEBGL_lose_context'); x&&x.loseContext(); return /swiftshader|llvmpipe|software|basic render/i.test(r); }catch(err){ return false; } })();
+if(lite) document.documentElement.classList.add('lite');
+const de=document.documentElement;
+if(touch) de.classList.add('touch');
+const clamp=(v,a,b)=>v<a?a:v>b?b:v, sm=(a,b,x)=>{x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x)};
+const eOut=x=>1-Math.pow(1-clamp(x,0,1),3), eIn=x=>Math.pow(clamp(x,0,1),2);
+const $=s=>document.querySelector(s);
+const stage=$('#stage'), texts=[...document.querySelectorAll('.tx')];
+const rnd=(a,b)=>a+Math.random()*(b-a);
+const el=(tag,cls,parent)=>{const e=document.createElement(tag); if(cls) e.className=cls; parent&&parent.appendChild(e); return e;};
+const imgEl=(src,parent,alt)=>{const i=el('img','',parent); i.alt=alt||''; i.decoding='async'; i.dataset.src=src; return i;};
+const CLIP='<svg class="pclip" viewBox="0 0 30 92"><path d="M9 74V20a7 7 0 0 1 14 0v58a11 11 0 0 1-22 0V13" fill="none" stroke="url(#metal)" stroke-width="2.8" stroke-linecap="round"/></svg>';
+function torn(){ const pts=['0% 0%','100% 0%']; for(let x=100;x>=0;x-=2.5) pts.push(`${x}% ${(100-rnd(0,6)).toFixed(1)}%`); return `polygon(${pts.join(',')})`; }
+
+/* ---------- construcción ---------- */
+const GLI=[];   // objetos con lienzo WebGL (relieve o quemado)
+const S=SCENES.map((s,i)=>{
+  const sc=el('section','sc',stage); sc.style.zIndex=N-i;
+  const cam=el('div','cam',sc); const L={items:[]};
+  if(s.kind==='set'||s.kind==='title'||s.kind==='cards') el('div','beam',sc).style.setProperty('--bx',s.kind==='set'?'70%':'50%');
+  if(s.kind==='set'){
+    (s.bg?[{img:s.bg,t:'bg',depth:1},...s.items]:s.items).forEach(it=>{
+      const d=el('div','L item '+it.t+(it.torn?' torn':'')+(it.depth?' z3':''),cam), flat=it.t==='stamp'||it.t==='bg';
+      if(!flat) d._shd=el('i','shd',d);
+      d._ph=el('div','ph',d); d._img=imgEl(`img/${it.img}.webp`,d._ph);
+      if(!flat) d._glare=el('i','glare',d);
+      if(it.t==='bg') d.style.setProperty('--dim',s.dim||.3);
+      if(it.torn) d.style.setProperty('--torn',torn());
+      if(it.stamp){ d._rubber=el('img','rubber',d); d._rubber.alt=''; const sp=it.stamp; if(sp[2]!=null){ d._rubber.style.left=sp[2]*100+'%'; d._rubber.style.top=sp[3]*100+'%'; d._rubber.style.width=sp[4]*100+'%'; } }
+      if(it.clip){ d.insertAdjacentHTML('beforeend',CLIP); d._pclip=d.lastElementChild; }
+      if(it.depth) d._dsrc=`img/${it.img}_d.webp`;
+      d._it=it; d._si=i; L.items.push(d); if(it.depth||it.burn) GLI.push(d); });
+  } else if(s.kind==='layers'){
+    L.blur=el('div','L',cam); imgEl(`img/${s.img}_blur.webp`,L.blur); L.bg=el('div','L',cam); imgEl(`img/${s.img}_bg.webp`,L.bg); L.fg=el('div','L',cam); imgEl(`img/${s.img}_fg.webp`,L.fg);
+    [L.blur,L.bg,L.fg].forEach(x=>{ x.firstChild.style.cssText='width:100%;height:100%;object-fit:cover'; });
+  } else if(s.kind==='title'){   /* muro de archivo: filas de fotografías que se desplazan despacio, iluminadas por una lámpara */
+    L.wall=el('div','L wall',cam); L.tiles=[]; L.lift=null; L.liftT=0;
+    for(let r=0;r<WROWS;r++) for(let k=0;k<WPER;k++){ const n=WALLIMG[(r*7+k)%WALLIMG.length], t=el('div','wt',L.wall); imgEl(`img/${n}.webp`,t); t._n=n; t._r=r; t._k=k; L.tiles.push(t); }
+    L.spot=el('div','spot',sc);
+  } else if(s.kind==='inter'){
+    L.card=el('div','L inter',cam); L.card.innerHTML=`<div><small>Capítulo</small><b>${s.n}</b><h3>${s.t}</h3>${s.y?`<i>${s.y}</i>`:''}</div>`;
+  } else if(s.kind==='cards'){
+    L.cards=s.cards.map(c=>{ const f=el('figure','L card',cam); imgEl(`img/${c[0]}.webp`,f,c[1]); const cap=el('figcaption','',f); cap.innerHTML=`<b>${c[1]}</b><i>${c[2]}</i><span>${c[3]}</span>`; f.insertAdjacentHTML('beforeend',CLIP); return f; });
+  }
+  if(s.kind!=='open'&&s.kind!=='credits'&&!reduce&&!lite){ /* polvo suspendido a distintas profundidades */
+    L.motes=[]; for(let k=0;k<(touch?8:14);k++){ const m=el('div','mote',cam); const sz=rnd(2,5.5);
+      m.style.setProperty('--s',sz+'px'); m._p=[rnd(-.5,.5),rnd(-.5,.5),rnd(-350,550)];
+      const ii=el('i','',m); ii.style.setProperty('--o',rnd(.15,.5).toFixed(2)); ii.style.setProperty('--t',rnd(9,18).toFixed(1)+'s'); ii.style.setProperty('--dx',rnd(-40,40).toFixed(0)+'px'); ii.style.setProperty('--dy',rnd(-60,20).toFixed(0)+'px'); L.motes.push(m); } }
+  el('div','vig',sc);
+  if(s.kind==='set') el('div',s.bg?'shade full':'shade',sc); if(s.kind==='layers') el('div','shade full',sc); if(s.kind==='title') el('div','shade tl',sc);
+  const t=texts[i];
+  return {s,sc,cam,L,tx:t,inner:t.querySelector('.in'),cap:t.querySelector('.cap'),lines:[...t.querySelectorAll('.ln>span')],
+    blocks:[...t.querySelectorAll('.in>:not(h1):not(h2):not(.date)')],imgs:[...sc.querySelectorAll('img')].filter(x=>x.dataset.src),loaded:false,vis:false,burnMode:0};
+});
+
+/* ---------- carga progresiva ---------- */
+function load(i){ const o=S[i]; if(!o||o.loaded) return Promise.resolve(); o.loaded=true;
+  const ps=o.imgs.map(im=>new Promise(r=>{ im.onload=im.onerror=()=>r(); im.src=im.dataset.src; }).then(()=>im.decode?im.decode().catch(()=>{}):0));
+  o.L.items.forEach(d=>{ if(d._dsrc&&GL.ok){ const di=new Image(); d._dimg=di; ps.push(new Promise(r=>{ di.onload=di.onerror=()=>r(); di.src=d._dsrc; })); } });
+  return Promise.all(ps); }
+function loadRest(i){ if(i>=N) return; load(i).then(()=>{ (window.requestIdleCallback||setTimeout)(()=>loadRest(i+1),{timeout:400}); }); }
+
+/* ---------- sellos de goma: tinta roja con el desgaste de la goma ---------- */
+function stampCanvas(text,small){
+  const fs=120, ls=fs*.12, c=document.createElement('canvas'), x=c.getContext('2d');
+  const font=px=>`500 ${px}px Oswald, "Arial Narrow", sans-serif`;
+  const spaced=(str,px,sp)=>{ x.font=font(px); const ch=[...str]; const ws=ch.map(k=>x.measureText(k).width); return {ch,ws,px,sp,w:ws.reduce((a,b)=>a+b,0)+sp*Math.max(0,ch.length-1)}; };
+  const T=spaced(text,fs,ls), Sm=small?spaced(small.toUpperCase(),fs*.24,fs*.24*.36):null;
+  const padX=fs*.42, padT=fs*.24, padB=fs*.24, bw=fs*.09, gap=fs*.075, ow=fs*.035, capH=fs*.79;
+  const iw=Math.max(T.w,Sm?Sm.w:0)+padX*2, ih=padT+capH+(Sm?fs*.62:0)+padB, M=bw/2+gap+ow+6;
+  c.width=Math.ceil(iw+2*M); c.height=Math.ceil(ih+2*M);
+  x.fillStyle=x.strokeStyle='#9e2219';
+  x.lineWidth=bw; x.strokeRect(M,M,iw,ih);
+  x.lineWidth=ow; x.strokeRect(M-bw/2-gap,M-bw/2-gap,iw+bw+2*gap,ih+bw+2*gap);
+  const draw=(G,base)=>{ x.font=font(G.px); let px=c.width/2-G.w/2; G.ch.forEach((k,j)=>{ x.fillText(k,px,base); px+=G.ws[j]+G.sp; }); };
+  x.textBaseline='alphabetic'; draw(T,M+padT+capH);
+  if(Sm){ const ry=M+padT+capH+fs*.2; x.lineWidth=fs*.045; x.beginPath(); x.moveTo(M+padX*.55,ry); x.lineTo(M+iw-padX*.55,ry); x.stroke(); draw(Sm,ry+fs*.4); }
+  x.globalCompositeOperation='destination-out';
+  for(let k=0;k<1600;k++){ x.globalAlpha=Math.random()*.55; x.beginPath(); x.arc(Math.random()*c.width,Math.random()*c.height,Math.random()*fs*.045+.6,0,7); x.fill(); }
+  for(let k=0;k<16;k++){ x.globalAlpha=.18+Math.random()*.3; x.lineWidth=Math.random()*fs*.025+1; x.beginPath(); const y=Math.random()*c.height; x.moveTo(0,y); x.lineTo(c.width,y+(Math.random()-.5)*fs*.5); x.stroke(); }
+  x.globalAlpha=1; x.globalCompositeOperation='source-over';
+  return c;
+}
+
+/* ---------- WebGL: relieve sutil de las fotos y papel que se quema ---------- */
+const GL={ok:!!window.WebGLRenderingContext&&!reduce,noise:null,busy:false,gen:0,pool:[]};
+const POOLMAX=4;   /* pocos contextos, siempre los mismos: Safari tarda en liberar los que se descartan */
+const VS='attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
+/* relieve: cada píxel se desplaza según su profundidad (iteración de punto fijo para no rasgar los bordes) */
+const FS_DEPTH='precision highp float;varying vec2 v;uniform sampler2D T,D;uniform vec2 off;uniform float dol,foc,zm;'+
+  'void main(){vec2 p=.5+(v-.5)*zm;vec2 q=p;for(int i=0;i<6;i++){float d=texture2D(D,q).r;q=p-(off+(q-.5)*dol)*(d-foc);}gl_FragColor=texture2D(T,q);}';
+/* quemado: frente irregular (ruido + distancia al foco), papel que se tuesta, borde de brasa y ceniza */
+const FS_BURN='precision highp float;varying vec2 v;uniform sampler2D T,N;uniform vec2 org;uniform float th,tm,asp;'+
+  'void main(){vec4 c=texture2D(T,v);vec2 w=v*vec2(asp,1.);float n1=texture2D(N,w*.55).r,n2=texture2D(N,w*2.3+vec2(.31,.17)).r;'+
+  'float dist=length((v-org)*vec2(asp,1.))/(length(vec2(asp,1.))*1.05);float f=dist*.72+n1*.22+n2*.06;float e=f-th;'+
+  'float a=smoothstep(-.006,.006,e);float sc=1.-smoothstep(0.,.16,e);vec3 col=c.rgb;col=mix(col,col*vec3(.86,.66,.44),sc*.9);'+
+  'col=mix(col,vec3(.07,.045,.03),1.-smoothstep(0.,.045,e));float g=exp(-abs(e)*75.);float fl=.75+.25*sin(tm*17.+n2*40.);'+
+  'vec3 em=(vec3(1.,.42,.08)*g*1.5+vec3(1.,.85,.5)*pow(g,8.))*fl;float ga=clamp(g*1.2,0.,1.)*step(-.03,e);'+
+  'gl_FragColor=vec4(col*a+em*ga,max(a,ga*.85));}';
+function makeNoise(){ const Z=256, acc=new Float32Array(Z*Z), out=new Uint8Array(Z*Z); let amp=1,tot=0;
+  for(const per of [8,16,32,64]){ const g=new Float32Array(per*per); for(let k=0;k<g.length;k++) g[k]=Math.random(); const cell=Z/per;
+    for(let y=0;y<Z;y++) for(let x=0;x<Z;x++){ const fx=x/cell, fy=y/cell, x0=fx|0, y0=fy|0; let tx=fx-x0, ty=fy-y0; tx=tx*tx*(3-2*tx); ty=ty*ty*(3-2*ty);
+      const X0=x0%per, X1=(x0+1)%per, Y0=(y0%per)*per, Y1=((y0+1)%per)*per;
+      acc[y*Z+x]+=amp*((g[Y0+X0]*(1-tx)+g[Y0+X1]*tx)*(1-ty)+(g[Y1+X0]*(1-tx)+g[Y1+X1]*tx)*ty); }
+    tot+=amp; amp*=.5; }
+  let mn=1e9,mx=-1e9; for(let k=0;k<acc.length;k++){ mn=Math.min(mn,acc[k]); mx=Math.max(mx,acc[k]); }
+  for(let k=0;k<acc.length;k++) out[k]=Math.round((acc[k]-mn)/(mx-mn)*255);
+  return out; }
+function nS(u,v){ const Z=256, D=GL.noise; let x=u*Z-.5, y=v*Z-.5; x=((x%Z)+Z)%Z; y=((y%Z)+Z)%Z; const x0=x|0, y0=y|0, tx=x-x0, ty=y-y0, x1=(x0+1)%Z, y1=(y0+1)%Z;
+  return ((D[y0*Z+x0]*(1-tx)+D[y0*Z+x1]*tx)*(1-ty)+(D[y1*Z+x0]*(1-tx)+D[y1*Z+x1]*tx)*ty)/255; }
+function burnField(d,u,v){ const it=d._it, asp=d._rest.w/d._rest.h, wx=u*asp, n1=nS(wx*.55,v*.55), n2=nS(wx*2.3+.31,v*2.3+.17);
+  const dx=(u-it.burn[0])*asp, dy=v-it.burn[1]; return Math.sqrt(dx*dx+dy*dy)/(Math.sqrt(asp*asp+1)*1.05)*.72+n1*.22+n2*.06; }
+function glReady(d){ const im=d._img; if(lite&&d._it.depth) return false; return im.complete&&im.naturalWidth>0&&d._rest&&(!d._it.depth||(d._dimg&&d._dimg.complete&&d._dimg.naturalWidth>0)); }
+function glSize(d){ const R=d._rest, cw=Math.max(2,Math.round(Math.min(R.w*dpr,d._img.naturalWidth))); return [cw,Math.max(2,Math.round(cw*R.h/R.w))]; }
+function glSource(d){ /* la imagen se reescala una vez al tamaño exacto del lienzo (muestreo 1:1, nítido), fuera del hilo principal si se puede */
+  const [cw,ch]=glSize(d), img=d._img, it=d._it;
+  const draw=()=>{ const tmp=document.createElement('canvas'); tmp.width=cw; tmp.height=ch; const x=tmp.getContext('2d'); x.imageSmoothingEnabled=true; x.imageSmoothingQuality='high'; x.drawImage(img,0,0,cw,ch);
+    if(it.burn&&d._stampC){ const sp=it.stamp; x.save(); x.globalAlpha=.92; x.translate(cw*sp[2],ch*sp[3]); x.rotate(-12*Math.PI/180); const sw=cw*sp[4], shh=sw*d._stampC.height/d._stampC.width; x.drawImage(d._stampC,-sw/2,-shh/2,sw,shh); x.restore(); }
+    return tmp; };
+  if(it.burn||!window.createImageBitmap) return Promise.resolve(draw());
+  return createImageBitmap(img,{resizeWidth:cw,resizeHeight:ch,resizeQuality:'high'}).then(b=>(b.width===cw&&b.height===ch)?b:draw(),()=>draw());
+}
+function glCtx(){ /* contexto con los dos programas compilados una sola vez */
+  const c=document.createElement('canvas'); c.width=c.height=2; c.className='glc';
+  let gl=null; try{ gl=c.getContext('webgl',{alpha:true,premultipliedAlpha:true,antialias:false,depth:false,stencil:false,powerPreference:'high-performance'}); }catch(e){}
+  if(!gl) return null;
+  try{
+    const sh=(t,src)=>{ const o=gl.createShader(t); gl.shaderSource(o,src); gl.compileShader(o); if(!gl.getShaderParameter(o,gl.COMPILE_STATUS)) throw 0; return o; };
+    const vs=sh(gl.VERTEX_SHADER,VS);
+    const prog=(fs,names)=>{ const pr=gl.createProgram(); gl.attachShader(pr,vs); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs)); gl.bindAttribLocation(pr,0,'p'); gl.linkProgram(pr);
+      if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) throw 0; const u={}; names.forEach(n=>u[n]=gl.getUniformLocation(pr,n)); return {pr,u}; };
+    const D=prog(FS_DEPTH,['T','D','off','dol','foc','zm']), B=prog(FS_BURN,['T','N','org','th','tm','asp']);
+    gl.useProgram(D.pr); gl.uniform1i(D.u.T,0); gl.uniform1i(D.u.D,1); gl.uniform1f(D.u.zm,PZ); gl.uniform1f(D.u.foc,.36);
+    gl.useProgram(B.pr); gl.uniform1i(B.u.T,0); gl.uniform1i(B.u.N,2);
+    const b=gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,b); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+    const tex=(unit,rep)=>{ const t=gl.createTexture(); gl.activeTexture(gl.TEXTURE0+unit); gl.bindTexture(gl.TEXTURE_2D,t); const w=rep?gl.REPEAT:gl.CLAMP_TO_EDGE;
+      gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,w); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,w); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR); return t; };
+    tex(0); tex(1); tex(2,true);
+    const X={c,gl,D,B,owner:null,noise:false,lost:false};
+    c.addEventListener('webglcontextlost',ev=>{ ev.preventDefault(); X.lost=true; if(X.owner) glDetach(X.owner); GL.pool=GL.pool.filter(k=>k!==X); },false);
+    return X;
+  }catch(e){ return null; }
+}
+function glAttach(d,src,X){
+  const it=d._it, R=d._rest, [cw,ch]=glSize(d), gl=X.gl;
+  if(!src||src.width!==cw||src.height!==ch||X.lost||gl.isContextLost()){ if(src&&src.close) src.close(); return false; }
+  if(X.owner) glDetach(X.owner);
+  X.c.width=cw; X.c.height=ch; gl.viewport(0,0,cw,ch);
+  gl.activeTexture(gl.TEXTURE0); gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,src); if(src.close) src.close();
+  let P_;
+  if(it.depth){ P_=X.D; gl.activeTexture(gl.TEXTURE1); gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,d._dimg); gl.useProgram(P_.pr); }
+  else { P_=X.B; if(!GL.noise) GL.noise=makeNoise();
+    if(!X.noise){ gl.activeTexture(gl.TEXTURE2); gl.pixelStorei(gl.UNPACK_ALIGNMENT,1); gl.texImage2D(gl.TEXTURE_2D,0,gl.LUMINANCE,256,256,0,gl.LUMINANCE,gl.UNSIGNED_BYTE,GL.noise); X.noise=true; }
+    gl.useProgram(P_.pr); gl.uniform2f(P_.u.org,it.burn[0],it.burn[1]); gl.uniform1f(P_.u.asp,R.w/R.h); }
+  X.owner=d; d._gl={gl,c:X.c,u:P_.u,X,t0:performance.now(),shown:false};
+  if(it.burn){ /* el papel queda dibujado entero debajo de la imagen: al empezar a arder no hay ni un fotograma vacío */
+    d._ph.insertBefore(X.c,d._img); gl.uniform1f(P_.u.th,-1); gl.uniform1f(P_.u.tm,0); gl.drawArrays(gl.TRIANGLE_STRIP,0,4); X.c.style.opacity=1; }
+  else { X.c.style.opacity=0; d._ph.appendChild(X.c); }
+  return true;
+}
+function glDetach(d){ const g=d._gl; if(!g) return; d._gl=null; g.X.owner=null; g.c.style.opacity=0; g.c.remove(); d._img.style.visibility=''; if(d._rubber) d._rubber.style.visibility=''; }
+let idx=0;
+function glManage(){
+  if(!GL.ok) return;
+  GLI.forEach(d=>{ if(d._gl&&Math.abs(d._si-idx)>2) glDetach(d); });
+  if(tw&&(performance.now()-tw.t0)/tw.d<.92) return;   /* durante una transición no se sube nada nuevo */
+  if(GL.busy) return;
+  const rank=d=>{ const di=d._si-idx; return di===0?0:di===1?1:di===-1?2:di===2?3:9; };
+  let best=null, bp=9;
+  GLI.forEach(d=>{ if(d._gl||d._fail>2) return; const pr=rank(d); if(pr<bp&&glReady(d)){ best=d; bp=pr; } });
+  if(!best) return;
+  /* contexto: uno libre, uno nuevo (hasta POOLMAX) o el de la escena menos importante que no se esté viendo */
+  let X=GL.pool.find(k=>!k.owner&&!k.res&&!k.lost);
+  if(!X&&GL.pool.length<POOLMAX){ X=glCtx(); if(X) GL.pool.push(X); else if(!GL.pool.length){ GL.ok=false; return; } }
+  if(!X){ let worst=null, wr=bp; GL.pool.forEach(k=>{ const o=k.owner; if(!o||k.res||S[o._si].vis) return; const r=rank(o); if(r>wr){ wr=r; worst=k; } }); X=worst; }
+  if(!X) return;
+  if(X.owner) glDetach(X.owner);
+  const gen=GL.gen; GL.busy=true; X.res=best;
+  glSource(best).then(src=>{ GL.busy=false; X.res=null;
+    if(gen!==GL.gen||best._gl||X.lost||Math.abs(best._si-idx)>2){ if(src&&src.close) src.close(); return; }
+    if(!glAttach(best,src,X)) best._fail=(best._fail||0)+1; },()=>{ GL.busy=false; X.res=null; best._fail=(best._fail||0)+1; });
+}
+
+/* ---------- chispas, ceniza y humo del papel que arde ---------- */
+const fx=$('#fx'), fxx=fx.getContext('2d'); let parts=[], fxDirty=false, fdpr=1;
+const smoke=(()=>{ const c=document.createElement('canvas'); c.width=c.height=64; const x=c.getContext('2d'); const g=x.createRadialGradient(32,32,0,32,32,32); g.addColorStop(0,'rgba(70,64,58,.55)'); g.addColorStop(1,'rgba(70,64,58,0)'); x.fillStyle=g; x.fillRect(0,0,64,64); return c; })();
+function spawn(d,b){
+  if(!GL.noise||parts.length>420) return; const R=d._rest, th=b*1.35-.2, cs=Math.cos(R.r), sn=Math.sin(R.r);
+  for(let k=0;k<14;k++){ const u=Math.random(), v=Math.random(); if(Math.abs(burnField(d,u,v)-th)>.014) continue;
+    const dx=(u-.5)*R.w, dy=(v-.5)*R.h, x=R.cx+dx*cs-dy*sn, y=R.cy+dx*sn+dy*cs, r=Math.random();
+    if(r<.72) parts.push({k:0,x,y,vx:rnd(-25,25),vy:rnd(-150,-60),l:0,L:rnd(.5,1.3),s:rnd(.8,2.1)});
+    else if(r<.9) parts.push({k:1,x,y,vx:rnd(-15,15),vy:rnd(-55,-20),l:0,L:rnd(1.8,3),s:rnd(1.5,4),a:rnd(0,6),va:rnd(-3,3)});
+    else parts.push({k:2,x,y,vx:rnd(-8,8),vy:rnd(-45,-25),l:0,L:rnd(2.4,3.8),s:rnd(18,30)}); }
+}
+function fxStep(dt){
+  if(!parts.length){ if(fxDirty){ fxx.setTransform(1,0,0,1,0,0); fxx.clearRect(0,0,fx.width,fx.height); fxDirty=false; } return; }
+  fxDirty=true; fxx.setTransform(fdpr,0,0,fdpr,0,0); fxx.clearRect(0,0,W,H);
+  parts=parts.filter(p=>(p.l+=dt)<p.L);
+  fxx.globalCompositeOperation='source-over';
+  for(const p of parts){ if(p.k===2){ p.vx+=rnd(-10,10)*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; const t=p.l/p.L, r=p.s*(1+t*2.6); fxx.globalAlpha=.32*Math.sin(Math.PI*t); fxx.drawImage(smoke,p.x-r,p.y-r,r*2,r*2); }
+    else if(p.k===1){ p.vx+=rnd(-30,30)*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; p.a+=p.va*dt; const t=p.l/p.L; fxx.globalAlpha=.85*(1-t); fxx.fillStyle='#1d1814';
+      fxx.save(); fxx.translate(p.x,p.y); fxx.rotate(p.a); fxx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.66); fxx.restore(); } }
+  fxx.globalCompositeOperation='lighter';
+  for(const p of parts){ if(p.k) continue; p.vy-=50*dt; p.vx+=rnd(-90,90)*dt; p.x+=p.vx*dt; p.y+=p.vy*dt; const t=p.l/p.L;
+    fxx.globalAlpha=(1-t); fxx.fillStyle=t<.35?'#ffd890':t<.7?'#ff9a3c':'#d8471c'; fxx.beginPath(); fxx.arc(p.x,p.y,p.s*(1-t*.5),0,7); fxx.fill(); }
+  fxx.globalAlpha=1; fxx.globalCompositeOperation='source-over';
+}
+
+/* ---------- maquetación: el texto y las imágenes nunca se pisan ---------- */
+let W=innerWidth,H=innerHeight,wide=true,pad=24,dpr=1,sT=0,sB=0,bar=0;
+const probe=$('#probe');
+function place(d,w,h,cx,cy,z,ox,oy,extra,rot){ /* capa a profundidad z, compensada para verse en (cx,cy) con tamaño w×h en reposo */
+  const k=(P-z)/P, px=ox+(cx-ox)*k, py=oy+(cy-oy)*k;
+  d.style.width=w+'px'; if(h!=null){ d.style.height=h+'px'; d.style.marginTop=(-h/2)+'px'; } d.style.marginLeft=(-w/2)+'px';
+  d._base=`translate3d(${px.toFixed(1)}px,${py.toFixed(1)}px,${z}px) scale(${(k*(extra||1)).toFixed(4)})`+(rot?` rotateZ(${rot}deg)`:'');
+  d.style.transform=d._base; }
+function fitZ(o,maxH){ let z=1; o.tx.style.setProperty('--z','1'); let h=o.inner.offsetHeight;
+  for(let k=0;k<4&&h>maxH;k++){ z=Math.max(.5,z*maxH/h*.98); o.tx.style.setProperty('--z',z.toFixed(3)); h=o.inner.offsetHeight; }
+  return h; }
+const mid=(v,a,b)=>a>b?(a+b)/2:clamp(v,a,b);
+function layout(){
+  W=innerWidth; H=innerHeight; wide=W/H>1.05;
+  de.classList.toggle('wide',wide); de.classList.toggle('narrow',!wide);
+  pad=Math.round(clamp(W*.052,18,88)); de.style.setProperty('--pad',pad+'px');
+  const pc=getComputedStyle(probe); sT=parseFloat(pc.paddingTop)||0; sB=parseFloat(pc.paddingBottom)||0;
+  de.style.setProperty('--st',sT+'px'); de.style.setProperty('--sb',sB+'px');
+  bar=wide?H*.065:0; dpr=Math.min(devicePixelRatio||1,2); fdpr=Math.min(devicePixelRatio||1,1.5);
+  fx.width=Math.round(W*fdpr); fx.height=Math.round(H*fdpr);
+  const top=wide?bar+30:sT+62, bot=wide?bar+34:sB+50, gap=wide?Math.max(40,W*.036):20;
+  GLI.forEach(glDetach); GL.gen++;
+  S.forEach((o,i)=>{
+    const s=o.s, L=o.L, inner=o.inner, cap=o.cap;
+    let ox=0, oy=0;
+    if(inner&&(s.kind==='set'||s.kind==='layers'||s.kind==='title')){
+      const isT=s.kind==='title';
+      const Tw=wide?Math.round(clamp((W-2*pad)*(isT?.74:.4),250,isT?1050:600)):W-2*pad;
+      inner.style.width=Tw+'px';
+      const aL=wide&&!isT?pad+Tw+gap:pad, aR=W-pad;
+      let capH=0, capW=Math.min(aR-aL,620);
+      if(cap){ cap.style.width=capW+'px'; capH=cap.offsetHeight+16; }
+      const maxH=wide?H-top-bot-8:H-top-bot-(s.kind==='set'?capH+24+Math.max(H*.3,150):40);
+      const th=fitZ(o,maxH);
+      const ty=wide?(isT?H-bot-th:top+(H-top-bot-th)/2):H-bot-th;
+      inner.style.left=pad+'px'; inner.style.top=Math.round(Math.max(top,ty))+'px';
+      if(s.kind==='set'){
+        const A=wide?{l:aL,r:aR,t:top+6,b:H-bot-capH}:{l:aL,r:aR,t:top+2,b:H-bot-th-20-capH};
+        const aw=A.r-A.l, ah=A.b-A.t;
+        ox=(A.l+A.r)/2-W/2; oy=(A.t+A.b)/2-H/2;
+        const u={l:1e9,r:-1e9,t:1e9,b:-1e9};
+        L.items.forEach(d=>{ const it=d._it, sz=SIZES[it.img], ar=sz[0]/sz[1], scl=it.s||1;
+          if(it.t==='bg'){ /* fondo a sangre: cubre la pantalla con margen; bx lo desplaza para que lo importante no quede bajo el texto */
+            const w0=Math.max(W*1.12,H*1.12*ar), bx=wide?(s.bx||0)*W:0, w=Math.max(w0,W*1.12+2*Math.abs(bx)), h=w/ar, by=(s.by||0)*Math.max(0,h-H*1.12)/2; d._rest={cx:W/2+bx,cy:H/2+by,w,h,r:0}; place(d,w,h,bx,by,-200,ox,oy,1,0); return; }
+          let w=Math.min(aw*scl,ah*scl*ar); w=Math.min(w,sz[0]*1.15); const h=w/ar;
+          const rr=(it.r||0)*Math.PI/180, bx=(Math.abs(w*Math.cos(rr))+Math.abs(h*Math.sin(rr)))/2, by=(Math.abs(w*Math.sin(rr))+Math.abs(h*Math.cos(rr)))/2;
+          const cx=mid((A.l+A.r)/2+(it.x||0)*aw,A.l+bx,A.r-bx), cy=mid((A.t+A.b)/2+(it.y||0)*ah,A.t+by,A.b-by);
+          d._rest={cx,cy,w,h,r:rr};
+          place(d,w,h,cx-W/2,cy-H/2,it.z||0,ox,oy,1,it.r||0);
+          if(it.t!=='stamp'){ u.l=Math.min(u.l,cx-bx); u.r=Math.max(u.r,cx+bx); } u.b=Math.max(u.b,cy+by); });
+        if(cap&&u.l<1e8){ const cl=Math.max(A.l,Math.min(u.l,A.r-capW)); cap.style.left=Math.round(cl)+'px'; cap.style.top=Math.round(Math.min(u.b+14,H-bot-capH+16))+'px'; }
+        else if(cap){ cap.style.left=Math.round(wide?aR-capW:pad)+'px'; cap.style.top=Math.round(wide?H-bot-cap.offsetHeight:Math.max(top+4,inner.offsetTop-cap.offsetHeight-18))+'px'; }
+      } else if(s.kind==='layers'){
+        if(cap){ cap.style.width=capW+'px'; if(wide){ cap.style.left=Math.round(aR-capW)+'px'; cap.style.top=Math.round(H-bot-cap.offsetHeight)+'px'; } else { cap.style.left=pad+'px'; cap.style.top=Math.round(Math.max(top+4,inner.offsetTop-cap.offsetHeight-18))+'px'; } }
+        place(L.bg,W,H,0,0,-420,0,0,1.06); place(L.fg,W,H,0,0,0,0,0,1.06); place(L.blur,W,H,0,0,-900,0,0,1.3);
+      } else if(isT){
+        ox=wide?W*.12:0; oy=wide?-H*.06:-H*.14;
+        /* filas del muro: cada una es más larga que lo visible, así el salto al dar la vuelta queda fuera de cuadro */
+        const th=Math.round(H*(wide?1.32:1.2)/WROWS*.9), g=Math.max(6,Math.round(th*.085)); L.len=[];
+        for(let r=0;r<WROWS;r++){ let x=0; L.tiles.filter(t=>t._r===r).forEach(t=>{ const sz=SIZES[t._n], w=Math.round(th*clamp(sz[0]/sz[1],.62,1.7));
+          t.style.width=w+'px'; t.style.height=th+'px'; t._x0=x; t._y=Math.round((r-(WROWS-1)/2)*(th+g)-th/2); x+=w+g; }); L.len[r]=x; }
+        L.wall._base=wide?`translate3d(${(W*.14).toFixed(0)}px,${(-H*.03).toFixed(0)}px,-260px) rotateY(-20deg) rotateX(5deg)`:`translate3d(${(W*.06).toFixed(0)}px,${(-H*.13).toFixed(0)}px,-220px) rotateY(-15deg) rotateX(7deg)`;
+        L.wall.style.transform=L.wall._base; L.shift=wide?-W*.3:-W*.2;
+      }
+    } else if(s.kind==='inter'){
+      const cw=Math.min(W*(wide?.52:.88),860), ch=Math.min(H*(wide?.62:.5),cw*.62); place(L.card,cw,ch,0,0,0,0,0);
+    } else if(s.kind==='cards'){
+      inner.style.left='0px'; inner.style.width=W+'px'; inner.style.top=Math.round(top+4)+'px';
+      const kH=inner.offsetHeight, aT=top+kH+28, aB=H-bot, ah=aB-aT;
+      let cw=wide?Math.min(W*.2,330):(W-2*pad)/3.3;
+      const setW=w=>L.cards.forEach(c=>{ c.style.width=w+'px'; c.style.padding=`${w*.06}px ${w*.06}px 0`; c.style.setProperty('--cb',Math.max(.8,w*.0052)+'rem'); c.style.setProperty('--ci',Math.max(.56,w*.0026)+'rem'); c.style.setProperty('--cs',Math.max(.6,w*.0029)+'rem'); });
+      setW(cw); for(let k=0;k<3;k++){ const mh=Math.max(...L.cards.map(c=>c.offsetHeight)); if(mh<=ah) break; cw*=ah/mh*.97; setW(cw); }
+      const gp=cw*(wide?1.16:1.06), cy=(aT+aB)/2-H/2;
+      L.cards.forEach((c,k)=>{ place(c,cw,null,(k-1)*gp,cy,0,0,0); c._x=k-1; c.style.marginTop=(-c.offsetHeight/2)+'px'; });
+      oy=cy;
+    } else if(s.kind==='credits'){
+      const rw=Math.min(W-2*pad,720); roll.style.width=rw+'px'; roll.style.left=Math.round((W-rw)/2)+'px';
+    }
+    o.sc.style.perspectiveOrigin=`${(W/2+ox).toFixed(0)}px ${(H/2+oy).toFixed(0)}px`;
+    if(L.motes) L.motes.forEach(m=>{ m.style.transform=`translate3d(${(m._p[0]*W*1.3+W/2).toFixed(0)}px,${(m._p[1]*H*1.3+H/2).toFixed(0)}px,${m._p[2].toFixed(0)}px)`; });
+  });
+}
+
+/* ---------- navegación: una diapositiva por gesto, siempre con la misma transición ---------- */
+let cur=0, tw=null, vel=0, navDir=1;
+const stopAt=i=>clamp(i,0,N-1)+.34;
+function goTo(i){
+  i=clamp(i,0,N-1); const to=stopAt(i); if(Math.abs(to-cur)<1e-3&&!tw){ idx=i; return; }
+  const dir=to>cur?1:-1; navDir=dir;
+  S.forEach((o,j)=>{ if(!o.s.burn) return; if(cur<=j+.4||cur>=j+.99) o.burnMode=(dir>0&&to>j+.5&&cur<j+.6)?1:0; });
+  const dist=Math.abs(to-cur);
+  let d=reduce?.5:Math.min(4.2,2.5+(dist-1)*.55);
+  if(!reduce&&dir>0&&S.some((o,j)=>o.burnMode&&cur<j+.6&&to>j+.9)) d=Math.max(d,4.6);
+  tw={from:cur,to,v0:vel,t0:performance.now(),d:d*1000};
+  idx=i; showCount();
+}
+function tweenAt(now){
+  const p=clamp((now-tw.t0)/tw.d,0,1), D=tw.d/1000, p2=p*p, p3=p2*p;
+  const pos=(2*p3-3*p2+1)*tw.from+(p3-2*p2+p)*tw.v0*D+(-2*p3+3*p2)*tw.to;
+  vel=((6*p2-6*p)*tw.from+(3*p2-4*p+1)*tw.v0*D+(-6*p2+6*p)*tw.to)/D;
+  cur=pos; if(p>=1){ cur=tw.to; vel=0; tw=null; }
+}
+let rollT=0, ff=false, finT=0;
+function step(dir){ if(SCENES[idx].kind==='credits'&&dir>0){ ff=true; return; } goTo(idx+dir); }
+addEventListener('keydown',e=>{
+  const k=e.key;
+  if(['ArrowDown','ArrowRight','PageDown',' ','Enter'].includes(k)){ e.preventDefault(); step(1); }
+  else if(['ArrowUp','ArrowLeft','PageUp','Backspace'].includes(k)){ e.preventDefault(); step(-1); }
+  else if(k==='Home'){ e.preventDefault(); goTo(0); } else if(k==='End'){ e.preventDefault(); goTo(N-1); }
+  else if(k==='f'||k==='F') toggleFS();
+});
+/* rueda o panel táctil: un gesto = una diapositiva */
+let wLast=0;
+addEventListener('wheel',e=>{ e.preventDefault(); const now=performance.now(), quiet=now-wLast>320; wLast=now;
+  const dv=Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX; if(Math.abs(dv)<3) return;
+  if(quiet) step(dv>0?1:-1); },{passive:false});
+/* clic del ratón: avanza (como en un pase de diapositivas) */
+addEventListener('pointerup',e=>{ if(e.pointerType==='mouse'&&e.button===0&&!e.target.closest('button')) step(1); });
+addEventListener('contextmenu',e=>{ if(!touch){ e.preventDefault(); step(-1); } });
+/* toque: tocar avanza (el tercio izquierdo retrocede); deslizar también funciona */
+let ts=null;
+addEventListener('touchstart',e=>{ if(e.touches.length!==1){ ts=null; return; } const t=e.touches[0]; ts={x:t.clientX,y:t.clientY,t:performance.now(),btn:!!(e.target.closest&&e.target.closest('button'))}; },{passive:true});
+addEventListener('touchmove',e=>{ e.preventDefault(); },{passive:false});
+addEventListener('touchend',e=>{ if(!ts||ts.btn){ ts=null; return; } const t=e.changedTouches[0], dx=t.clientX-ts.x, dy=t.clientY-ts.y, ax=Math.abs(dx), ay=Math.abs(dy);
+  if(Math.max(ax,ay)>40){ if(ay>ax) step(dy<0?1:-1); else step(dx<0?1:-1); }
+  else if(performance.now()-ts.t<700) step(t.clientX<W*.28?-1:1);
+  ts=null; },{passive:true});
+/* mando: A, RB, RT o cruceta → adelante; B, LB, LT o cruceta ← atrás */
+let pads=false; const padSt={};
+addEventListener('gamepadconnected',()=>{ pads=true; });
+function pollPad(){ if(!pads||!navigator.getGamepads) return;
+  for(const p of navigator.getGamepads()){ if(!p) continue; const b=k=>!!(p.buttons[k]&&p.buttons[k].pressed), ax=p.axes||[];
+    const nx=b(0)||b(5)||b(7)||b(15)||b(13)||(ax[0]||0)>.6||(ax[1]||0)>.6, pv=b(1)||b(4)||b(6)||b(14)||b(12)||(ax[0]||0)<-.6||(ax[1]||0)<-.6;
+    const st=padSt[p.index]||{}; if(nx&&!st.n) step(1); if(pv&&!st.p) step(-1); padSt[p.index]={n:nx,p:pv}; } }
+
+/* ---------- pantalla completa ---------- */
+const canFS=!!(de.requestFullscreen||de.webkitRequestFullscreen);
+function toggleFS(){ if(!canFS) return; if(document.fullscreenElement||document.webkitFullscreenElement) (document.exitFullscreen||document.webkitExitFullscreen).call(document);
+  else { const p=(de.requestFullscreen||de.webkitRequestFullscreen).call(de); p&&p.catch&&p.catch(()=>{}); } }
+if(!canFS) $('#fs').style.display='none';
+$('#fs').addEventListener('click',e=>{ e.stopPropagation(); toggleFS(); });
+
+/* ---------- cursor: objetos que se inclinan, brillo y lupa ---------- */
+const m={x:0,y:0,tx:0,ty:0,cx:-1,cy:-1,mouse:false};
+addEventListener('pointermove',e=>{ if(e.pointerType==='mouse'||e.pointerType==='pen'){ m.mouse=true; m.cx=e.clientX; m.cy=e.clientY; m.tx=(e.clientX/W-.5)*2; m.ty=(e.clientY/H-.5)*2; } },{passive:true});
+document.addEventListener('pointerleave',()=>{ m.cx=-1; });
+const lupa=$('#lupa'), LR=120;
+function lens(o,q){
+  if(touch||!m.mouse||m.cx<0||Math.abs(q-.34)>.12) return false;
+  if(o.inner){ const ir=o.inner.getBoundingClientRect(); if(m.cx<ir.right+20&&m.cy>ir.top-20&&m.cy<ir.bottom+20) return false; }
+  for(let k=o.L.items.length-1;k>=0;k--){ const d=o.L.items[k], r=d.getBoundingClientRect();
+    if(m.cx<r.left||m.cx>r.right||m.cy<r.top||m.cy>r.bottom) continue;
+    if(d._it.t==='stamp'||d._it.t==='bg') return false;
+    const im=d._img, Z=Math.min(2.4,im.naturalWidth/r.width); if(!(Z>=1.6)) return false;   /* sin resolución suficiente no se amplía */
+    const pz=d._it.depth?PZ:1, u=.5+((m.cx-r.left)/r.width-.5)*pz, v=.5+((m.cy-r.top)/r.height-.5)*pz, bw=r.width*Z/pz, bh=r.height*Z/pz;
+    if(lupa._src!==im.src){ lupa._src=im.src; lupa.style.backgroundImage=`url(${im.src})`; }
+    lupa.style.backgroundSize=`${bw.toFixed(0)}px ${bh.toFixed(0)}px`;
+    lupa.style.backgroundPosition=`${(LR-u*bw).toFixed(1)}px ${(LR-v*bh).toFixed(1)}px`;
+    lupa.style.left=m.cx+'px'; lupa.style.top=m.cy+'px'; return true; }
+  return false;
+}
+
+/* ---------- efectos de película ---------- */
+const grain=$('#grain'), flick=$('#flick'), scr=[...document.querySelectorAll('.scr')];
+{ const c=document.createElement('canvas'); c.width=c.height=256; const x=c.getContext('2d'), d=x.createImageData(256,256);
+  for(let k=0;k<d.data.length;k+=4){ const v=Math.random()*255; d.data[k]=d.data[k+1]=d.data[k+2]=v; d.data[k+3]=255; }
+  x.putImageData(d,0,0); grain.style.backgroundImage=`url(${c.toDataURL()})`; }
+let fxT=0; const weave={x:0,y:0};
+function film(now,strength,steady){
+  if(reduce) return;
+  if(now-fxT>42){ fxT=now;   /* ~24 fotogramas por segundo, como el proyector */
+    if(!lite) grain.style.transform=`translate3d(${(Math.random()*100-50)|0}px,${(Math.random()*100-50)|0}px,0)`;
+    const fl=steady?Math.random()*.012:(Math.random()<.04?.05+Math.random()*.05:Math.random()*.028*strength);
+    flick.style.opacity=fl.toFixed(3);
+    weave.x=weave.x*.6+(Math.random()-.5)*.7; weave.y=weave.y*.6+(Math.random()-.5)*.5;
+    stage.style.transform=`translate3d(${weave.x.toFixed(2)}px,${weave.y.toFixed(2)}px,0)`;
+    scr.forEach(s=>{ if(Math.random()<.02*strength){ s.style.left=(Math.random()*100)+'%'; s.style.opacity=.2+Math.random()*.4; } else if(Math.random()<.3) s.style.opacity=0; });
+  }
+}
+
+/* ---------- apertura a máquina: cada letra ya ocupa su sitio; solo se hace visible ---------- */
+const openBox=$('#open'); let openEnd=0;
+{ let t=.6; const lines=[...openBox.querySelectorAll('p')];
+  lines.forEach((p,li)=>{ const s=p.dataset.t; p.textContent='';
+    for(const ch of s){ const sp=document.createElement('span'); sp.textContent=ch; sp.style.setProperty('--d',t.toFixed(3)+'s'); p.appendChild(sp); t+=ch===','||ch==='.'?.22:.048+Math.random()*.03; }
+    t+=s?.5:.35; if(li===lines.length-1){ const c=document.createElement('span'); c.className='car'; c.style.setProperty('--d',t.toFixed(3)+'s'); p.appendChild(c); } });
+  openEnd=t+.3; }
+
+/* ---------- bucle ---------- */
+const counter=$('#count'), barEl=$('#bar'), hint=$('#hint'), roll=$('#roll'), fin=$('#fin');
+$('#hintTx').textContent=touch?'Toca para avanzar':'Pulsa → o haz clic';
+function showCount(){ counter.innerHTML=`Folio <b>${String(idx+1).padStart(2,'0')}</b> / ${N}`; load(idx); load(idx+1); load(idx+2); }
+let t0=0, last=0, restT=0;
+const setVis=(e,v)=>{ if(e._v!==v){ e._v=v; e.style.visibility=v?'':'hidden'; } };
+const setOp=(e,v)=>{ v=+v.toFixed(3); if(e._o!==v){ e._o=v; e.style.opacity=v; } };
+function frame(now){
+  const dt=Math.min(.05,Math.max(0,(now-last)/1000)); last=now;
+  if(tw) tweenAt(now);
+  pollPad(); glManage();
+  m.x+=(m.tx-m.x)*.06; m.y+=(m.ty-m.y)*.06;
+  de.style.setProperty('--gx',m.x.toFixed(3)); de.style.setProperty('--gy',m.y.toFixed(3));
+  const g=cur, time=(now-t0)/1000; let lensOn=false, grave=0, credOn=false;
+  S.forEach((o,i)=>{
+    const q=g-i, s=o.s;
+    const burning=s.burn&&o.burnMode&&!reduce;
+    const inO=i===0?1:sm(-.56,-.06,q), outO=s.last?1:burning?1-sm(.965,1,q):1-sm(.46,1,q);
+    const op=Math.min(inO,outO), vis=op>.002;
+    if(vis!==o.vis){ o.vis=vis; o.sc.style.visibility=o.tx.style.visibility=vis?'visible':'hidden'; if(vis) load(i); }
+    if(!vis){ if(s.kind==='credits'){ rollT=0; ff=false; finT=0; } return; }
+    if(s.grave) grave=Math.max(grave,op);
+    /* cámara: llega despacio desde el fondo, respira mientras se lee y avanza un poco al irse (fundido, sin golpes) */
+    const arr=eOut(sm(-.7,.04,q)), ex=sm(.38,1.1,q);
+    let z=-420*(1-arr)+(burning?30*ex:320*ex*ex);
+    let ry=touch?0:m.x*1.8, rx=touch?0:-m.y*1.3;
+    if(!reduce){ z+=Math.sin(time*.25+i*1.3)*7; ry+=Math.sin(time*.11+i)*.5; rx+=Math.cos(time*.09+i)*.35; } else z=0;
+    o.cam.style.transform=`translateZ(${z.toFixed(1)}px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    o.sc.style.opacity=op.toFixed(3);
+    const L=o.L, rest=1-sm(.18,.4,Math.abs(q-.34));
+    /* objetos: cada tipo llega a su manera, despacio; en reposo se inclinan con el cursor */
+    L.items.forEach(d=>{ const it=d._it, dd=it.d||0, a=eOut(sm(-.55+dd,.12+dd,q)), f=1-a;
+      const tY=touch?Math.sin(time*.32+i)*3*rest:m.x*6*rest, tX=touch?Math.cos(time*.27+i*1.3)*2.2*rest:-m.y*4.5*rest;
+      let tr;
+      if(it.t==='bg') tr='';
+      else if(it.t==='doc') tr=` translate3d(0,${(f*-H*.07).toFixed(1)}px,${(f*140).toFixed(1)}px) rotateX(${(f*22+tX).toFixed(2)}deg) rotateY(${tY.toFixed(2)}deg) rotateZ(${(f*-4).toFixed(2)}deg)`;
+      else if(it.t==='photo') tr=` translate3d(${(f*W*.035).toFixed(1)}px,0,${(f*-220).toFixed(1)}px) rotateX(${tX.toFixed(2)}deg) rotateY(${(f*-9+tY).toFixed(2)}deg)`;
+      else if(it.t==='clip') tr=` translate3d(${(-f*W*.05).toFixed(1)}px,${(f*H*.03).toFixed(1)}px,${(f*90).toFixed(1)}px) rotateX(${tX.toFixed(2)}deg) rotateY(${tY.toFixed(2)}deg) rotateZ(${(f*-7).toFixed(2)}deg)`;
+      else tr=` translate3d(0,0,${(f*240).toFixed(1)}px) rotateZ(${(f*14).toFixed(2)}deg)`;
+      d.style.transform=d._base+tr;
+      let opa=it.t==='bg'?1:Math.min(1,a*1.5);
+      const G=d._gl;
+      if(it.burn){
+        const b=burning?sm(.4+it.burn[2],.95,q):0;
+        if(G){ const on=b>0;
+          if(on||G.shown){ G.gl.uniform1f(G.u.th,on?b*1.35-.2:-1); G.gl.uniform1f(G.u.tm,time); G.gl.drawArrays(G.gl.TRIANGLE_STRIP,0,4); }
+          if(G.shown!==on){ G.shown=on; d._img.style.visibility=on?'hidden':''; if(d._rubber) d._rubber.style.visibility=on?'hidden':''; } }
+        else if(b>0) opa*=1-sm(0,.85,b);
+        setOp(d._shd,1-sm(0,.4,b)); setOp(d._glare,1-sm(0,.3,b));
+        if(d._pclip){ const fb=sm(.42,.75,b); d._pclip.style.transform=`translate3d(0,${(fb*H*.5).toFixed(1)}px,0) rotate(${(-5+fb*70).toFixed(1)}deg)`; setOp(d._pclip,1-sm(.5,.8,b)); }
+        if(G&&b>0&&b<1&&!reduce) spawn(d,b);
+      } else if(G){   /* relieve: el cursor, una deriva lenta y el movimiento de la cámara mueven los planos de la foto */
+        const ga=sm(0,900,now-G.t0)*(it.t==='bg'?.8:1), dr=reduce?0:touch?1.6:1, ff_=it.t==='bg'?0:f;
+        const offx=(-m.x*.034*rest+Math.sin(time*.23+d._si)*.011*dr+ff_*.02)*ga, offy=(-m.y*.022*rest+Math.cos(time*.19+d._si*1.7)*.007*dr)*ga;
+        const dol=(.014+Math.sin(time*.13+d._si)*.012*dr+ff_*.03+ex*.035)*ga;
+        G.gl.uniform2f(G.u.off,offx,offy); G.gl.uniform1f(G.u.dol,dol); G.gl.drawArrays(G.gl.TRIANGLE_STRIP,0,4);
+        if(!G.shown){ G.shown=true; G.c.style.opacity=1; } }
+      setOp(d,opa);
+      if(d._rubber){ if(!d._hit&&q>.16){ d._hit=1; d.classList.add('hit'); } else if(d._hit&&(q<-.2||q>1.2)){ d._hit=0; d.classList.remove('hit'); } } });
+    if(L.tiles){ /* muro de archivo: las filas se deslizan despacio y, de vez en cuando, una fotografía se adelanta como si alguien la tomara */
+      const sp=reduce?0:1;
+      if(!reduce&&time-L.liftT>2.6){ L.liftT=time; const c=L.tiles.filter(t=>t._r>0&&t._r<WROWS-1&&Math.abs(t._xd)<W*.55); if(c.length) L.lift=[c[(Math.random()*c.length)|0],time]; }
+      L.tiles.forEach(t=>{ const r=t._r, len=L.len[r], v=(r%2?-1:1)*(10+(r*3)%7)*sp;
+        let x=((t._x0+v*time)%len+len)%len-len/2+L.shift; t._xd=x;
+        let z=0, ry=0; if(L.lift&&L.lift[0]===t){ const lp=(time-L.lift[1])/2.4; if(lp<1){ const e=Math.sin(Math.PI*lp); z=e*70; ry=-e*7; } }
+        t.style.transform=`translate3d(${x.toFixed(1)}px,${t._y}px,${z.toFixed(1)}px)`+(ry?` rotateY(${ry.toFixed(2)}deg)`:''); });
+      if(!lite){ L.spot.style.transform=`translate3d(${(W*(.16+.14*Math.sin(time*.09))).toFixed(0)}px,${(H*(-.04+.07*Math.cos(time*.07))).toFixed(0)}px,0)`; } }
+    if(L.card){ const a=eOut(sm(-.5,.14,q)), f=1-a; L.card.style.transform=L.card._base+` translate3d(0,0,${(f*-160).toFixed(1)}px)`; setOp(L.card,a); }
+    if(L.cards) L.cards.forEach((c,k)=>{ const b=eOut(sm(-.5+k*.07,.16+k*.07,q)), f=1-b;
+      let hov=0; if(m.mouse&&m.cx>=0){ const r=c.getBoundingClientRect(); hov=(m.cx>r.left&&m.cx<r.right&&m.cy>r.top&&m.cy<r.bottom)?1:0; } c._h=(c._h||0)+(hov-(c._h||0))*.1;
+      c.style.transform=c._base+` translate3d(0,${(f*H*.12-c._h*14).toFixed(1)}px,${(f*-220+c._h*90).toFixed(1)}px) rotateY(${(c._x*-12*b*(1-c._h)+f*c._x*18+m.x*5).toFixed(2)}deg) rotateX(${(f*10-m.y*4).toFixed(2)}deg)`; });
+    if(L.fg){ /* último folio: sujeto y fondo a distinta profundidad */
+      const px=(touch?Math.sin(time*.2)*.4:m.x)*14, py=(touch?Math.cos(time*.17)*.3:m.y)*9;
+      L.fg.style.transform=L.fg._base+` translate3d(${(-px).toFixed(1)}px,${(-py).toFixed(1)}px,0)`; L.bg.style.transform=L.bg._base+` translate3d(${(px*.5).toFixed(1)}px,${(py*.5).toFixed(1)}px,0)`; }
+    if(!lensOn&&L.items.length) lensOn=lens(o,q);
+    /* textos */
+    if(s.kind==='open'){ const out=sm(.42,.68,q); o.tx.style.opacity=(1-out).toFixed(3); o.tx.style.transform=`translate3d(0,${(-out*30).toFixed(1)}px,0)`; return; }
+    if(s.kind==='credits'){ credOn=true;
+      const rh=roll.offsetHeight, speed=Math.max(52,H/12);
+      if(q>.2) rollT+=dt*(ff?10:1);
+      const y=H-rollT*speed; roll.style.transform=`translate3d(0,${y.toFixed(1)}px,0)`;
+      o.tx.style.opacity=sm(-.2,.1,q).toFixed(3);
+      if(y+rh<0) finT+=dt; else finT=0;
+      return; }
+    if(!o.inner) return;
+    const tin=sm(-.16,.2,q), tout=s.last?1:1-sm(.4,.56,q);
+    o.inner.style.opacity=Math.min(tin,tout).toFixed(3);
+    o.inner.style.transform=`translate3d(0,${((1-tout)*-24+(1-tin)*20).toFixed(1)}px,0)`;
+    o.lines.forEach((l,k)=>{ const p=eOut((q+.16-k*.05)/.3); l.style.transform=`translate3d(0,${((1-p)*105).toFixed(1)}%,0)`; });
+    o.blocks.forEach((b,k)=>{ const p=eOut((q+.04-k*.035)/.26); b.style.opacity=p.toFixed(3); b.style.transform=`translate3d(0,${((1-p)*14).toFixed(1)}px,0)`; });
+    if(o.cap) o.cap.style.opacity=(Math.min(sm(-.02,.24,q),tout)*.95).toFixed(3);
+  });
+  /* FIN: queda solo y centrado sobre el fondo de siempre */
+  setOp(fin,credOn?sm(.2,1.8,finT):0);
+  lupa.classList.toggle('on',lensOn); document.body.classList.toggle('examining',lensOn);
+  film(now,1+grave*1.4,g<.6);
+  fxStep(dt);
+  if(!tw&&now-restT>250){ const wn=S[idx+1]; if(wn&&!wn.warm&&!wn.vis&&wn.loaded&&wn.imgs.every(im=>im.complete)){ wn.warm=1; wn.sc.style.visibility='visible'; wn.sc.style.opacity='0.004';
+    setTimeout(()=>{ if(!wn.vis) wn.sc.style.visibility='hidden'; },160); } }
+  if(tw) restT=now;
+  barEl.style.transform=`scaleX(${clamp(g/(N-1+.34),0,1).toFixed(4)})`;
+  hint.style.opacity=(g<1.2&&time>openEnd)?1:0;
+  requestAnimationFrame(frame);
+}
+
+/* ---------- arranque ---------- */
+let rz=0; addEventListener('resize',()=>{ cancelAnimationFrame(rz); rz=requestAnimationFrame(layout); });
+/* las fuentes se esperan como mucho 3 s: con una red lenta la presentación arranca igual y se recoloca cuando llegan */
+const fontsReady=document.fonts?Promise.all([document.fonts.load('500 100px Oswald').catch(()=>{}),document.fonts.ready]):Promise.resolve();   /* Oswald también para los sellos del lienzo */
+let started=false, fontsOk=!document.fonts||document.fonts.status==='loaded';
+function stamps(){ S.forEach(o=>o.L.items.forEach(d=>{ if(d._it.stamp){ const c=stampCanvas(d._it.stamp[0],d._it.stamp[1]); d._stampC=c; d._rubber.src=c.toDataURL(); } }));
+}
+fontsReady.then(()=>{ const was=fontsOk; fontsOk=true; if(started&&!was){ stamps(); layout(); } });
+Promise.all([Promise.race([fontsReady,new Promise(r=>setTimeout(r,3000))]),Promise.race([load(0),new Promise(r=>setTimeout(r,6000))])]).then(()=>{
+  started=true; fontsOk=fontsOk||!document.fonts||document.fonts.status==='loaded';
+  stamps(); layout(); t0=last=performance.now(); $('#loader').classList.add('done');
+  setTimeout(()=>openBox.classList.add('go'),300); showCount(); requestAnimationFrame(frame);
+  setTimeout(()=>loadRest(1),900); });
+window.__go=(i,dir)=>{ const to=Number.isInteger(i)?stopAt(i):i+.34; navDir=dir||1; S.forEach((o,j)=>{ if(o.s.burn) o.burnMode=navDir>0&&to>j+.35?1:0; });
+  cur=to; tw=null; vel=0; idx=clamp(Math.round(to-.34),0,N-1); showCount(); };
+})();
+</script>
+</body>
+</html>
